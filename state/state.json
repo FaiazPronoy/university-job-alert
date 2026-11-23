@@ -1,5 +1,5 @@
 {
-"catchup_version": 2,
+"catchup_version": 3,
 "items": {
 "003fce616c977759eb35": {
 "category": "General circular",
@@ -29,19 +29,6 @@
 "university": "University of Scholars",
 "url": "https://www.ius.edu.bd/career-opportunities-at-scholars"
 },
-"012731fdaeade070951d": {
-"category": "Career page update",
-"deadline": null,
-"digested": true,
-"first_seen": "2026-11-23",
-"level": "strong",
-"notified": true,
-"page": "https://www.uttara.ac.bd/career/",
-"reminded": [],
-"title": "Associate Professor, Department of Fashion Design and Technology",
-"university": "Uttara University",
-"url": "https://www.uttara.ac.bd/career/"
-},
 "016b6810d563cb26a3f1": {
 "category": "Teaching",
 "deadline": "2026-08-17",
@@ -56,20 +43,6 @@
 "university": "BUET",
 "url": "http://regoffice.buet.ac.bd/wp-content/uploads/2026/08/Scan_0001.pdf"
 },
-"02111b378be6e74e4282": {
-"category": "Teaching",
-"deadline": null,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2022-02-24",
-"level": "possible",
-"notified": true,
-"page": "https://www.sau.edu.bd/home/notices",
-"reminded": [],
-"title": "চুড়ান্ত কারণ দর্শানোর নোটিশ (মনিকা সনম, সহকারী অধ্যাপক, কৌলিতত্ত্ব ও উদ্ভিদ প্রজনন বিভাগ)",
-"university": "Sher-e-Bangla Agricultural University",
-"url": "https://www.sau.edu.bd/uploads/pdf/notice/2022-03-06_62245c14b15f4.pdf"
-},
 "0251c2dddeb6701db033": {
 "category": "Career page update",
 "deadline": null,
@@ -82,20 +55,6 @@
 "title": "Faculty & Administrative Jobs | North South University (NSU) Careers",
 "university": "North South University",
 "url": "https://jobs.northsouth.edu/"
-},
-"042a2e53b3579c017752": {
-"category": "Teaching",
-"deadline": "2026-11-30",
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2026-11-30",
-"level": "strong",
-"notified": true,
-"page": "https://www.uap-bd.edu/vacancy.php",
-"reminded": [],
-"title": "Lecturer (Law & Human Rights) - Law and Human Rights",
-"university": "University of Asia Pacific",
-"url": "https://www.uap-bd.edu/vacancy.php"
 },
 "04dee17da2fb7cc91ea3": {
 "category": "Career page update",
@@ -140,21 +99,6 @@
 "university": "International Islami UST",
 "url": "https://www.iiustb.ac.bd/notice/view/17"
 },
-"06a11c0632ec7176f9d0": {
-"category": "General circular",
-"deadline": null,
-"detail_checked": true,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2026-05-21",
-"level": "strong",
-"notified": true,
-"page": "http://iau.edu.bd/allnotice/",
-"reminded": [],
-"title": "জনাব শাহীনুল ইসলাম, অতিরিক্ত সচিব (অবসরপ্রাপ্ত)-কে ইসলামি আরবি বিশ্ববিদ্যালয়ের ট্রেজারার পদে নিয়োগ প্রদান প্রসঙ্গে",
-"university": "Islamic Arabic University",
-"url": "http://iau.edu.bd/wp-content/uploads/2026/06/reg13443.pdf"
-},
 "06e287766cfac61aee23": {
 "category": "Teaching",
 "deadline": null,
@@ -181,19 +125,6 @@
 "title": "নিয়োগ বিজ্ঞপ্তি",
 "university": "Islamic Arabic University",
 "url": "http://iau.edu.bd/recruitment-circular"
-},
-"088a2fc2f6f6212c6ee6": {
-"category": "Career page update",
-"deadline": null,
-"digested": true,
-"first_seen": "2026-11-23",
-"level": "strong",
-"notified": true,
-"page": "https://career.uits.ac.bd/",
-"reminded": [],
-"title": "Professor",
-"university": "UITS",
-"url": "https://career.uits.ac.bd/"
 },
 "08c9af0b64106809e58e": {
 "category": "Career page update",
@@ -293,20 +224,6 @@
 "university": "BGMEA University of Fashion & Technology",
 "url": "https://buft.edu.bd/upload/_page/1785403158Final_Faculty_Seasrch 28-07-2026.pdf"
 },
-"0d6685dc42c0f340c5aa": {
-"category": "Teaching",
-"deadline": "2026-11-30",
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2026-11-30",
-"level": "strong",
-"notified": true,
-"page": "https://www.uap-bd.edu/vacancy.php",
-"reminded": [],
-"title": "Assistant Professor (Business Administration) - Business Administration",
-"university": "University of Asia Pacific",
-"url": "https://www.uap-bd.edu/vacancy.php"
-},
 "0eb6fd453e92dee95f31": {
 "category": "General circular",
 "deadline": null,
@@ -335,20 +252,6 @@
 "title": "শেকৃবি উপাচার্যের রুটিন দায়িত্বে রেজিস্ট্রার শেখ রেজাউল করিম ।",
 "university": "Sher-e-Bangla Agricultural University",
 "url": "https://www.sau.edu.bd/uploads/pdf/notice/2020-09-20_5f6763a05af97.pdf"
-},
-"0f531fb9752995b468da": {
-"category": "Career page update",
-"deadline": null,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": null,
-"level": "strong",
-"notified": true,
-"page": "https://career.grameenu.ac/career-portal",
-"reminded": [],
-"title": "Inspired by the vision of Professor Muhammad Yunus.",
-"university": "Grameen University",
-"url": "https://career.grameenu.ac/career-portal"
 },
 "1031e1ce76c0a122176a": {
 "category": "Officer/Admin",
@@ -391,20 +294,6 @@
 "title": "📄 Download Job Description (PDF)",
 "university": "Eastern University",
 "url": "https://webapi.easternuni.edu.bd/media/career/Graphics_Designer__Social_Media_Operation_Officer_Creative_Section.pdf"
-},
-"13703e1cc7a4aec7c55b": {
-"category": "Teaching",
-"deadline": null,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2024-04-23",
-"level": "possible",
-"notified": true,
-"page": "https://www.sau.edu.bd/home/notices",
-"reminded": [],
-"title": "Bangladesh-Chair: Bangabandhu Sheikh Mujibur Rahman Professorial Fellowship at South Asian Institute, Heidelberg University, Germany",
-"university": "Sher-e-Bangla Agricultural University",
-"url": "https://www.sau.edu.bd/uploads/pdf/notice/2024-04-23_66278f0912248.pdf"
 },
 "1374f66ac5e257dcd373": {
 "category": "Officer/Admin",
@@ -596,48 +485,6 @@
 "university": "Green University of Bangladesh",
 "url": "https://www.green.edu.bd/notice-details/recruitment-of-assistant-technical-officer-contractual-fall-2026"
 },
-"1ac7b9d8ef38de2ba711": {
-"category": "Teaching",
-"deadline": null,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": null,
-"level": "strong",
-"notified": true,
-"page": "https://archive-career.green.edu.bd/current-circular-2/",
-"reminded": [],
-"title": "Lecturer (law)",
-"university": "Green University of Bangladesh",
-"url": "https://archive-career.green.edu.bd/law/"
-},
-"1b34410f0ee2c855baf0": {
-"category": "General circular",
-"deadline": null,
-"detail_checked": true,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2025-02-06",
-"level": "strong",
-"notified": true,
-"page": "http://iau.edu.bd/allnotice/",
-"reminded": [],
-"title": "চুক্তিভিত্তিক আইন উপদেষ্টা নিয়োগ এবং প্যানেল আইনজীবী তালিকাভূক্তির বিজ্ঞপ্তি",
-"university": "Islamic Arabic University",
-"url": "http://iau.edu.bd/wp-content/uploads/2025/02/প্রশা-আইন_0001.pdf"
-},
-"1b4aa567546f4c30b93d": {
-"category": "School/College",
-"deadline": null,
-"digested": true,
-"first_seen": "2026-11-23",
-"level": "possible",
-"notified": true,
-"page": "https://jobs.juniv.edu/",
-"reminded": [],
-"title": "প্রভাষক (জীববিজ্ঞান) - Lecturer (Biology) JU School and College School and College Permanent 1 Position",
-"university": "Jahangirnagar University",
-"url": "https://jobs.juniv.edu/jobs?slug=lecturer-biology"
-},
 "1b6b63276ba702b70b80": {
 "category": "Career page update",
 "deadline": null,
@@ -719,21 +566,6 @@
 "university": "Islamic Arabic University",
 "url": "http://iau.edu.bd/wp-content/uploads/2026/04/kml00312.pdf"
 },
-"1f6a2507ff8854b1f333": {
-"category": "General circular",
-"deadline": null,
-"detail_checked": true,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2025-10-21",
-"level": "strong",
-"notified": true,
-"page": "https://jnu.ac.bd/newsite/noticeview/1",
-"reminded": [],
-"title": "Job Vacancy (“Enhancing Teaching-Learning Infrastructure for Undergraduate and Postgraduate Psychology Programs at Jagannath University”)",
-"university": "Jagannath University",
-"url": "https://jnu.ac.bd/assets/notice/e8a8bdf5778df20be6770748d1b15941.pdf"
-},
 "1f7ac45dcbd9f00f649b": {
 "category": "General circular",
 "deadline": null,
@@ -802,21 +634,6 @@
 "title": "Assist teachers in conducting practical classes and demonstrations in the Sewing Laboratory.",
 "university": "BGMEA University of Fashion & Technology",
 "url": "https://buft.edu.bd/career"
-},
-"21dafaed73b87b369fc2": {
-"category": "Teaching",
-"deadline": null,
-"detail_checked": true,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2026-06-15",
-"level": "strong",
-"notified": true,
-"page": "https://su.edu.bd/career",
-"reminded": [],
-"title": "Lecturer (lecturer bangla 2026)",
-"university": "Sonargaon University",
-"url": "https://su.edu.bd/career/lecturer-bangla-2026"
 },
 "21f624771ad235b67a7e": {
 "category": "Officer/Admin",
@@ -1080,21 +897,6 @@
 "university": "Jagannath University",
 "url": "https://jnu.ac.bd/assets/notice/96f5c2c9b558a2a707f8ece5519a54ba.pdf"
 },
-"2ccb00807c1e4223a578": {
-"category": "General circular",
-"deadline": null,
-"detail_checked": true,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2025-05-22",
-"level": "strong",
-"notified": true,
-"page": "http://iau.edu.bd/allnotice/",
-"reminded": [],
-"title": "চুক্তিভিত্তিক আইন উপদেষ্টা নিয়োগ এবং প্যানেল আইনজীবী তালিকাভুক্তির পুনঃ বিজ্ঞপ্তি",
-"university": "Islamic Arabic University",
-"url": "http://iau.edu.bd/wp-content/uploads/2025/05/ord0195.pdf"
-},
 "2cf5e5ae5557a8cbad6f": {
 "category": "Career page update",
 "deadline": null,
@@ -1149,20 +951,6 @@
 "university": "Green University of Bangladesh",
 "url": "https://archive-career.green.edu.bd/"
 },
-"2e7a7bb7dc038240b65f": {
-"category": "Teaching",
-"deadline": "2026-11-30",
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2026-11-30",
-"level": "strong",
-"notified": true,
-"page": "https://www.uap-bd.edu/vacancy.php",
-"reminded": [],
-"title": "Associate Professor (CSE) (Internal) - Computer Science and Engineering (CSE)",
-"university": "University of Asia Pacific",
-"url": "https://www.uap-bd.edu/vacancy.php"
-},
 "2ea8d437dfc1a02a72e1": {
 "category": "Career page update",
 "deadline": null,
@@ -1203,20 +991,6 @@
 "title": "Research Associate(Category – II)",
 "university": "United International University",
 "url": "https://www.uiu.ac.bd/career/research-associatecategory-ii/"
-},
-"2fa627fa59ab9007cd35": {
-"category": "Teaching",
-"deadline": null,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2025-09-15",
-"level": "possible",
-"notified": true,
-"page": "http://iau.edu.bd/allnotice/",
-"reminded": [],
-"title": "ইসলামি আরবি বিশ্ববিদ্যালয়ে কর্মরত সকল শিক্ষক, কর্মকর্তা ও কর্মচারীর জন্য বার্ষিক গোপনীয় অনুবেদন ফরম জমা প্রদান প্রসঙ্গে",
-"university": "Islamic Arabic University",
-"url": "http://iau.edu.bd/wp-content/uploads/2025/09/reg13131.pdf"
 },
 "2fc42c4ae463c74b8503": {
 "category": "Career page update",
@@ -1260,20 +1034,6 @@
 "university": "Eastern University",
 "url": "https://webapi.easternuni.edu.bd/media/career/Director_IT.pdf"
 },
-"3103c4b6f987822b5295": {
-"category": "Officer/Admin",
-"deadline": "2026-12-03",
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2026-12-03",
-"level": "strong",
-"notified": true,
-"page": "https://www.daffodilvarsity.edu.bd/career",
-"reminded": [],
-"title": "Medical Officer - Daffodil International University",
-"university": "Daffodil International University",
-"url": "https://www.daffodilvarsity.edu.bd/career"
-},
 "3175149e3fa827ea7d0a": {
 "category": "Officer/Admin",
 "deadline": null,
@@ -1286,19 +1046,6 @@
 "title": "Institute of Business Administration",
 "university": "Jahangirnagar University",
 "url": "https://iba-ju.edu.bd"
-},
-"320506181439f96dcd31": {
-"category": "Career page update",
-"deadline": null,
-"digested": true,
-"first_seen": "2026-11-23",
-"level": "strong",
-"notified": true,
-"page": "https://career.uits.ac.bd/",
-"reminded": [],
-"title": "Assistant Professor",
-"university": "UITS",
-"url": "https://career.uits.ac.bd/"
 },
 "3214dee4888087c2922c": {
 "category": "General circular",
@@ -1494,34 +1241,6 @@
 "university": "Manarat International University",
 "url": "https://manarat.ac.bd/career-at-miu/"
 },
-"37fadebde5b20a6f547b": {
-"category": "Teaching",
-"deadline": "2026-10-31",
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2026-10-31",
-"level": "strong",
-"notified": true,
-"page": "https://www.uiu.ac.bd/career/",
-"reminded": [],
-"title": "Lecturer – Pharmacy",
-"university": "United International University",
-"url": "https://www.uiu.ac.bd/career/lecturer-pharmacy-263/"
-},
-"393882fc5dff11e940d1": {
-"category": "Teaching",
-"deadline": null,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2023-07-22",
-"level": "possible",
-"notified": true,
-"page": "https://www.juniv.edu/",
-"reminded": [],
-"title": "Requested by project Director (Construction of Fine Arts Faculty Building at Jahangirnagar University)",
-"university": "Jahangirnagar University",
-"url": "https://www.juniv.edu/discussion/14603"
-},
 "39726a4f804f59f328d4": {
 "category": "Career page update",
 "deadline": null,
@@ -1661,34 +1380,6 @@
 "university": "Sher-e-Bangla Agricultural University",
 "url": "https://www.sau.edu.bd/uploads/pdf/notice/2022-07-25_62de146003ec3.pdf"
 },
-"3d5d0fd09d9de4dd93b4": {
-"category": "Teaching",
-"deadline": null,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2026-03-01",
-"level": "possible",
-"notified": true,
-"page": "http://iau.edu.bd/allnotice/",
-"reminded": [],
-"title": "ইসলামি আরবি বিশ্ববিদ্যালয়ে কর্মরত সকল শিক্ষক, কর্মকর্তা ও কর্মচারীদের নির্ধারিত সময় অনুযায়ী অফিসে উপস্থিতি ও প্রস্থান প্রসঙ্গে",
-"university": "Islamic Arabic University",
-"url": "http://iau.edu.bd/wp-content/uploads/2026/03/reg282.pdf"
-},
-"3dd9fc0cc9cac6ccfba0": {
-"category": "School/College",
-"deadline": "2026-11-29",
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2026-11-29",
-"level": "possible",
-"notified": true,
-"page": "https://jobs.juniv.edu/circulars",
-"reminded": [],
-"title": "Corrected Recruitment Circular for Various Posts at JU School and College ( জাবি স্কুল ও কলেজের বিভিন্ন পদসমূহে পুনঃসংশোধিত নিয়োগ বিজ্ঞপ্তি ) প্রকাশের তারিখ: 07 Nov 2026 শেষ তারিখ",
-"university": "Jahangirnagar University",
-"url": "https://jobs.juniv.edu/uploads/users/14919de9-8c6c-4f72-bf23-045e65388b62/circular/d916a608-98b0-4478-a3b2-e575129c7ef1.pdf"
-},
 "3e0c733f0e20912862b0": {
 "category": "Officer/Admin",
 "deadline": "2026-10-04",
@@ -1730,32 +1421,6 @@
 "title": "Administrative Positions",
 "university": "Primeasia University",
 "url": "https://primeasia.edu.bd/career/admin/"
-},
-"3f9d9021be5a0c98b436": {
-"category": "School/College",
-"deadline": null,
-"digested": true,
-"first_seen": "2026-11-23",
-"level": "possible",
-"notified": true,
-"page": "https://jobs.juniv.edu/",
-"reminded": [],
-"title": "প্রভাষক গ্রেড-4 (জ্যামিতি ও কারিগরি অংকন) - Lecturer Grade-4 (Geometry and Technical Drawing) JU School and College School and College Permanent 1 Position",
-"university": "Jahangirnagar University",
-"url": "https://jobs.juniv.edu/jobs?slug=lecturer-grade-4-geometry-and-technical-drawing"
-},
-"403716851e3b2b7b1367": {
-"category": "Career page update",
-"deadline": null,
-"digested": true,
-"first_seen": "2026-11-23",
-"level": "strong",
-"notified": true,
-"page": "https://www.uttara.ac.bd/career/",
-"reminded": [],
-"title": "Associate Professor, Department of Textile Engineering",
-"university": "Uttara University",
-"url": "https://www.uttara.ac.bd/career/"
 },
 "405d4282dac5b3feafef": {
 "category": "Officer/Admin",
@@ -1882,20 +1547,6 @@
 "university": "East West University",
 "url": "https://www.ewubd.edu/career"
 },
-"4719ac3373b6ee75654a": {
-"category": "Teaching",
-"deadline": null,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2026-07-23",
-"level": "possible",
-"notified": true,
-"page": "http://iau.edu.bd/allnotice/",
-"reminded": [],
-"title": "ইসলামি আরবি বিশ্ববিদ্যালয় এর ইসলামিক স্টাডিজ বিভাগের অধ্যাপক ড. এ. কে মুহা. নুরুল ইসলাম-কে রেজিস্ট্রার এর অতিরিক্ত দায়িত্ব প্রদান প্রসঙ্গে",
-"university": "Islamic Arabic University",
-"url": "http://iau.edu.bd/wp-content/uploads/2026/07/ord13525.pdf"
-},
 "4787717a8c71d39eda08": {
 "category": "Officer/Admin",
 "deadline": null,
@@ -1995,19 +1646,6 @@
 "title": "Lecturer (jmc lec)",
 "university": "Green University of Bangladesh",
 "url": "https://archive-career.green.edu.bd/jmc-lec/"
-},
-"4feca32d1870ac9b2d0c": {
-"category": "School/College",
-"deadline": null,
-"digested": true,
-"first_seen": "2026-11-23",
-"level": "possible",
-"notified": true,
-"page": "https://jobs.juniv.edu/",
-"reminded": [],
-"title": "প্রভাষক গ্রেড-4 (শারীরিক শিক্ষা) - Lecturer Grade-4 (Physical Education) JU School and College School and College Permanent 1 Position",
-"university": "Jahangirnagar University",
-"url": "https://jobs.juniv.edu/jobs?slug=lecturer-grade-4-physical-education"
 },
 "51148fd360524a127285": {
 "category": "Officer/Admin",
@@ -2159,19 +1797,6 @@
 "university": "Sher-e-Bangla Agricultural University",
 "url": "https://www.sau.edu.bd/uploads/pdf/notice/2022-07-25_62de141294b4d.pdf"
 },
-"57f538ceb032ef26850b": {
-"category": "Career page update",
-"deadline": null,
-"digested": true,
-"first_seen": "2026-11-23",
-"level": "strong",
-"notified": true,
-"page": "https://career.uits.ac.bd/",
-"reminded": [],
-"title": "Associate Professor",
-"university": "UITS",
-"url": "https://career.uits.ac.bd/"
-},
 "57f7f9305f7d7f13bcdd": {
 "category": "Officer/Admin",
 "deadline": null,
@@ -2225,20 +1850,6 @@
 "title": "01 (এক) দিন ব্যাপী স্কাউটিং বিষয়ক ওরিয়েন্টেশন কোর্সে অংশ গ্রহণ করার জন্য শিক্ষকের নাম প্রেরণ প্রসংগে",
 "university": "Islamic Arabic University",
 "url": "http://iau.edu.bd/wp-content/uploads/2026/09/reg17.pdf"
-},
-"5ae2b98b09124fb4f304": {
-"category": "Officer/Admin",
-"deadline": "2026-08-09",
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2026-08-09",
-"level": "strong",
-"notified": true,
-"page": "https://jobs.juniv.edu/circulars",
-"reminded": [],
-"title": "Job Circular for the post of Chief Engineer in Engineering Office and Imam in Shaheed Salam-Barkat Hall ( প্রকৌশল অফিসে প্রধান প্রকৌশলী পদে এবং শহীদ সালাম-বরকত হলে ইমাম পদে নিয়োগ ",
-"university": "Jahangirnagar University",
-"url": "https://jobs.juniv.edu/uploads/users/14919de9-8c6c-4f72-bf23-045e65388b62/general-document/1d79ec95-7f13-4617-8d32-f441f63a9cca.pdf"
 },
 "5b11483ee06a88bc5c42": {
 "category": "Officer/Admin",
@@ -2362,20 +1973,6 @@
 "university": "BUET",
 "url": "http://regoffice.buet.ac.bd/wp-content/uploads/2014/04/Job_HEQEP_JIDPUS.pdf"
 },
-"5c5f9c615e5678beada5": {
-"category": "Teaching",
-"deadline": "2026-11-30",
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2026-11-30",
-"level": "strong",
-"notified": true,
-"page": "https://www.uap-bd.edu/vacancy.php",
-"reminded": [],
-"title": "Lecturer (Mathematics) - Basic Sciences and Humanities",
-"university": "University of Asia Pacific",
-"url": "https://www.uap-bd.edu/vacancy.php"
-},
 "5d4d581da5e4bec87e7d": {
 "category": "General circular",
 "deadline": null,
@@ -2486,19 +2083,6 @@
 "university": "BUBT",
 "url": "https://www.bubt.edu.bd/notice/details/notice-on-commencement-of-teachers-evaluation-for-the-students-of-bi-semester"
 },
-"603ee685c0ac61b89349": {
-"category": "Career page update",
-"deadline": null,
-"digested": true,
-"first_seen": "2026-11-23",
-"level": "strong",
-"notified": true,
-"page": "https://career.uits.ac.bd/",
-"reminded": [],
-"title": "Lab Demonstrator",
-"university": "UITS",
-"url": "https://career.uits.ac.bd/"
-},
 "61b2ec870233bbedb0ab": {
 "category": "General circular",
 "deadline": null,
@@ -2555,21 +2139,6 @@
 "title": "Registrar office",
 "university": "Manarat International University",
 "url": "https://manarat.ac.bd/career-at-miu/"
-},
-"62ff2eb1313246f275e2": {
-"category": "Teaching",
-"deadline": null,
-"detail_checked": true,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2025-12-28",
-"level": "strong",
-"notified": true,
-"page": "https://www.butex.edu.bd/career-opportunity/",
-"reminded": [],
-"title": "Career Opportunity for Part-Time Teacher’s Post (Environmental Science and Engineering)",
-"university": "Bangladesh University of Textiles",
-"url": "https://www.butex.edu.bd/career-opportunity-for-part-time-teachers-post-environmental-science-and-engineering/"
 },
 "639b3aafd556fb0ade13": {
 "category": "Teaching",
@@ -2652,20 +2221,6 @@
 "university": "Notre Dame University Bangladesh",
 "url": "https://ndub.edu.bd/about/directory/"
 },
-"68a42cfbc55f40858175": {
-"category": "Teaching",
-"deadline": "2026-11-30",
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2026-11-30",
-"level": "strong",
-"notified": true,
-"page": "https://www.uap-bd.edu/vacancy.php",
-"reminded": [],
-"title": "Associate Professor (Pharmacy) - Pharmacy",
-"university": "University of Asia Pacific",
-"url": "https://www.uap-bd.edu/vacancy.php"
-},
 "68ec55295cb80d2b4789": {
 "category": "Teaching",
 "deadline": null,
@@ -2707,20 +2262,6 @@
 "university": "Islamic Arabic University",
 "url": "http://iau.edu.bd/wp-content/uploads/2025/12/exm508.pdf"
 },
-"6a1f586f8d1d24303cf0": {
-"category": "Teaching",
-"deadline": null,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2025-12-15",
-"level": "strong",
-"notified": true,
-"page": "https://primeasia.edu.bd/career/",
-"reminded": [],
-"title": "Primeasia University Faculty Honored by SOFEN for Outstanding Contribution to Bangladesh’s Education Sector",
-"university": "Primeasia University",
-"url": "https://primeasia.edu.bd/primeasia-university-faculty-honored-by-sofen-for-outstanding-contribution-to-bangladeshs-education-sector/"
-},
 "6a3810e69841a9633a2a": {
 "category": "Officer/Admin",
 "deadline": "2026-11-09",
@@ -2749,33 +2290,6 @@
 "title": "প্রফেসর ড. মোহাম্মদ ইলিয়াস ছিদ্দিকী-কে ইসলামি আরবি বিশ্ববিদ্যালয়ের প্রো-ভাইস চ্যান্সেলর (প্রশাসন) পদে নিয়োগ প্রদান প্রসঙ্গে",
 "university": "Islamic Arabic University",
 "url": "http://iau.edu.bd/wp-content/uploads/2026/06/reg13475.pdf"
-},
-"6b29b7d2b0ae213fd531": {
-"category": "Teaching",
-"deadline": "2026-12-15",
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2026-12-15",
-"level": "strong",
-"notified": true,
-"page": "https://su.edu.bd/career",
-"reminded": [],
-"title": "Lecturer (lecturer english 2026)",
-"university": "Sonargaon University",
-"url": "https://su.edu.bd/career/lecturer-english-2026"
-},
-"6b508ee181dfb61a00a8": {
-"category": "Career page update",
-"deadline": null,
-"digested": true,
-"first_seen": "2026-11-23",
-"level": "strong",
-"notified": true,
-"page": "https://www.uttara.ac.bd/career/",
-"reminded": [],
-"title": "Professor, Department of Fashion Design and Technology",
-"university": "Uttara University",
-"url": "https://www.uttara.ac.bd/career/"
 },
 "6b9066d004fc842b6ac0": {
 "category": "General circular",
@@ -2930,20 +2444,6 @@
 "university": "East West University",
 "url": "https://www.ewubd.edu/directory"
 },
-"725f8c8cd6630adf649d": {
-"category": "General circular",
-"deadline": "2026-11-21",
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2026-11-21",
-"level": "possible",
-"notified": true,
-"page": "https://www.aiub.edu/about/career",
-"reminded": [],
-"title": "Maintenance Engineer (Mechanical)",
-"university": "AIUB",
-"url": "https://www.aiub.edu/Files/Uploads/maintenance-engineer-(mechanical).pdf"
-},
 "72733253c0062cdea287": {
 "category": "Teaching",
 "deadline": null,
@@ -2999,20 +2499,6 @@
 "title": "Employee Recruitment Committee",
 "university": "Central University of Science and Technology",
 "url": "https://cust.ac.bd/page/employee-recruitment-committee"
-},
-"7357b6b6e77cffb3a626": {
-"category": "Teaching",
-"deadline": null,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2025-04-15",
-"level": "possible",
-"notified": true,
-"page": "http://iau.edu.bd/allnotice/",
-"reminded": [],
-"title": "ইসলামি আরবি বিশ্ববিদ্যালয়ে কর্মরত সকল শিক্ষক, কর্মকর্তা ও কর্মচারীগণ দৈনিক অফিসে আগমন ও প্রস্থান বায়োমেট্রিক পদ্ধতিতে হাজিরা ও উপস্থিতি শীটে স্বাক্ষর প্রদান নিশ্চিত সংক্রান্ত বিজ",
-"university": "Islamic Arabic University",
-"url": "http://iau.edu.bd/wp-content/uploads/2025/04/reg12966.pdf"
 },
 "738b7cf4216d480cb4fe": {
 "category": "Officer/Admin",
@@ -3151,20 +2637,6 @@
 "university": "Green University of Bangladesh",
 "url": "https://archive-career.green.edu.bd/ads-lec/"
 },
-"7b05f40eed796ac5f2cd": {
-"category": "Career page update",
-"deadline": null,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": null,
-"level": "strong",
-"notified": true,
-"page": "https://jobs.juniv.edu/jobs",
-"reminded": [],
-"title": "প্রভাষক গ্রেড-4 (বাংলা) - Lecturer Grade-4 (Bangla) (পুনঃবিজ্ঞপ্তি)",
-"university": "Jahangirnagar University",
-"url": "https://jobs.juniv.edu/jobs"
-},
 "7bf39ad444fe84a2f81e": {
 "category": "Teaching",
 "deadline": null,
@@ -3194,33 +2666,6 @@
 "university": "Jagannath University",
 "url": "https://jnu.ac.bd/assets/notice/04f0a03046a89d1d375078ac97c6b069.pdf"
 },
-"7d294829fe20eaae62a1": {
-"category": "Career page update",
-"deadline": null,
-"digested": true,
-"first_seen": "2026-11-23",
-"level": "strong",
-"notified": true,
-"page": "https://iubat.edu/career/",
-"reminded": [],
-"title": "Professor",
-"university": "IUBAT",
-"url": "https://iubat.edu/career/"
-},
-"7d398d2b55ed2b7f0ff0": {
-"category": "Teaching",
-"deadline": "2026-12-15",
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2026-12-15",
-"level": "strong",
-"notified": true,
-"page": "https://su.edu.bd/career",
-"reminded": [],
-"title": "Lecturer (lecturer law 2026)",
-"university": "Sonargaon University",
-"url": "https://su.edu.bd/career/lecturer-law-2026"
-},
 "7da4ca2ab0f9fb50bf75": {
 "category": "Teaching",
 "deadline": null,
@@ -3235,21 +2680,6 @@
 "university": "Jagannath University",
 "url": "https://jnu.ac.bd/assets/notice/09cd4684efb5d6029a73caf331275aad.pdf"
 },
-"7e6cf73d4d1f27cb776c": {
-"category": "General circular",
-"deadline": null,
-"detail_checked": true,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2025-03-20",
-"level": "strong",
-"notified": true,
-"page": "http://iau.edu.bd/recruitment-circular/",
-"reminded": [],
-"title": "ইসলামি আরবি বিশ্ববিদ্যালয়ের স্থায়ী শূণ্যপদে নিয়োগের লক্ষ্যে সংশোধিত নিয়োগ বিজ্ঞপ্তি (গ্রেড 11 - গ্রেড 20)",
-"university": "Islamic Arabic University",
-"url": "http://iau.edu.bd/wp-content/uploads/2025/03/IAU_Recruitment_1226_1227.pdf"
-},
 "7e93775e278ea4b6f9d7": {
 "category": "Career page update",
 "deadline": null,
@@ -3263,21 +2693,6 @@
 "university": "Bangladesh University of Professionals",
 "url": "https://career.bup.edu.bd/"
 },
-"7f1a9651ec357105d21e": {
-"category": "Teaching",
-"deadline": null,
-"detail_checked": true,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2026-10-29",
-"level": "strong",
-"notified": true,
-"page": "http://iau.edu.bd/recruitment-circular/",
-"reminded": [],
-"title": "ইসলামি আরবি বিশ্ববিদ্যালয়ের স্থায়ী শূণ্যপদে সরাসরি শিক্ষক নিয়োগের লক্ষ্যে নিয়োগ বিজ্ঞপ্তি - (নতুন)",
-"university": "Islamic Arabic University",
-"url": "http://iau.edu.bd/wp-content/uploads/2026/11/cir1338.pdf"
-},
 "7ff0bad62520cd5e6256": {
 "category": "Career page update",
 "deadline": null,
@@ -3290,20 +2705,6 @@
 "title": "Public Relations Office / Administration",
 "university": "UITS",
 "url": "https://career.uits.ac.bd/"
-},
-"806868070f67035113f6": {
-"category": "Career page update",
-"deadline": null,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": null,
-"level": "strong",
-"notified": true,
-"page": "https://jobs.juniv.edu/jobs",
-"reminded": [],
-"title": "প্রভাষক গ্রেড-4 (শারীরিক শিক্ষা) - Lecturer Grade-4 (Physical Education)",
-"university": "Jahangirnagar University",
-"url": "https://jobs.juniv.edu/jobs"
 },
 "82eb982e32a5f5e07f15": {
 "category": "Officer/Admin",
@@ -3345,21 +2746,6 @@
 "title": "\"ICESCO invites researchers and specialists to submit research papers on Al-Farabi's intellectual contributions\" সম্পর্কিত",
 "university": "Sher-e-Bangla Agricultural University",
 "url": "https://www.sau.edu.bd/uploads/pdf/notice/2023-08-14_64d99f78ed451.pdf"
-},
-"84eba0cfb700ae3a83f7": {
-"category": "General circular",
-"deadline": null,
-"detail_checked": true,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2026-10-14",
-"level": "strong",
-"notified": true,
-"page": "http://iau.edu.bd/recruitment-circular/",
-"reminded": [],
-"title": "ইসলামি আরবি বিশ্ববিদ্যালয়ের স্থায়ী শূণ্যপদে নিয়োগের লক্ষ্যে সংশোধিত নিয়োগ বিজ্ঞপ্তি (গ্রেড 11 – গ্রেড 20) - (নতুন)",
-"university": "Islamic Arabic University",
-"url": "http://iau.edu.bd/wp-content/uploads/2026/10/cir1328.pdf"
 },
 "865c0973bba7c0e10d8a": {
 "category": "Officer/Admin",
@@ -3416,33 +2802,6 @@
 "title": "Job Opportunity for Post of Attendant in Pro-Vice-Chancellor’s Office, BUET.",
 "university": "BUET",
 "url": "https://regoffice.buet.ac.bd/wp-content/uploads/2021/11/Adv_att_prov.pdf"
-},
-"87582b67f92fd7577788": {
-"category": "Teaching",
-"deadline": "2026-10-31",
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2026-10-31",
-"level": "strong",
-"notified": true,
-"page": "https://www.uiu.ac.bd/career/",
-"reminded": [],
-"title": "Assistant Professor – Pharmacy",
-"university": "United International University",
-"url": "https://www.uiu.ac.bd/career/assistant-professor-pharmacy-263/"
-},
-"8a03365f08b4b60d5d10": {
-"category": "Career page update",
-"deadline": null,
-"digested": true,
-"first_seen": "2026-11-23",
-"level": "strong",
-"notified": true,
-"page": "https://iubat.edu/career/",
-"reminded": [],
-"title": "Associate Professor",
-"university": "IUBAT",
-"url": "https://iubat.edu/career/"
 },
 "8acca1239da9886193ba": {
 "category": "General circular",
@@ -3594,20 +2953,6 @@
 "university": "Bangladesh Medical University",
 "url": "https://dfa.bmu.ac.bd"
 },
-"9246bfa30a495874fea1": {
-"category": "Teaching",
-"deadline": "2026-11-30",
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2026-11-30",
-"level": "strong",
-"notified": true,
-"page": "https://www.uap-bd.edu/vacancy.php",
-"reminded": [],
-"title": "Assistant Professor (CSE) - Computer Science and Engineering (CSE)",
-"university": "University of Asia Pacific",
-"url": "https://www.uap-bd.edu/vacancy.php"
-},
 "926951bf7a3b93e3a8bb": {
 "category": "General circular",
 "deadline": null,
@@ -3693,19 +3038,6 @@
 "university": "UITS",
 "url": "https://career.uits.ac.bd/"
 },
-"95651f7db7c3e59f50ab": {
-"category": "School/College",
-"deadline": null,
-"digested": true,
-"first_seen": "2026-11-23",
-"level": "possible",
-"notified": true,
-"page": "https://jobs.juniv.edu/",
-"reminded": [],
-"title": "প্রভাষক (ইংরেজি) - Lecturer (English) JU School and College School and College Permanent 1 Position",
-"university": "Jahangirnagar University",
-"url": "https://jobs.juniv.edu/jobs?slug=lecturer-english"
-},
 "9574d5a7beda588c384f": {
 "category": "General circular",
 "deadline": null,
@@ -3720,35 +3052,6 @@
 "title": "নিয়োগ বিজ্ঞপ্তি",
 "university": "Jagannath University",
 "url": "https://jnu.ac.bd/assets/notice/c31c99516c364e89ca3e9eaa7369b5a4.pdf"
-},
-"959baea766e1a86b03b2": {
-"category": "Teaching",
-"deadline": null,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2025-05-22",
-"level": "possible",
-"notified": true,
-"page": "http://iau.edu.bd/allnotice/",
-"reminded": [],
-"title": "বেসরকারী শিক্ষক পরীক্ষা গ্রহণ, নিবন্ধন ও প্রত্যয়ন বিধিমালা প্রণয়নে নিমিত্ত ইসলামি আরবি বিশ্ববিদ্যালয়ের প্রতিনিধি মনোনয়ন প্রসঙ্গে।",
-"university": "Islamic Arabic University",
-"url": "http://iau.edu.bd/wp-content/uploads/2025/05/প্রতিনিধি-মনোনয়ন-শিক্ষা-মন্ত্রণালয়.pdf"
-},
-"96108edd1da966d18cd8": {
-"category": "General circular",
-"deadline": null,
-"detail_checked": true,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2024-07-04",
-"level": "strong",
-"notified": true,
-"page": "http://iau.edu.bd/recruitment-circular/",
-"reminded": [],
-"title": "ইসলামি আরবি বিশ্ববিদ্যালয়ে শূণ্যপদে নিয়োগ সংক্রান্ত বিজ্ঞপ্তি",
-"university": "Islamic Arabic University",
-"url": "http://iau.edu.bd/wp-content/uploads/2024/07/reg505.pdf"
 },
 "97206237fbf723670cc5": {
 "category": "Officer/Admin",
@@ -3849,20 +3152,6 @@
 "title": "নিয়োগ বিজ্ঞপ্তি",
 "university": "Jagannath University",
 "url": "https://jnu.ac.bd/assets/notice/a355a85b81b0ccb9c069297ab71fef62.pdf"
-},
-"9c3817a4bfaaa87b8b77": {
-"category": "Teaching",
-"deadline": null,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2022-02-24",
-"level": "possible",
-"notified": true,
-"page": "https://www.sau.edu.bd/home/notices",
-"reminded": [],
-"title": "চুড়ান্ত কারণ দর্শানোর নোটিশ (মোহাম্মদ মশিউর রহমান, সহকারী অধ্যাপক, কৃষি প্রকৌশল বিভাগ)",
-"university": "Sher-e-Bangla Agricultural University",
-"url": "https://www.sau.edu.bd/uploads/pdf/notice/2022-03-06_62245be1c7fad.pdf"
 },
 "9d0dfe277d4ccb41dfe1": {
 "category": "Career page update",
@@ -4004,21 +3293,6 @@
 "university": "Islamic Arabic University",
 "url": "http://iau.edu.bd/wp-content/uploads/2026/01/reg246.pdf"
 },
-"a2248512b164c30713b7": {
-"category": "Teaching",
-"deadline": null,
-"detail_checked": true,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2026-06-15",
-"level": "strong",
-"notified": true,
-"page": "https://su.edu.bd/career",
-"reminded": [],
-"title": "Lecturer (lecturer civil engineering 2026)",
-"university": "Sonargaon University",
-"url": "https://su.edu.bd/career/lecturer-civil-engineering-2026"
-},
 "a244ff0db4fcc8bbdb24": {
 "category": "Officer/Admin",
 "deadline": "2026-07-07",
@@ -4058,20 +3332,6 @@
 "title": "Career Opportunities",
 "university": "University of Asia Pacific",
 "url": "https://www.uap-bd.edu/vacancy.php"
-},
-"a2b9c570bfa4fa4aac26": {
-"category": "Teaching",
-"deadline": null,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": null,
-"level": "strong",
-"notified": true,
-"page": "https://archive-career.green.edu.bd/current-circular-2/",
-"reminded": [],
-"title": "Lecturer (lecturer textile)",
-"university": "Green University of Bangladesh",
-"url": "https://archive-career.green.edu.bd/lecturer-textile/"
 },
 "a353a9ae35938ba1e7eb": {
 "category": "General circular",
@@ -4116,19 +3376,6 @@
 "university": "Primeasia University",
 "url": "https://primeasia.edu.bd/category/job-notice/"
 },
-"a5c54f8a261a2cce5777": {
-"category": "Career page update",
-"deadline": null,
-"digested": true,
-"first_seen": "2026-11-23",
-"level": "strong",
-"notified": true,
-"page": "http://iau.edu.bd/recruitment-circular/",
-"reminded": [],
-"title": "নিয়োগ বিজ্ঞপ্তি – Islamic Arabic University",
-"university": "Islamic Arabic University",
-"url": "http://iau.edu.bd/recruitment-circular/"
-},
 "a5de6f1fc4ddf86469c2": {
 "category": "Teaching",
 "deadline": null,
@@ -4142,36 +3389,6 @@
 "title": "জগন্নাথ বিশ্ববিদ্যালয়ের শিক্ষকবৃন্দের নিকট হতে 2025-2026 অর্থবছরে অর্থায়নের জন্য গবেষণা প্রকল্প প্রস্তাবনা (Research Project Proposal) আহ্বান সংক্রান্ত বিজ্ঞপ্তি",
 "university": "Jagannath University",
 "url": "https://jnu.ac.bd/assets/notice/1299647d113e5966711a151c592534d9.pdf"
-},
-"a626857e0202872eecaf": {
-"category": "Teaching",
-"deadline": "2026-11-29",
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2026-11-29",
-"level": "strong",
-"notified": true,
-"page": "https://iub.ac.bd/news-and-events/jobs-at-iub",
-"reminded": [
-7
-],
-"title": "School of Law - Faculty Search",
-"university": "Independent University, Bangladesh",
-"url": "https://iub.ac.bd/document/advertisement-for-faculty-recruitment-lecturer-law_revised-1-229d8344-6a75-4ccc-999b-955282009ee4.pdf"
-},
-"a672c322578cd2f0afd1": {
-"category": "General circular",
-"deadline": "2026-11-21",
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2026-11-21",
-"level": "possible",
-"notified": true,
-"page": "https://www.aiub.edu/about/career",
-"reminded": [],
-"title": "Sub-Assistant Engineer (Electrical)",
-"university": "AIUB",
-"url": "https://www.aiub.edu/Files/Uploads/sub--assistant-engineer-(electrical).pdf"
 },
 "a7286f69b945f05aca88": {
 "category": "Officer/Admin",
@@ -4214,20 +3431,6 @@
 "title": "Careers & Job Openings | Sonargaon University",
 "university": "Sonargaon University",
 "url": "https://su.edu.bd/career"
-},
-"a7bce8b32981c14e907b": {
-"category": "School/College",
-"deadline": "2026-11-29",
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2026-11-29",
-"level": "possible",
-"notified": true,
-"page": "https://jobs.juniv.edu/",
-"reminded": [],
-"title": "Corrected Recruitment Circular for Various Posts at JU School and College জাবি স্কুল ও কলেজের বিভিন্ন পদসমূহে পুনঃসংশোধিত নিয়োগ বিজ্ঞপ্তি প্রকাশের তারিখ: 07 Nov 2026 শেষ তারিখ: 29",
-"university": "Jahangirnagar University",
-"url": "https://jobs.juniv.edu/uploads/users/14919de9-8c6c-4f72-bf23-045e65388b62/circular/d916a608-98b0-4478-a3b2-e575129c7ef1.pdf"
 },
 "a88b7ad0084b37873feb": {
 "category": "General circular",
@@ -4297,36 +3500,6 @@
 "university": "University of Development Alternative",
 "url": "https://uoda.edu.bd/notice-board/academic-calendar-for-2023"
 },
-"ab3f17aa0b4f11fd9e6f": {
-"category": "General circular",
-"deadline": null,
-"detail_checked": true,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2025-03-20",
-"level": "strong",
-"notified": true,
-"page": "http://iau.edu.bd/recruitment-circular/",
-"reminded": [],
-"title": "ইসলামি আরবি বিশ্ববিদ্যালয়ের স্থায়ী শূণ্যপদে নিয়োগের লক্ষ্যে সংশোধিত নিয়োগ বিজ্ঞপ্তি (গ্রেড 9 - গ্রেড 10)",
-"university": "Islamic Arabic University",
-"url": "http://iau.edu.bd/wp-content/uploads/2025/03/IAU_Recruitment_1224_1225.pdf"
-},
-"ac1dd29106ba184167d0": {
-"category": "General circular",
-"deadline": null,
-"detail_checked": true,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2026-03-17",
-"level": "strong",
-"notified": true,
-"page": "http://iau.edu.bd/allnotice/",
-"reminded": [],
-"title": "ইসলামি আরবি বিশ্ববিদ্যালয়ের ভাইস-চ্যান্সেলর পদে প্রফেসর ড. মোহাম্মদ আবু জাফর খান এর নিয়োগ ও যোগদান প্রসঙ্গে",
-"university": "Islamic Arabic University",
-"url": "http://iau.edu.bd/wp-content/uploads/2026/03/reg307.pdf"
-},
 "acfbc0332cd7240994f5": {
 "category": "Teaching",
 "deadline": null,
@@ -4370,21 +3543,6 @@
 "university": "International Islami UST",
 "url": "https://www.iiustb.ac.bd/notice/view/23"
 },
-"addc1a93198858a14497": {
-"category": "General circular",
-"deadline": null,
-"detail_checked": true,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2026-10-26",
-"level": "strong",
-"notified": true,
-"page": "https://buft.edu.bd/notice",
-"reminded": [],
-"title": "Oct - CAREER OPPORTUNITY Engineer (Civil)",
-"university": "BGMEA University of Fashion & Technology",
-"url": "https://buft.edu.bd/upload/_page/page_1793079674_8231.pdf"
-},
 "aeac6612c97005598175": {
 "category": "Officer/Admin",
 "deadline": null,
@@ -4426,19 +3584,6 @@
 "university": "Islamic Arabic University",
 "url": "http://iau.edu.bd/wp-content/uploads/2025/04/exm146.pdf"
 },
-"b14bbc60d71f06556775": {
-"category": "Career page update",
-"deadline": null,
-"digested": true,
-"first_seen": "2026-11-23",
-"level": "strong",
-"notified": true,
-"page": "https://career.grameenu.ac/",
-"reminded": [],
-"title": "Inspired by the vision of Professor Muhammad Yunus.",
-"university": "Grameen University",
-"url": "https://career.grameenu.ac/"
-},
 "b16cf6c2e568a556f9c3": {
 "category": "Career page update",
 "deadline": null,
@@ -4465,21 +3610,6 @@
 "title": "Job Opportunity for Post of Teachers in Various Dept. of BUET",
 "university": "BUET",
 "url": "https://regoffice.buet.ac.bd/wp-content/uploads/2026/06/Scan-teacher-advt-june_0001.pdf"
-},
-"b26a174c2cc55cebd2d4": {
-"category": "General circular",
-"deadline": null,
-"detail_checked": true,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2020-12-03",
-"level": "strong",
-"notified": true,
-"page": "http://iau.edu.bd/recruitment-circular/",
-"reminded": [],
-"title": "ইসলামি আরবি বিশ্ববিদ্যালয়ের স্থায়ী শূন্য পদে নিয়োগের লক্ষ্যে বাংলাদেশী স্থায়ী নাগরিকদের নিকট দরখাস্ত আবেদন প্রসঙ্গে।",
-"university": "Islamic Arabic University",
-"url": "http://iau.edu.bd/wp-content/uploads/2020/12/44.pdf"
 },
 "b349b5cae09f3b9372fa": {
 "category": "Officer/Admin",
@@ -4609,34 +3739,6 @@
 "university": "Green University of Bangladesh",
 "url": "https://career.green.edu.bd/app-form-engg/"
 },
-"b9c19ee5314a904ecf57": {
-"category": "Teaching",
-"deadline": null,
-"detail_checked": true,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2024-09-05",
-"level": "strong",
-"notified": true,
-"page": "https://www.sau.edu.bd/home/notices",
-"reminded": [],
-"title": "শেরেবাংলা কৃষি বিশ্ববিদ্যালয়ের নতুন উপাচার্য হিসেবে নিয়োগ পেলেন শেকৃবি'র কীটতত্ত্ব বিভাগের অধ্যাপক ড. মো: আব্দুল লতিফ",
-"university": "Sher-e-Bangla Agricultural University",
-"url": "https://www.sau.edu.bd/uploads/pdf/notice/2024-09-05_66d9ce827ea4a.pdf"
-},
-"ba6215ce7fe619a91ce8": {
-"category": "Teaching",
-"deadline": null,
-"digested": true,
-"first_seen": "2026-11-23",
-"level": "possible",
-"notified": true,
-"page": "https://www.uap-bd.edu/news-events.php",
-"reminded": [],
-"title": "News - News: UAP Welcomes Professor Dr. Md. Selim Reza as Adjunct Professor",
-"university": "University of Asia Pacific",
-"url": "https://www.uap-bd.edu/news-events/19082026a.php"
-},
 "bb45ac9bc1a1e8b50ff2": {
 "category": "Teaching",
 "deadline": null,
@@ -4734,34 +3836,6 @@
 "title": "VACANCY ANNOUNCEMENT: VICE CHANCELLOR",
 "university": "East West University",
 "url": "https://www.ewubd.edu/career"
-},
-"bd264a745920e636de31": {
-"category": "Teaching",
-"deadline": null,
-"detail_checked": true,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2024-04-30",
-"level": "strong",
-"notified": true,
-"page": "http://iau.edu.bd/recruitment-circular/",
-"reminded": [],
-"title": "ইসলামি আরবি বিশ্ববিদ্যালয়ে চাকুরিরত শিক্ষকগণের পদোন্নয়ন (Upgradation) সংক্রান্ত বিজ্ঞপ্তি",
-"university": "Islamic Arabic University",
-"url": "http://iau.edu.bd/wp-content/uploads/2024/04/reg497.pdf"
-},
-"bd5c4a618c83b0d828ef": {
-"category": "Career page update",
-"deadline": null,
-"digested": true,
-"first_seen": "2026-11-23",
-"level": "strong",
-"notified": true,
-"page": "https://www.uttara.ac.bd/career/",
-"reminded": [],
-"title": "Professor, Department of Textile Engineering",
-"university": "Uttara University",
-"url": "https://www.uttara.ac.bd/career/"
 },
 "bd7a31a444da47bc8083": {
 "category": "Officer/Admin",
@@ -4875,20 +3949,6 @@
 "university": "Jahangirnagar University",
 "url": "https://www.juniv.edu/department/pubad"
 },
-"c4dbbcd9aef07e85809b": {
-"category": "Career page update",
-"deadline": null,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": null,
-"level": "strong",
-"notified": true,
-"page": "https://jobs.juniv.edu/jobs",
-"reminded": [],
-"title": "প্রভাষক (জীববিজ্ঞান) - Lecturer (Biology)",
-"university": "Jahangirnagar University",
-"url": "https://jobs.juniv.edu/jobs"
-},
 "c4ee0b94f02af959dee5": {
 "category": "Career page update",
 "deadline": null,
@@ -4957,20 +4017,6 @@
 "title": "Job Circular (11 Nov 2026)",
 "university": "UITS",
 "url": "https://career.uits.ac.bd/front/images/circular_11_11_2026.pdf"
-},
-"c698cd399ca95ce946bc": {
-"category": "Teaching",
-"deadline": null,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2023-07-11",
-"level": "possible",
-"notified": true,
-"page": "https://www.sau.edu.bd/home/notices",
-"reminded": [],
-"title": "Bangladesh Chair: Bangabandhu Sheikh Mujibur Rahman Professorial Fellowship at the South Asia Institute of the Heidelberg University, Germany - এর আবেদন আহবান প্রসঙ্গে",
-"university": "Sher-e-Bangla Agricultural University",
-"url": "https://www.sau.edu.bd/uploads/pdf/notice/2023-07-11_64ace5d362417.pdf"
 },
 "c6a3ca650fd1781ae198": {
 "category": "Officer/Admin",
@@ -5057,21 +4103,6 @@
 "university": "Victoria University of Bangladesh",
 "url": "https://vub.edu.bd/download/career/"
 },
-"c8a93edd74db791b30a9": {
-"category": "Teaching",
-"deadline": null,
-"detail_checked": true,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2026-10-10",
-"level": "strong",
-"notified": true,
-"page": "https://su.edu.bd/career",
-"reminded": [],
-"title": "Associate Professor",
-"university": "Sonargaon University",
-"url": "https://su.edu.bd/career/associate-professor-jms-2026"
-},
 "cd2b2b95c8a607189af3": {
 "category": "Teaching",
 "deadline": null,
@@ -5099,19 +4130,6 @@
 "title": "Administrative",
 "university": "North South University",
 "url": "https://jobs.northsouth.edu/index"
-},
-"ce48ca98ddd97ef6db1b": {
-"category": "Career page update",
-"deadline": null,
-"digested": true,
-"first_seen": "2026-11-23",
-"level": "strong",
-"notified": true,
-"page": "https://iubat.edu/career/",
-"reminded": [],
-"title": "Assistant Professor",
-"university": "IUBAT",
-"url": "https://iubat.edu/career/"
 },
 "cea859ca3d804bf62af5": {
 "category": "Officer/Admin",
@@ -5196,21 +4214,6 @@
 "title": "Career Opportunity for Teacher/Officer",
 "university": "Bangladesh University of Textiles",
 "url": "https://www.butex.edu.bd/career-opportunity-at-butex-14/"
-},
-"cf7755190fb81d9d1299": {
-"category": "General circular",
-"deadline": null,
-"detail_checked": true,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2024-04-30",
-"level": "strong",
-"notified": true,
-"page": "http://iau.edu.bd/recruitment-circular/",
-"reminded": [],
-"title": "ইসলামি আরবি বিশ্ববিদ্যালয়ে শূণ্যপদে নিয়োগ সংক্রান্ত বিজ্ঞপ্তি",
-"university": "Islamic Arabic University",
-"url": "http://iau.edu.bd/wp-content/uploads/2024/04/reg498.pdf"
 },
 "cfecc24b3c61649dd8b2": {
 "category": "Officer/Admin",
@@ -5338,35 +4341,6 @@
 "university": "Islamic Arabic University",
 "url": "http://iau.edu.bd/wp-content/uploads/2025/08/প্রয়োজনিয়-কাগজপত্র-কামিল-মাস্টার্স.pdf"
 },
-"d4fb9b5a3c1828744d21": {
-"category": "General circular",
-"deadline": null,
-"detail_checked": true,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2025-06-18",
-"level": "strong",
-"notified": true,
-"page": "http://iau.edu.bd/allnotice/",
-"reminded": [],
-"title": "ইসলামি আরবি বিশ্ববিদ্যালয় অধিভুক্ত ফাজিল (স্নাতক) ও কামিল (স্নাতকোত্তর) মাদরাসা সমূহের শূন্য পদের তালিকা প্রেরণ প্রসঙ্গে।",
-"university": "Islamic Arabic University",
-"url": "http://iau.edu.bd/wp-content/uploads/2025/06/reg13043.pdf"
-},
-"d52caa4a8130bfaa9484": {
-"category": "Teaching",
-"deadline": null,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2026-04-23",
-"level": "possible",
-"notified": true,
-"page": "http://iau.edu.bd/allnotice/",
-"reminded": [],
-"title": "ইসলামি আরবি বিশ্ববিদ্যালয়ের সকল শিক্ষক, কর্মকর্তা ও কর্মচারীগণের এবং বিশ্ববিদ্যালয়ের অধীনে পরিচালিত মাদরাসাসমূহের বিদ্যুৎ ও জ্বালানি সাশ্রয়ে নির্দেশনাসমূহ",
-"university": "Islamic Arabic University",
-"url": "http://iau.edu.bd/wp-content/uploads/2026/04/reg349.pdf"
-},
 "d629dc024faff8960845": {
 "category": "Officer/Admin",
 "deadline": null,
@@ -5407,20 +4381,6 @@
 "university": "BUET",
 "url": "https://regoffice.buet.ac.bd/?page_id=12"
 },
-"d6d9d740ed9ff888aca0": {
-"category": "Teaching",
-"deadline": null,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2020-11-18",
-"level": "possible",
-"notified": true,
-"page": "https://www.sau.edu.bd/home/notices",
-"reminded": [],
-"title": "শেকৃবির নতুন ট্রেজারার অধ্যাপক ড. মো. নজরুল ইসলাম",
-"university": "Sher-e-Bangla Agricultural University",
-"url": "https://www.sau.edu.bd/uploads/pdf/notice/2020-11-18_5fb51849b1682.pdf"
-},
 "d7ee1f2129cec0803e9d": {
 "category": "Career page update",
 "deadline": null,
@@ -5447,35 +4407,6 @@
 "university": "East West University",
 "url": "https://www.ewubd.edu/admin-office/office-of-the-controller-of-examination"
 },
-"d8f16f3711b46e2bb486": {
-"category": "Officer/Admin",
-"deadline": null,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2026-12-05",
-"level": "possible",
-"notified": true,
-"page": "https://regoffice.buet.ac.bd/?post_type=news",
-"reminded": [],
-"title": "Exam for the Post of ‘Assistant Engineer (CE)’, Office of the Chief Engineer, BUET will be held on 05/12/2026 at 10:00 am",
-"university": "BUET",
-"url": "https://regoffice.buet.ac.bd/?news=exam-for-the-post-of-assistant-engineer-ce-office-of-the-chief-engineer-buet-will-be-held-on-05-12-2026-at-1000-am"
-},
-"d8faf1efed791f5cb761": {
-"category": "Teaching",
-"deadline": null,
-"detail_checked": true,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2026-10-10",
-"level": "strong",
-"notified": true,
-"page": "https://su.edu.bd/career",
-"reminded": [],
-"title": "Lecturer (lecturer jms 2026)",
-"university": "Sonargaon University",
-"url": "https://su.edu.bd/career/lecturer-jms-2026"
-},
 "d96477b4fc63cde4d1ec": {
 "category": "Research",
 "deadline": "2026-09-29",
@@ -5489,20 +4420,6 @@
 "title": "Research Associate(Category – I)",
 "university": "United International University",
 "url": "https://www.uiu.ac.bd/career/research-associatecategory-i/"
-},
-"d9f124da71f4ada1e16e": {
-"category": "Teaching",
-"deadline": "2026-11-30",
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2026-11-30",
-"level": "strong",
-"notified": true,
-"page": "https://www.uap-bd.edu/vacancy.php",
-"reminded": [],
-"title": "Assistant Professor (Law & Human Rights) - Law and Human Rights",
-"university": "University of Asia Pacific",
-"url": "https://www.uap-bd.edu/vacancy.php"
 },
 "dbb78892ff4a57ff3a02": {
 "category": "General circular",
@@ -5533,20 +4450,6 @@
 "university": "Sher-e-Bangla Agricultural University",
 "url": "https://www.sau.edu.bd/uploads/pdf/notice/2023-01-03_63b3b3737e77f.pdf"
 },
-"dffa69d7c731296b76dd": {
-"category": "Teaching",
-"deadline": "2026-11-30",
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2026-11-30",
-"level": "strong",
-"notified": true,
-"page": "https://www.uap-bd.edu/vacancy.php",
-"reminded": [],
-"title": "Lecturer (Pharmacy) - Pharmacy",
-"university": "University of Asia Pacific",
-"url": "https://www.uap-bd.edu/vacancy.php"
-},
 "e01d04b28ca72b478dcb": {
 "category": "Career page update",
 "deadline": null,
@@ -5573,48 +4476,6 @@
 "university": "Jagannath University",
 "url": "https://hrm.erp.jnu.ac.bd/employee_upgradation_application"
 },
-"e23a7986586c25538b89": {
-"category": "Teaching",
-"deadline": null,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2020-11-17",
-"level": "possible",
-"notified": true,
-"page": "https://www.sau.edu.bd/home/notices",
-"reminded": [],
-"title": "শেকৃবির নতুন ভিসি অধ্যাপক ড. মো. শহীদুর রশীদ ভূঁইয়া",
-"university": "Sher-e-Bangla Agricultural University",
-"url": "https://www.sau.edu.bd/uploads/pdf/notice/2020-11-17_5fb3d33da4a75.pdf"
-},
-"e251772df04e42f4e39d": {
-"category": "General circular",
-"deadline": null,
-"detail_checked": true,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2020-09-21",
-"level": "strong",
-"notified": true,
-"page": "http://iau.edu.bd/recruitment-circular/",
-"reminded": [],
-"title": "ইসলামি আরবি বিশ্ববিদ্যালয়ের বিভিন্ন দপ্তর/শাখায় নিম্নবর্ণিত স্থায়ী শূন্য পদে নিয়োগের লক্ষ্যে বাংলাদেশী স্থায়ী নাগরিকদের নিকট হতে দরখাস্ত আহবান করা প্রসঙ্গে।",
-"university": "Islamic Arabic University",
-"url": "http://iau.edu.bd/wp-content/uploads/2020/09/নিয়োগ-বিজ্ঞপ্তি.pdf"
-},
-"e27656f1adf7c998490d": {
-"category": "School/College",
-"deadline": null,
-"digested": true,
-"first_seen": "2026-11-23",
-"level": "possible",
-"notified": true,
-"page": "https://jobs.juniv.edu/",
-"reminded": [],
-"title": "প্রভাষক গ্রেড-4 (বাংলা) - Lecturer Grade-4 (Bangla) (পুনঃবিজ্ঞপ্তি) JU School and College School and College Permanent 1 Position",
-"university": "Jahangirnagar University",
-"url": "https://jobs.juniv.edu/jobs?slug=lecturer-grade-4-bangla"
-},
 "e2862c524d57be4fff5f": {
 "category": "General circular",
 "deadline": null,
@@ -5630,21 +4491,6 @@
 "university": "Sher-e-Bangla Agricultural University",
 "url": "https://www.sau.edu.bd/uploads/pdf/notice/2021-12-06_61adbea20b33f.pdf"
 },
-"e343a5455ea8f1c4c1da": {
-"category": "General circular",
-"deadline": null,
-"detail_checked": true,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2025-06-18",
-"level": "strong",
-"notified": true,
-"page": "http://iau.edu.bd/allnotice/",
-"reminded": [],
-"title": "ইসলামি আরবি বিশ্ববিদ্যালয় অধিভুক্ত ফাজিল (স্নাতক) ও কামিল (স্নাতকোত্তর) মাদরাসা সমূহে বিদ্যমান শূন্য পদে দ্রুততম সময়ে নিয়োগের উদ্দেশ্যে বিধি মোতাবেক নিয়োগ বিজ্ঞপ্তি প্রকাশ সহ অ",
-"university": "Islamic Arabic University",
-"url": "http://iau.edu.bd/wp-content/uploads/2025/06/reg13044.pdf"
-},
 "e3bfcaf46f051ad4f7c2": {
 "category": "General circular",
 "deadline": null,
@@ -5659,19 +4505,6 @@
 "title": "নিয়োগ বিজ্ঞপ্তি",
 "university": "Jagannath University",
 "url": "https://jnu.ac.bd/assets/notice/870c1336553f01bde419e189216df0ba.pdf"
-},
-"e3fcc8c9d234f4698857": {
-"category": "Teaching",
-"deadline": null,
-"digested": true,
-"first_seen": "2026-11-23",
-"level": "possible",
-"notified": true,
-"page": "https://www.juniv.edu/",
-"reminded": [],
-"title": "Professor Dr. Md. Nurul Islam Vice Chancellor Welcome to Jahangirnagar University Widely regarded as the most picturesque unive...",
-"university": "Jahangirnagar University",
-"url": "https://www.juniv.edu/administration?roleType=VICE_CHANCELLOR&roleName=Vice Chancellor"
 },
 "e481bbf0940f552f0ea8": {
 "category": "Career page update",
@@ -5726,34 +4559,6 @@
 "title": "Recruitment for Officer in HEQEP Project",
 "university": "BUET",
 "url": "http://regoffice.buet.ac.bd/wp-content/uploads/2014/04/HEQEP_MME.pdf"
-},
-"e78caa417172c268b618": {
-"category": "Career page update",
-"deadline": null,
-"digested": true,
-"first_seen": "2026-11-23",
-"level": "strong",
-"notified": true,
-"page": "http://iau.edu.bd/recruitment-2/",
-"reminded": [],
-"title": "নিয়োগ – Islamic Arabic University",
-"university": "Islamic Arabic University",
-"url": "http://iau.edu.bd/recruitment-2/"
-},
-"e82df8085f38e583cb9b": {
-"category": "Teaching",
-"deadline": null,
-"detail_checked": true,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2026-10-29",
-"level": "strong",
-"notified": true,
-"page": "http://iau.edu.bd/allnotice/",
-"reminded": [],
-"title": "ইসলামি আরবি বিশ্ববিদ্যালয়ের স্থায়ী শূণ্যপদে শিক্ষক নিয়োগের লক্ষ্যে নিয়োগ বিজ্ঞপ্তি - (নতুন)",
-"university": "Islamic Arabic University",
-"url": "http://iau.edu.bd/wp-content/uploads/2026/11/cir1338.pdf"
 },
 "e84aacb425da3b3f0324": {
 "category": "Officer/Admin",
@@ -5810,20 +4615,6 @@
 "title": "অধিভুক্ত মাদরাসা প্রধানগণের একাডেমিক, প্রশাসনিক ও আর্থিক ব্যবস্থাপনা উন্নয়ন বিষয়ক প্রশিক্ষণের তারিখ পুনঃনির্ধারণ সংক্রান্ত",
 "university": "Islamic Arabic University",
 "url": "http://iau.edu.bd/wp-content/uploads/2025/04/kml00200.pdf"
-},
-"e9e8a57823e5d1162a28": {
-"category": "Teaching",
-"deadline": null,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2025-03-18",
-"level": "possible",
-"notified": true,
-"page": "http://iau.edu.bd/allnotice/",
-"reminded": [],
-"title": "ইসলামি আরবি বিশ্ববিদ্যালয়ের আওতাধীন বেসরকারি মাদরাসাসমূহের শিক্ষক, কর্মকর্তা ও কর্মচারীগণের চাকরির সংবিধি ধারা-18 সংযোজন সংক্রান্ত বিজ্ঞপ্তি",
-"university": "Islamic Arabic University",
-"url": "http://iau.edu.bd/wp-content/uploads/2025/03/reg510.pdf"
 },
 "e9ef82dc6fd3dac3889d": {
 "category": "Career page update",
@@ -5903,21 +4694,6 @@
 "title": "Section Officer",
 "university": "UITS",
 "url": "https://career.uits.ac.bd/"
-},
-"ed80d564dd4cb8a3f231": {
-"category": "Teaching",
-"deadline": null,
-"detail_checked": true,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2019-09-18",
-"level": "strong",
-"notified": true,
-"page": "http://iau.edu.bd/recruitment-circular/",
-"reminded": [],
-"title": "সহকারী অধ্যাপক (ইসলামিক স্টাডিজ) পদে নিয়োগ বিজ্ঞপ্তি ও আবেদন ফরম।",
-"university": "Islamic Arabic University",
-"url": "http://iau.edu.bd/wp-content/uploads/2019/09/8895.pdf"
 },
 "edd6e51135b3b03a7cb6": {
 "category": "Officer/Admin",
@@ -6029,33 +4805,6 @@
 "university": "Jahangirnagar University",
 "url": "https://jobs.juniv.edu/uploads/users/0d649712-6a5b-41eb-9652-8a0579828b99/general-document/0c0d82ad-9ecd-43b5-b67e-e00d612b0ac8.pdf"
 },
-"f38a945e61dc14681d10": {
-"category": "Teaching",
-"deadline": null,
-"digested": true,
-"first_seen": "2026-11-23",
-"level": "possible",
-"notified": true,
-"page": "https://southasiauni.ac.bd/",
-"reminded": [],
-"title": "Greetings from Professor Dr. Tasmina Matin Central Library! More",
-"university": "University of South Asia",
-"url": "https://southasiauni.ac.bd/notices/154"
-},
-"f3c5c2d4288fee16e3fc": {
-"category": "Teaching",
-"deadline": "2026-11-30",
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2026-11-30",
-"level": "strong",
-"notified": true,
-"page": "https://www.uap-bd.edu/vacancy.php",
-"reminded": [],
-"title": "Lecturer (CE) - Civil Engineering (CE)",
-"university": "University of Asia Pacific",
-"url": "https://www.uap-bd.edu/vacancy.php"
-},
 "f41e373af8045dc6b8a1": {
 "category": "Officer/Admin",
 "deadline": "2026-11-28",
@@ -6082,78 +4831,6 @@
 "title": "Director of Finance",
 "university": "East West University",
 "url": "https://www.ewubd.edu/admin-office/office-of-the-director-of-finance"
-},
-"f525904ab574b444fbe7": {
-"category": "Teaching",
-"deadline": null,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2025-02-06",
-"level": "possible",
-"notified": true,
-"page": "http://iau.edu.bd/allnotice/",
-"reminded": [],
-"title": "ইসলামি আরবি বিশ্ববিদ্যালয়ে কর্মরত শিক্ষক, কর্মকর্তা ও কর্মচারীগণের সামাজিক যোগাযোগ মাধ্যম ব্যবহারে সতর্কতা অবলম্বন ও সুষ্ঠু ব্যবহার নিশ্চিতকরণ প্রসঙ্গে",
-"university": "Islamic Arabic University",
-"url": "http://iau.edu.bd/wp-content/uploads/2025/02/reg180.pdf"
-},
-"f57c50f07d19636944a7": {
-"category": "General circular",
-"deadline": null,
-"detail_checked": true,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2026-10-14",
-"level": "strong",
-"notified": true,
-"page": "http://iau.edu.bd/recruitment-circular/",
-"reminded": [],
-"title": "ইসলামি আরবি বিশ্ববিদ্যালয়ের স্থায়ী শূণ্যপদে নিয়োগের লক্ষ্যে সংশোধিত নিয়োগ বিজ্ঞপ্তি (গ্রেড 3 – গ্রেড 10) - (নতুন)",
-"university": "Islamic Arabic University",
-"url": "http://iau.edu.bd/wp-content/uploads/2026/10/cir1330.pdf"
-},
-"f60dae704201c8dbdc90": {
-"category": "Career page update",
-"deadline": null,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": null,
-"level": "strong",
-"notified": true,
-"page": "https://career.grameenu.ac/career-portal/jobs",
-"reminded": [],
-"title": "Inspired by the vision of Professor Muhammad Yunus.",
-"university": "Grameen University",
-"url": "https://career.grameenu.ac/career-portal/jobs"
-},
-"f7021d5e2a9ca45739bb": {
-"category": "General circular",
-"deadline": null,
-"detail_checked": true,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2025-10-13",
-"level": "strong",
-"notified": true,
-"page": "http://iau.edu.bd/allnotice/",
-"reminded": [],
-"title": "ইসলামি আরবি বিশ্ববিদ্যালয়ের অধিভুক্ত মাদরাসাসমুহের ফাজিল (স্নাতক) অনার্স পরীক্ষা-2024 এর পরীক্ষক নিয়োগ সংক্রান্ত বিজ্ঞপ্তি",
-"university": "Islamic Arabic University",
-"url": "http://iau.edu.bd/wp-content/uploads/2025/10/exm384.pdf"
-},
-"f817327b8c8a07700748": {
-"category": "Teaching",
-"deadline": null,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2024-02-04",
-"level": "possible",
-"notified": true,
-"page": "https://www.juniv.edu/",
-"reminded": [],
-"title": "Annual Procurement Plan (Fine Arts faculty building project)",
-"university": "Jahangirnagar University",
-"url": "https://www.juniv.edu/discussion/15209"
 },
 "f8975998991f9cfef163": {
 "category": "Officer/Admin",
@@ -6210,20 +4887,6 @@
 "title": "Recruitment for the position of Perfusionist",
 "university": "Bangladesh Medical University",
 "url": "https://forms.bmu.ac.bd/recruitment_cp_2026/local/application/index.php/"
-},
-"fa225bbbaa7653e196f5": {
-"category": "Career page update",
-"deadline": null,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": null,
-"level": "strong",
-"notified": true,
-"page": "https://jobs.juniv.edu/jobs",
-"reminded": [],
-"title": "প্রভাষক (ইংরেজি) - Lecturer (English)",
-"university": "Jahangirnagar University",
-"url": "https://jobs.juniv.edu/jobs"
 },
 "fae9127974ad8d42041e": {
 "category": "Teaching",
@@ -6360,34 +5023,6 @@
 "university": "BGMEA University of Fashion & Technology",
 "url": "https://buft.edu.bd/profile-registrar"
 },
-"feac409b0df2d3d4fe6c": {
-"category": "Teaching",
-"deadline": null,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2026-01-28",
-"level": "possible",
-"notified": true,
-"page": "http://iau.edu.bd/allnotice/",
-"reminded": [],
-"title": "ইসলামি আরবি বিশ্ববিদ্যালয়ে কর্মরত শিক্ষক, কর্মকর্তা ও কর্মচারীগণের সামাজিক যোগাযোগ মাধ্যম ব্যবহারে সতর্কতা অবলম্বন ও সুষ্ঠু ব্যবহার নিশ্চিতকরণ প্রসঙ্গে",
-"university": "Islamic Arabic University",
-"url": "http://iau.edu.bd/wp-content/uploads/2026/01/reg13305.pdf"
-},
-"feb4f4133da04f485c95": {
-"category": "Teaching",
-"deadline": null,
-"digested": true,
-"first_seen": "2026-11-23",
-"latest_date": "2026-03-29",
-"level": "possible",
-"notified": true,
-"page": "http://iau.edu.bd/allnotice/",
-"reminded": [],
-"title": "ইসলামি আরবি বিশ্ববিদ্যালয়ের অধীনে পরিচালিত সকল ফাজিল (স্নাতক) ও কামিল (স্নাতকোত্তর) মাদরাসা থেকে বিশ্ববিদ্যালয়ে আগত সম্মানিত শিক্ষক, কর্মচারী ও শিক্ষার্থীদের সেবা দ্রুত ও সহজীকরণ",
-"university": "Islamic Arabic University",
-"url": "http://iau.edu.bd/wp-content/uploads/2026/04/reg13375.pdf"
-},
 "ff505805f4fc5491a6dc": {
 "category": "Career page update",
 "deadline": null,
@@ -6418,14 +5053,14 @@
 },
 "last_digest": "2026-11-23",
 "last_manual": null,
-"last_run": "2026-11-23T13:53:48.530364+00:00",
+"last_run": "2026-11-23T16:35:19.576106+00:00",
 "pending_open": [],
-"rules_version": 2,
+"rules_version": 3,
 "sources": {
 "http://iau.edu.bd/allnotice/": {
 "alerted": false,
 "baselined": true,
-"count": 64,
+"count": 41,
 "fails": 0,
 "last_ok": "2026-11-23",
 "state": "ok",
@@ -6435,7 +5070,7 @@
 "http://iau.edu.bd/recruitment": {
 "alerted": false,
 "baselined": true,
-"count": 2,
+"count": 1,
 "fails": 0,
 "last_ok": "2026-11-23",
 "no_vacancy": false,
@@ -6446,7 +5081,7 @@
 "http://iau.edu.bd/recruitment-2/": {
 "alerted": false,
 "baselined": true,
-"count": 2,
+"count": 1,
 "fails": 0,
 "last_ok": "2026-11-23",
 "no_vacancy": false,
@@ -6457,7 +5092,7 @@
 "http://iau.edu.bd/recruitment-circular/": {
 "alerted": false,
 "baselined": true,
-"count": 19,
+"count": 7,
 "fails": 0,
 "last_ok": "2026-11-23",
 "no_vacancy": false,
@@ -6468,7 +5103,7 @@
 "https://archive-career.green.edu.bd/current-circular-2/": {
 "alerted": false,
 "baselined": true,
-"count": 8,
+"count": 4,
 "fails": 0,
 "last_ok": "2026-11-23",
 "no_vacancy": false,
@@ -6523,7 +5158,7 @@
 "https://buft.edu.bd/notice": {
 "alerted": false,
 "baselined": true,
-"count": 8,
+"count": 7,
 "fails": 0,
 "last_ok": "2026-11-23",
 "state": "ok",
@@ -6577,7 +5212,7 @@
 "https://career.grameenu.ac/career-portal/jobs": {
 "alerted": false,
 "baselined": true,
-"count": 2,
+"count": 1,
 "fails": 0,
 "last_ok": "2026-11-23",
 "no_vacancy": false,
@@ -6653,7 +5288,7 @@
 "alerted": false,
 "baselined": false,
 "count": 0,
-"fails": 3,
+"fails": 4,
 "state": "blocked",
 "university": "Dhaka Central University",
 "zero_runs": 0
@@ -6662,7 +5297,7 @@
 "alerted": false,
 "baselined": false,
 "count": 0,
-"fails": 3,
+"fails": 4,
 "state": "blocked",
 "university": "Dhaka International University",
 "zero_runs": 0
@@ -6734,7 +5369,7 @@
 "https://iub.ac.bd/news-and-events/jobs-at-iub": {
 "alerted": false,
 "baselined": true,
-"count": 3,
+"count": 2,
 "fails": 0,
 "last_ok": "2026-11-23",
 "no_vacancy": false,
@@ -6745,7 +5380,7 @@
 "https://iubat.edu/career/": {
 "alerted": false,
 "baselined": true,
-"count": 4,
+"count": 1,
 "fails": 0,
 "last_ok": "2026-11-23",
 "no_vacancy": false,
@@ -6767,7 +5402,7 @@
 "https://jnu.ac.bd/newsite/noticeview/1": {
 "alerted": false,
 "baselined": true,
-"count": 24,
+"count": 23,
 "fails": 0,
 "last_ok": "2026-11-23",
 "state": "ok",
@@ -6778,7 +5413,7 @@
 "alerted": false,
 "baselined": false,
 "count": 0,
-"fails": 3,
+"fails": 4,
 "state": "blocked",
 "university": "Dhaka International University",
 "zero_runs": 0
@@ -6787,7 +5422,7 @@
 "alerted": false,
 "baselined": false,
 "count": 0,
-"fails": 3,
+"fails": 4,
 "state": "timeout",
 "university": "University of Dhaka",
 "zero_runs": 0
@@ -6795,7 +5430,7 @@
 "https://jobs.juniv.edu/": {
 "alerted": false,
 "baselined": true,
-"count": 12,
+"count": 6,
 "fails": 0,
 "last_ok": "2026-11-23",
 "no_vacancy": false,
@@ -6806,7 +5441,7 @@
 "https://jobs.juniv.edu/circulars": {
 "alerted": false,
 "baselined": true,
-"count": 9,
+"count": 7,
 "fails": 0,
 "last_ok": "2026-11-23",
 "no_vacancy": false,
@@ -6817,7 +5452,7 @@
 "https://jobs.juniv.edu/jobs": {
 "alerted": false,
 "baselined": true,
-"count": 6,
+"count": 2,
 "fails": 0,
 "last_ok": "2026-11-23",
 "no_vacancy": false,
@@ -6851,7 +5486,7 @@
 "alerted": false,
 "baselined": false,
 "count": 0,
-"fails": 3,
+"fails": 4,
 "state": "bot_check",
 "university": "World University of Bangladesh",
 "zero_runs": 0
@@ -6903,7 +5538,7 @@
 "https://primeasia.edu.bd/career/": {
 "alerted": false,
 "baselined": true,
-"count": 3,
+"count": 2,
 "fails": 0,
 "last_ok": "2026-11-23",
 "no_vacancy": false,
@@ -6914,7 +5549,7 @@
 "https://primeasia.edu.bd/career/admin/": {
 "alerted": false,
 "baselined": true,
-"count": 5,
+"count": 4,
 "fails": 0,
 "last_ok": "2026-11-23",
 "no_vacancy": false,
@@ -6925,7 +5560,7 @@
 "https://primeasia.edu.bd/career/faculty/": {
 "alerted": false,
 "baselined": true,
-"count": 4,
+"count": 3,
 "fails": 0,
 "last_ok": "2026-11-23",
 "no_vacancy": false,
@@ -6980,7 +5615,7 @@
 "https://regoffice.buet.ac.bd/?page_id=12": {
 "alerted": false,
 "baselined": true,
-"count": 154,
+"count": 147,
 "fails": 0,
 "last_ok": "2026-11-23",
 "state": "ok",
@@ -6990,7 +5625,7 @@
 "https://regoffice.buet.ac.bd/?post_type=news": {
 "alerted": false,
 "baselined": true,
-"count": 5,
+"count": 4,
 "fails": 0,
 "last_ok": "2026-11-23",
 "state": "ok",
@@ -7052,7 +5687,7 @@
 "https://su.edu.bd/career": {
 "alerted": false,
 "baselined": true,
-"count": 9,
+"count": 3,
 "fails": 0,
 "last_ok": "2026-11-23",
 "no_vacancy": false,
@@ -7064,7 +5699,7 @@
 "alerted": false,
 "baselined": false,
 "count": 0,
-"fails": 3,
+"fails": 4,
 "state": "blocked",
 "university": "Tagore University of Creative Arts",
 "zero_runs": 0
@@ -7073,7 +5708,7 @@
 "alerted": false,
 "baselined": false,
 "count": 0,
-"fails": 3,
+"fails": 4,
 "state": "blocked",
 "university": "Tagore University of Creative Arts",
 "zero_runs": 0
@@ -7086,7 +5721,7 @@
 "last_ok": "2026-11-23",
 "state": "ok",
 "university": "UITS",
-"zero_runs": 1
+"zero_runs": 2
 },
 "https://uoda.edu.bd/notice-board": {
 "alerted": false,
@@ -7133,7 +5768,7 @@
 "https://www.aiub.edu/about/career": {
 "alerted": false,
 "baselined": true,
-"count": 3,
+"count": 1,
 "fails": 0,
 "last_ok": "2026-11-23",
 "no_vacancy": false,
@@ -7229,7 +5864,7 @@
 "https://www.butex.edu.bd/career-opportunity/": {
 "alerted": false,
 "baselined": true,
-"count": 11,
+"count": 10,
 "fails": 0,
 "last_ok": "2026-11-23",
 "no_vacancy": false,
@@ -7314,7 +5949,7 @@
 "https://www.eub.edu.bd/career": {
 "alerted": false,
 "baselined": true,
-"count": 12,
+"count": 11,
 "fails": 0,
 "last_ok": "2026-11-23",
 "no_vacancy": false,
@@ -7419,7 +6054,7 @@
 "https://www.juniv.edu/": {
 "alerted": false,
 "baselined": true,
-"count": 7,
+"count": 4,
 "fails": 0,
 "last_ok": "2026-11-23",
 "state": "ok",
@@ -7439,11 +6074,11 @@
 },
 "https://www.pub.ac.bd/notice-board/": {
 "alerted": false,
-"baselined": true,
+"baselined": false,
 "count": 0,
-"fails": 0,
+"fails": 1,
 "last_ok": "2026-11-23",
-"state": "ok",
+"state": "conn_error",
 "university": "People's University of Bangladesh",
 "zero_runs": 0
 },
@@ -7451,7 +6086,7 @@
 "alerted": false,
 "baselined": false,
 "count": 0,
-"fails": 3,
+"fails": 4,
 "state": "bot_check",
 "university": "Royal University of Dhaka",
 "zero_runs": 0
@@ -7460,7 +6095,7 @@
 "alerted": false,
 "baselined": false,
 "count": 0,
-"fails": 3,
+"fails": 4,
 "state": "bot_check",
 "university": "Royal University of Dhaka",
 "zero_runs": 0
@@ -7490,7 +6125,7 @@
 "https://www.sau.edu.bd/home/notices": {
 "alerted": false,
 "baselined": true,
-"count": 34,
+"count": 27,
 "fails": 0,
 "last_ok": "2026-11-23",
 "state": "ok",
@@ -7500,7 +6135,7 @@
 "https://www.uap-bd.edu/news-events.php": {
 "alerted": false,
 "baselined": true,
-"count": 3,
+"count": 2,
 "fails": 0,
 "last_ok": "2026-11-23",
 "state": "ok",
@@ -7521,7 +6156,7 @@
 "https://www.uap-bd.edu/vacancy.php": {
 "alerted": false,
 "baselined": true,
-"count": 12,
+"count": 3,
 "fails": 0,
 "last_ok": "2026-11-23",
 "no_vacancy": false,
@@ -7532,7 +6167,7 @@
 "https://www.uiu.ac.bd/career/": {
 "alerted": false,
 "baselined": true,
-"count": 7,
+"count": 5,
 "fails": 0,
 "last_ok": "2026-11-23",
 "no_vacancy": false,
@@ -7543,7 +6178,7 @@
 "https://www.uttara.ac.bd/career/": {
 "alerted": false,
 "baselined": true,
-"count": 8,
+"count": 4,
 "fails": 0,
 "last_ok": "2026-11-23",
 "no_vacancy": false,
