@@ -50,8 +50,8 @@ MAX_PAGE_BYTES = 5_000_000
 MAX_PDF_BYTES = 8_000_000
 HOST_DELAY = 1.0
 MAX_DETAIL_CHECKS = 150
-CATCHUP_VERSION = 2
-RULES_VERSION = 2  # raise whenever detection rules change
+CATCHUP_VERSION = 3
+RULES_VERSION = 3  # raise whenever detection rules change
 NO_LINK_STATUSES = {"Suspicious site", "Site down"}
 NO_LINK_NAMES = {"IBAIS University"}
 
@@ -190,6 +190,43 @@ NAV_ONLY = rx(r"^(faculty\s*(&|and)\s*staff|faculty|faculties|officers?|registra
 CAREER_URL = rx(r"career|job|vacanc|recruit|circular|employment")
 TABLE_HEADER = rx(r"^(available\s+)?job\s+listings?\b")
 PAGE_COPY = rx(r"^(explore|browse|discover|find|join|we\s|our\s|please|learn|build|submit|select|apply\s+now)\b")
+
+
+WANTED_SUBJECT = rx(r"\bcse\b|(?-i:\bCS\b)|(?-i:\bIT\b)|\bict\b|computer|software|information\s*technology|data\s*science|"
+                    r"artificial\s*intelligence|machine\s*learning|cyber|\bbba\b|\bmba\b|business|management|marketing|"
+                    r"finance|banking|accounting|\bais\b|\bhrm\b|human\s*resource|supply\s*chain|"
+                    r"কম্পিউটার|ব্যবসায়|ব্যবস্থাপনা|মার্কেটিং|ফিন্যান্স|হিসাববিজ্ঞান")
+OTHER_SUBJECT = rx(r"\blaw\b|english|\bbangla\b|pharmacy|civil|\bce\b|\beee\b|electrical|mechanical|textile|architecture|"
+                   r"physics|chemistry|mathematics|statistics|economics|sociology|political|history|philosophy|islamic|"
+                   r"arabic|biology|biochem|microbiology|genetics|public\s*health|nursing|medicine|clinical|environmental|"
+                   r"japanese|journalism|\bjms\b|fashion|agricultur|fisher|aquaculture|psychology|education|geography|"
+                   r"music|fine\s*art|আইন|ইংরেজি|ফার্মেসি|পদার্থ|রসায়ন|গণিত|ইসলামিক|আরবি")
+ABOVE_LECTURER = rx(r"professor|demonstrator|অধ্যাপক|ডেমোনস্ট্রেটর")
+LECTURER_OR_RA = rx(r"lecturer|research|teaching\s*assistant|প্রভাষক|গবেষণা")
+OFFICER_EXCLUDED = rx(r"medical|nurse|doctor|physician")
+ENGINEER = rx(r"\bengineer\b")
+
+
+def wanted_post(title: str, context: str) -> bool:
+    """Keep CSE/BBA lecturer and RA posts, plus university officer-level posts."""
+    title, context = clean(title), clean(context)
+    if SCHOOL.search(f"{title} {context}"):
+        return False
+    role = role_of(OFFICE_NAME.sub(" ", title))
+    if role == "Officer/Admin":
+        if OFFICER_EXCLUDED.search(title):
+            return False
+        return not ENGINEER.search(title) or bool(WANTED_SUBJECT.search(title))
+    if role in ("Teaching", "Research"):
+        if ABOVE_LECTURER.search(title) and not LECTURER_OR_RA.search(title):
+            return False
+        for text in (title, context):
+            if WANTED_SUBJECT.search(text):
+                return True
+            if OTHER_SUBJECT.search(text):
+                return False
+        return True  # a general faculty circular may include CSE or BBA
+    return bool(WANTED_SUBJECT.search(title)) or not OTHER_SUBJECT.search(title)
 
 
 def not_job(title: str) -> bool:
@@ -915,6 +952,8 @@ def process_source(source: dict, result: FetchResult, state: dict, today: date, 
             accepted[item_key(item)] = (item, "strong", "Career page update")
         info["no_vacancy"] = says_empty
 
+    accepted = {k: v for k, v in accepted.items() if v[2] == "Career page update" and "no vacancy" in v[0].title
+                or wanted_post(v[0].title, v[0].context)}
     info["zero_runs"] = info.get("zero_runs", 0) + 1 if info.get("count", 0) >= 3 and not accepted else 0
     if accepted or info["zero_runs"] >= FAILS_BEFORE_ALERT:
         info["count"] = len(accepted)
@@ -1174,6 +1213,7 @@ def run(config: dict, state: dict, fetcher, notifier, now: datetime | None = Non
         # New detection rules must not announce old page content as new circulars.
         for info in state["sources"].values():
             info["baselined"] = False
+        state["items"] = {k: r for k, r in state["items"].items() if wanted_post(r["title"], r["title"])}
         state["rules_version"] = RULES_VERSION
     open_now: list[str] = []
     floods: list[str] = []

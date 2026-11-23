@@ -144,6 +144,19 @@ class Extraction(unittest.TestCase):
         self.assertIsNotNone(w.classify(title, title, PAGE))
         self.assertIsNone(w.classify("Application Form for Teacher", "Application Form for Teacher", PAGE))
 
+    def test_focus_keeps_cse_bba_lecturer_ra_and_officers(self):
+        for title in ["Lecturer (CSE)", "Lecturer, Department of Business Administration", "Research Assistant, Computer Science",
+                      "Lecturer (Supply Chain Management)", "Faculty Search", "Junior Administrative Officer",
+                      "Section Officer", "Assistant Registrar", "IT Officer", "Job Opportunity for Post of Teachers"]:
+            self.assertTrue(w.wanted_post(title, title), title)
+
+    def test_focus_drops_other_posts(self):
+        for title in ["Lecturer (Law & Human Rights)", "Lecturer, Department of Japanese Studies", "Assistant Professor (CSE)",
+                      "Professor, Department of Clinical Pharmacy", "Medical Officer", "Engineer (Civil)",
+                      "School of Law - Faculty Search", "Research Assistant, Physics"]:
+            self.assertFalse(w.wanted_post(title, title), title)
+        self.assertFalse(w.wanted_post("Lecturer (English)", "Lecturer (English) JU School and College"))
+
     def test_menu_word_without_deadline_is_ignored(self):
         self.assertIsNone(w.classify("Lecturer", "Lecturer", PAGE))
 
@@ -174,7 +187,7 @@ class Flow(unittest.TestCase):
 
     def test_new_circular_alerts_once(self):
         self.go(self.state, page(("Lecturer, CSE", "30/11/2026")))
-        html = page(("Lecturer, CSE", "30/11/2026"), ("Research Assistant, Physics", "05/12/2026"))
+        html = page(("Lecturer, CSE", "30/11/2026"), ("Research Assistant, Computer Science", "05/12/2026"))
         messages = self.go(self.state, html)
         self.assertEqual(len(messages), 1)
         self.assertIn("Research Assistant", messages[0])
@@ -218,7 +231,7 @@ class Flow(unittest.TestCase):
             def detail_deadlines(self, urls):
                 return {u: date(2026, 12, 10) for u in urls}
         self.state["catchup_version"] = w.CATCHUP_VERSION
-        html = "<main><table><tr><td><a href='/job/9'>Lecturer in Economics</a></td></tr></table></main>"
+        html = "<main><table><tr><td><a href='/job/9'>Lecturer in Marketing</a></td></tr></table></main>"
         notifier = w.DryRunSilent()
         w.run(CONFIG, self.state, Detail(html), notifier, NOW)
         self.assertIn("10 Dec 2026", "".join(notifier.messages))
@@ -255,9 +268,9 @@ class Flow(unittest.TestCase):
 
     def test_unparsed_career_line_still_alerts(self):
         self.go(self.state, "<main><p>Join our team at this university today</p></main>")
-        messages = self.go(self.state, "<main><p>Join our team at this university today</p><p>Lecturer in Economics</p></main>")
+        messages = self.go(self.state, "<main><p>Join our team at this university today</p><p>Lecturer in Marketing</p></main>")
         self.assertEqual(len(messages), 1)
-        self.assertIn("Lecturer in Economics", messages[0])
+        self.assertIn("Lecturer in Marketing", messages[0])
 
     def test_no_vacancy_message_removed_alerts(self):
         self.go(self.state, "<main><p>No Job Vacancy</p></main>")
