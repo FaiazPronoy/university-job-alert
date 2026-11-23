@@ -27,7 +27,7 @@ from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass, field
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
-from urllib.parse import parse_qsl, urlencode, urljoin, urlparse, urlunparse
+from urllib.parse import parse_qsl, unquote, urlencode, urljoin, urlparse, urlunparse
 from urllib.robotparser import RobotFileParser
 
 import requests
@@ -178,6 +178,7 @@ NAV_ONLY = rx(r"^(faculty|faculties|officers?|registrar|administration|lecturers
               r"notice|notices|directors?|executive|management|শিক্ষক|কর্মকর্তা|নিয়োগ)(\s+(list|page))?$")
 CAREER_URL = rx(r"career|job|vacanc|recruit|circular|employment")
 TABLE_HEADER = rx(r"^(available\s+)?job\s+listings?\b")
+PAGE_COPY = rx(r"^(explore|browse|discover|find|join|we\s|our\s|please|learn|build|submit|select|apply\s+now)\b")
 
 
 def role_of(text: str) -> str | None:
@@ -200,8 +201,8 @@ def classify(title: str, context: str, page_url: str) -> tuple[str, str] | None:
     title, context = clean(title), clean(context)
     has_deadline = bool(find_deadline(context))
     # A bare "Lecturer" is a menu item unless it carries a deadline.
-    if len(title) < 6 or (NAV_ONLY.match(title) and not has_deadline) or AFTER_CIRCULAR.search(title) \
-            or TABLE_HEADER.search(title):
+    if len(title) < 6 or "@" in title or (NAV_ONLY.match(title) and not has_deadline) \
+            or AFTER_CIRCULAR.search(title) or TABLE_HEADER.search(title):
         return None
     title_role = role_of(OFFICE_NAME.sub(" ", title))  # "Office of the Registrar" is a place, not the post
     title_hire = bool(HIRE.search(title))
@@ -234,6 +235,9 @@ GENERIC_LINK = rx(r"^(view job advertisement|job advertisement|view circular|vie
                   r"(\s+(more|details?|here|now|pdf|file|notice))*\W*$")
 META_LINE = rx(r"^(posting time|posted|published|publish date|application deadline|deadline|dead line|last date|"
                r"apply|position|permanent|contractual|প্রকাশের তারিখ|শেষ তারিখ)\b")
+CIRCULAR_LINK = rx(r"job\s*circular|recruitment\s*(circular|notice)|vacancy\s*(circular|notice)|job\s*advert|"
+                   r"নিয়োগ\s*বিজ্ঞপ্তি")
+DOCUMENT_URL = re.compile(r"\.(pdf|docx?)$", re.I)
 TRACKING = re.compile(r"^(utm_.*|fbclid|gclid|gsessionid|phpsessid|sessionid|sid|from)$", re.I)
 
 
@@ -353,7 +357,9 @@ def merge_same_link(items: list[Item], page_url: str) -> list[Item]:
 
 def extract_items(university: str, page_html: str, page_url: str) -> list[Item]:
     soup = BeautifulSoup(page_html, "html.parser")
-    for tag in soup(["script", "style", "noscript", "template", "svg", "nav", "footer", "aside", "header"]):
+    menu_circulars = menu_circular_items(university, soup, page_url)
+    for tag in soup(["script", "style", "noscript", "template", "svg", "nav", "footer", "aside", "header",
+                     "select", "option"]):
         if not tag.decomposed:
             tag.decompose()
     groups: dict[int, tuple[object, list[tuple[str, str]]]] = {}
@@ -385,12 +391,30 @@ def extract_items(university: str, page_html: str, page_url: str) -> list[Item]:
             walk(child)
 
     walk(soup.body or soup)
-    return merge_same_link(items, page_url)
+    return merge_same_link(items + menu_circulars, page_url)
+
+
+def menu_circular_items(university: str, soup, page_url: str) -> list[Item]:
+    """Some portals keep the actual circular PDF in the top menu, e.g. 'Download Job Circular'."""
+    found = []
+    for zone in soup(["nav", "header", "footer", "aside"]):
+        for anchor in zone.find_all("a", href=True):
+            text = clean(anchor.get_text(" "))
+            url = urljoin(page_url, anchor["href"].strip()).split("#")[0]
+            if not CIRCULAR_LINK.search(text) or not DOCUMENT_URL.search(urlparse(url).path):
+                continue
+            filename = unquote(urlparse(url).path.rsplit("/", 1)[-1])
+            filename = re.sub(r"(\d{1,2})[_ ](\d{1,2})[_ ](20\d{2})", r"\1-\2-\3", filename)
+            dates = [value for _, value in find_dates(filename)]
+            title = f"Job Circular ({dates[-1].strftime('%d %b %Y')})" if dates else "Job Circular"
+            found.append(Item(university, title, url, page_url, f"{text} {filename}", find_deadline(text), dates, True))
+    return found
 
 
 def page_lines(page_html: str) -> list[str]:
     soup = BeautifulSoup(page_html, "html.parser")
-    for tag in soup(["script", "style", "noscript", "template", "svg", "nav", "footer", "aside", "header"]):
+    for tag in soup(["script", "style", "noscript", "template", "svg", "nav", "footer", "aside", "header",
+                     "select", "option"]):
         if not tag.decomposed:
             tag.decompose()
     return [line for raw in soup.get_text("\n").split("\n") if (line := clean(raw))]
@@ -401,6 +425,8 @@ def job_lines(lines: list[str]) -> list[str]:
     found = []
     for line in lines:
         if not 8 <= len(line) <= 140 or "@" in line or NAV_ONLY.match(line):
+            continue
+        if len(line.split()) > 12 or PAGE_COPY.match(line):  # page copy, not a post title
             continue
         if NOISE.search(line) or AFTER_CIRCULAR.search(line) or NO_VACANCY.search(line):
             continue
@@ -532,7 +558,8 @@ class Fetcher:
         try:
             with sync_playwright() as p:
                 instance = p.chromium.launch()
-                context = instance.new_context(user_agent=USER_AGENT)
+                # GitHub runs in UTC; JavaScript sites would otherwise show deadlines one day early.
+                context = instance.new_context(user_agent=USER_AGENT, timezone_id="Asia/Dhaka")
                 for url in urls:
                     if not self.allowed(session, url):
                         results.append(FetchResult(url, False, "robots_disallowed"))
@@ -822,9 +849,11 @@ def process_source(source: dict, result: FetchResult, state: dict, today: date, 
         record = state["items"].get(key)
         fresh = valid_deadline(item, today)
         if record and fresh and record.get("deadline") and fresh > record["deadline"] and record["level"] == "strong":
+            moved = (date.fromisoformat(fresh) - date.fromisoformat(record["deadline"])).days
             record["deadline"] = fresh
-            record["reminded"] = []
-            record["extended"] = True
+            if moved >= 2:  # a one-day shift is usually a timezone difference, not an extension
+                record["reminded"] = []
+                record["extended"] = True
         elif record and fresh and not record.get("deadline"):
             record["deadline"] = fresh
 

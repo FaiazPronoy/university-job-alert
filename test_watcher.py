@@ -107,6 +107,18 @@ class Extraction(unittest.TestCase):
         self.assertEqual(item.title, "Assistant Registrar")
         self.assertIsNotNone(w.classify(item.title, item.context, PAGE))
 
+    def test_circular_pdf_in_top_menu_is_found(self):
+        html = ("<nav><a href='/front/images/circular_11_11_2026.pdf'>Download Job Circular</a><a href='/x'>Education</a></nav>"
+                "<main><select><option>Lecturer</option><option>Section Officer</option></select></main>")
+        items = [i for i in w.extract_items("UITS", html, "https://career.uits.ac.bd/")
+                 if w.classify(i.title, i.context, i.page_url)]
+        self.assertEqual(len(items), 1)
+        self.assertEqual(items[0].title, "Job Circular (11 Nov 2026)")
+        self.assertTrue(items[0].url.endswith("circular_11_11_2026.pdf"))
+
+    def test_form_dropdown_is_not_a_job_line(self):
+        self.assertEqual(w.job_lines(w.page_lines("<main><select><option>Section Officer</option></select></main>")), [])
+
     def test_menu_word_without_deadline_is_ignored(self):
         self.assertIsNone(w.classify("Lecturer", "Lecturer", PAGE))
 
@@ -164,6 +176,17 @@ class Flow(unittest.TestCase):
     def test_extended_deadline_alerts(self):
         self.go(self.state, page(("Lecturer, CSE", "30/11/2026")))
         self.assertIn("Deadline bereche", "".join(self.go(self.state, page(("Lecturer, CSE", "10/12/2026")))))
+
+    def test_one_day_timezone_shift_is_not_an_extension(self):
+        self.go(self.state, page(("Lecturer, CSE", "30/11/2026")))
+        self.assertEqual(self.go(self.state, page(("Lecturer, CSE", "01/12/2026"))), [])
+        self.assertIn("2026-12-01", [r["deadline"] for r in self.state["items"].values()])
+
+    def test_marketing_copy_and_email_do_not_alert(self):
+        self.go(self.state, "<main><p>Welcome to the university portal</p></main>")
+        html = ("<main><p>Welcome to the university portal</p><p>Explore exciting faculty and administrative positions</p>"
+                "<p><a href='/contact'>recruitment@example.edu - Sat-Thu</a></p></main>")
+        self.assertEqual(self.go(self.state, html), [])
 
     def test_broken_source_alerts_once_and_recovers(self):
         html = page(("Lecturer, CSE", "30/11/2026"))
