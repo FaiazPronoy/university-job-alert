@@ -22,7 +22,7 @@ concurrency:
 
 jobs:
   watch:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
@@ -42,6 +42,7 @@ jobs:
           key: playwright-${{ runner.os }}-${{ hashFiles('requirements.txt') }}
 
       - name: Install browser
+        continue-on-error: true  # plain HTML sources should still be checked
         run: python -m playwright install --with-deps chromium
 
       - name: Run watcher
