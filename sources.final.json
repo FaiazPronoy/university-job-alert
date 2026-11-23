@@ -1,0 +1,1013 @@
+{
+ "universities": [
+  {
+   "name": "University of Dhaka",
+   "type": "public",
+   "urls": [
+    "https://jobs.du.ac.bd/",
+    "https://www.du.ac.bd/notice"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "https://jobs.du.ac.bd/"
+   ],
+   "browser_urls": [],
+   "note": ""
+  },
+  {
+   "name": "BUET",
+   "type": "public",
+   "urls": [
+    "https://regoffice.buet.ac.bd/?page_id=12",
+    "https://recruitment.buet.ac.bd/",
+    "https://regoffice.buet.ac.bd/?post_type=news"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "https://recruitment.buet.ac.bd/",
+    "https://regoffice.buet.ac.bd/?page_id=12",
+    "https://regoffice.buet.ac.bd/?post_type=news"
+   ],
+   "browser_urls": [
+    "https://recruitment.buet.ac.bd/"
+   ],
+   "note": "Main portal needs a headless browser."
+  },
+  {
+   "name": "Jahangirnagar University",
+   "type": "public",
+   "urls": [
+    "https://jobs.juniv.edu/",
+    "https://www.juniv.edu/"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "https://jobs.juniv.edu/",
+    "https://www.juniv.edu/"
+   ],
+   "browser_urls": [
+    "https://jobs.juniv.edu/"
+   ],
+   "note": "Main portal needs a headless browser."
+  },
+  {
+   "name": "Jagannath University",
+   "type": "public",
+   "urls": [
+    "https://career.jnu.ac.bd/",
+    "https://jnu.ac.bd/newsite/noticeview/1"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "https://career.jnu.ac.bd/",
+    "https://jnu.ac.bd/newsite/noticeview/1"
+   ],
+   "browser_urls": [],
+   "note": ""
+  },
+  {
+   "name": "Bangladesh University of Professionals",
+   "type": "public",
+   "urls": [
+    "https://career.bup.edu.bd/",
+    "https://www.bup.edu.bd/career",
+    "https://www.bup.edu.bd/notice/all"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "https://career.bup.edu.bd/",
+    "https://www.bup.edu.bd/career",
+    "https://www.bup.edu.bd/notice/all"
+   ],
+   "browser_urls": [],
+   "note": ""
+  },
+  {
+   "name": "Bangladesh Medical University",
+   "type": "public",
+   "urls": [
+    "https://www.bmu.ac.bd/notice",
+    "https://www.bmu.ac.bd/"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "https://www.bmu.ac.bd/"
+   ],
+   "browser_urls": [],
+   "note": ""
+  },
+  {
+   "name": "MIST",
+   "type": "public",
+   "urls": [
+    "https://mist.ac.bd/career",
+    "https://mist.ac.bd/notice"
+   ],
+   "status": "Certificate issue",
+   "monitor_urls": [],
+   "browser_urls": [],
+   "note": "Certificate chain is incomplete. May be fixable by adding the correct intermediate certificate."
+  },
+  {
+   "name": "Sher-e-Bangla Agricultural University",
+   "type": "public",
+   "urls": [
+    "https://www.sau.edu.bd/home/jobs/1",
+    "https://www.sau.edu.bd/home/notices"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "https://www.sau.edu.bd/home/jobs/1",
+    "https://www.sau.edu.bd/home/notices"
+   ],
+   "browser_urls": [],
+   "note": ""
+  },
+  {
+   "name": "Bangladesh University of Textiles",
+   "type": "public",
+   "urls": [
+    "https://www.butex.edu.bd/career-opportunity/"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "https://www.butex.edu.bd/career-opportunity/"
+   ],
+   "browser_urls": [],
+   "note": ""
+  },
+  {
+   "name": "Dhaka Central University",
+   "type": "public",
+   "urls": [
+    "https://dcu.ac.bd/dcu_v03/notice.php",
+    "https://dcu.ac.bd/notice",
+    "https://dcu.ac.bd/"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "https://dcu.ac.bd/"
+   ],
+   "browser_urls": [],
+   "note": ""
+  },
+  {
+   "name": "Islamic Arabic University",
+   "type": "public",
+   "urls": [
+    "http://iau.edu.bd/recruitment-circular/",
+    "http://iau.edu.bd/recruitment-2/",
+    "http://iau.edu.bd/allnotice/"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "http://iau.edu.bd/recruitment-circular/",
+    "http://iau.edu.bd/recruitment-2/",
+    "http://iau.edu.bd/allnotice/"
+   ],
+   "browser_urls": [],
+   "note": ""
+  },
+  {
+   "name": "Bangladesh Maritime University",
+   "type": "public",
+   "urls": [
+    "https://bmu.edu.bd/job_notice",
+    "https://bmu.edu.bd/about-us/career"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "https://bmu.edu.bd/about-us/career"
+   ],
+   "browser_urls": [],
+   "note": ""
+  },
+  {
+   "name": "Ahsanullah University of Science and Technology",
+   "type": "private",
+   "urls": [
+    "https://www.aust.edu/vacancy"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "https://www.aust.edu/vacancy"
+   ],
+   "browser_urls": [],
+   "note": ""
+  },
+  {
+   "name": "AIUB",
+   "type": "private",
+   "urls": [
+    "https://www.aiub.edu/about/career"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "https://www.aiub.edu/about/career"
+   ],
+   "browser_urls": [],
+   "note": ""
+  },
+  {
+   "name": "Anwer Khan Modern University",
+   "type": "private",
+   "urls": [
+    "https://akmu.edu.bd/category/job-notice/"
+   ],
+   "status": "Blocked",
+   "monitor_urls": [],
+   "browser_urls": [],
+   "note": "Site shows a bot-verification screen. Check manually or use an alternate source."
+  },
+  {
+   "name": "ASA University Bangladesh",
+   "type": "private",
+   "urls": [
+    "https://www.asaub.edu.bd/career.php",
+    "https://www.asaub.edu.bd/seeall.php"
+   ],
+   "status": "Certificate issue",
+   "monitor_urls": [],
+   "browser_urls": [],
+   "note": "Site uses a self-signed certificate. Not monitored automatically."
+  },
+  {
+   "name": "Asian University of Bangladesh",
+   "type": "private",
+   "urls": [
+    "https://aub.ac.bd/career"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "https://aub.ac.bd/career"
+   ],
+   "browser_urls": [],
+   "note": ""
+  },
+  {
+   "name": "Atish Dipankar UST",
+   "type": "private",
+   "urls": [
+    "https://www.adust.edu.bd/?action=noticeLists"
+   ],
+   "status": "Page not confirmed",
+   "monitor_urls": [],
+   "browser_urls": [],
+   "note": "Notice URL rendered the homepage, correct notice page not confirmed."
+  },
+  {
+   "name": "Bangladesh Islami University",
+   "type": "private",
+   "urls": [
+    "https://biu.ac.bd/"
+   ],
+   "status": "Blocked",
+   "monitor_urls": [],
+   "browser_urls": [],
+   "note": "Site shows a bot-verification screen. Check manually or use an alternate source."
+  },
+  {
+   "name": "Bangladesh University",
+   "type": "private",
+   "urls": [
+    "https://www.bu.edu.bd/career/"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "https://www.bu.edu.bd/career/"
+   ],
+   "browser_urls": [],
+   "note": ""
+  },
+  {
+   "name": "BUBT",
+   "type": "private",
+   "urls": [
+    "https://www.bubt.edu.bd/page/career",
+    "https://www.bubt.edu.bd/notice"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "https://www.bubt.edu.bd/page/career",
+    "https://www.bubt.edu.bd/notice"
+   ],
+   "browser_urls": [],
+   "note": ""
+  },
+  {
+   "name": "Bangladesh University of Health Sciences",
+   "type": "private",
+   "urls": [
+    "https://buhs.ac.bd/notice-board/"
+   ],
+   "status": "Page not confirmed",
+   "monitor_urls": [],
+   "browser_urls": [],
+   "note": "Notice board rendered without notices."
+  },
+  {
+   "name": "BGMEA University of Fashion & Technology",
+   "type": "private",
+   "urls": [
+    "https://buft.edu.bd/career",
+    "https://buft.edu.bd/notice"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "https://buft.edu.bd/career",
+    "https://buft.edu.bd/notice"
+   ],
+   "browser_urls": [],
+   "note": ""
+  },
+  {
+   "name": "BRAC University",
+   "type": "private",
+   "urls": [
+    "https://www.bracu.ac.bd/about/career-at-bracu",
+    "https://www.bracu.ac.bd/faculty-search"
+   ],
+   "status": "Blocked",
+   "monitor_urls": [],
+   "browser_urls": [],
+   "note": "Site returns HTTP 403 to automated requests. Check manually or use an alternate source."
+  },
+  {
+   "name": "Canadian University of Bangladesh",
+   "type": "private",
+   "urls": [
+    "https://www.cub.edu.bd/career.php"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "https://www.cub.edu.bd/career.php"
+   ],
+   "browser_urls": [],
+   "note": ""
+  },
+  {
+   "name": "Central University of Science and Technology",
+   "type": "private",
+   "urls": [
+    "https://cust.ac.bd/career",
+    "https://cust.ac.bd/notice",
+    "https://cust.ac.bd/"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "https://cust.ac.bd/notice",
+    "https://cust.ac.bd/"
+   ],
+   "browser_urls": [],
+   "note": ""
+  },
+  {
+   "name": "Central Women's University",
+   "type": "private",
+   "urls": [
+    "https://www.cwu.edu.bd/career/",
+    "https://www.cwu.edu.bd/announcements"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "https://www.cwu.edu.bd/career/",
+    "https://www.cwu.edu.bd/announcements"
+   ],
+   "browser_urls": [],
+   "note": ""
+  },
+  {
+   "name": "City University",
+   "type": "private",
+   "urls": [
+    "https://www.cityuniversity.ac.bd/career",
+    "https://www.cityuniversity.ac.bd/notice",
+    "https://www.cityuniversity.ac.bd/"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "https://www.cityuniversity.ac.bd/"
+   ],
+   "browser_urls": [],
+   "note": ""
+  },
+  {
+   "name": "Daffodil International University",
+   "type": "private",
+   "urls": [
+    "https://www.daffodilvarsity.edu.bd/career"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "https://www.daffodilvarsity.edu.bd/career"
+   ],
+   "browser_urls": [],
+   "note": ""
+  },
+  {
+   "name": "Dhaka International University",
+   "type": "private",
+   "urls": [
+    "https://jobs.diu.ac/",
+    "https://diu.ac/notice-event/notice"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "https://jobs.diu.ac/",
+    "https://diu.ac/notice-event/notice"
+   ],
+   "browser_urls": [],
+   "note": ""
+  },
+  {
+   "name": "East West University",
+   "type": "private",
+   "urls": [
+    "https://www.ewubd.edu/career"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "https://www.ewubd.edu/career"
+   ],
+   "browser_urls": [],
+   "note": ""
+  },
+  {
+   "name": "Eastern University",
+   "type": "private",
+   "urls": [
+    "https://www.easternuni.edu.bd/career",
+    "https://www.easternuni.edu.bd/notices"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "https://www.easternuni.edu.bd/career",
+    "https://www.easternuni.edu.bd/notices"
+   ],
+   "browser_urls": [],
+   "note": ""
+  },
+  {
+   "name": "European University of Bangladesh",
+   "type": "private",
+   "urls": [
+    "https://www.eub.edu.bd/career",
+    "https://www.eub.edu.bd/notices"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "https://www.eub.edu.bd/career",
+    "https://www.eub.edu.bd/notices"
+   ],
+   "browser_urls": [],
+   "note": ""
+  },
+  {
+   "name": "Fareast International University",
+   "type": "private",
+   "urls": [
+    "https://fiu.edu.bd/career/"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "https://fiu.edu.bd/career/"
+   ],
+   "browser_urls": [],
+   "note": ""
+  },
+  {
+   "name": "Gono Bishwabidyalay",
+   "type": "private",
+   "urls": [
+    "https://gonouniversity.edu.bd/category/job-notice/",
+    "https://www.gonouniversity.edu.bd/circular/"
+   ],
+   "status": "Blocked",
+   "monitor_urls": [],
+   "browser_urls": [],
+   "note": "Site shows a bot-verification screen. Check manually or use an alternate source."
+  },
+  {
+   "name": "Grameen University",
+   "type": "private",
+   "urls": [
+    "https://career.grameenu.ac/",
+    "https://grameenu.ac/career/",
+    "https://grameenu.ac/notices/"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "https://career.grameenu.ac/",
+    "https://grameenu.ac/career/",
+    "https://grameenu.ac/notices/"
+   ],
+   "browser_urls": [],
+   "note": ""
+  },
+  {
+   "name": "Green University of Bangladesh",
+   "type": "private",
+   "urls": [
+    "https://archive-career.green.edu.bd/current-circular/",
+    "https://career.green.edu.bd/",
+    "https://www.green.edu.bd/notice"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "https://archive-career.green.edu.bd/current-circular/",
+    "https://career.green.edu.bd/",
+    "https://www.green.edu.bd/notice"
+   ],
+   "browser_urls": [],
+   "note": ""
+  },
+  {
+   "name": "IBAIS University",
+   "type": "private",
+   "urls": [
+    "http://www.ibaisuniv.edu.bd/"
+   ],
+   "status": "Page not confirmed",
+   "monitor_urls": [],
+   "browser_urls": [],
+   "note": "No job section found, and search results showed gambling spam on the site."
+  },
+  {
+   "name": "Independent University, Bangladesh",
+   "type": "private",
+   "urls": [
+    "https://iub.ac.bd/news-and-events/jobs-at-iub"
+   ],
+   "status": "Ready (browser)",
+   "monitor_urls": [
+    "https://iub.ac.bd/news-and-events/jobs-at-iub"
+   ],
+   "browser_urls": [
+    "https://iub.ac.bd/news-and-events/jobs-at-iub"
+   ],
+   "note": "Needs a headless browser."
+  },
+  {
+   "name": "International Islami UST",
+   "type": "private",
+   "urls": [
+    "https://www.iiustb.ac.bd/page/career-opportunity",
+    "https://www.iiustb.ac.bd/all/notice/view"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "https://www.iiustb.ac.bd/page/career-opportunity",
+    "https://www.iiustb.ac.bd/all/notice/view"
+   ],
+   "browser_urls": [],
+   "note": ""
+  },
+  {
+   "name": "International Standard University",
+   "type": "private",
+   "urls": [
+    "https://www.isu.ac.bd/jobs"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "https://www.isu.ac.bd/jobs"
+   ],
+   "browser_urls": [],
+   "note": ""
+  },
+  {
+   "name": "IUBAT",
+   "type": "private",
+   "urls": [
+    "https://iubat.edu/jobs/",
+    "https://iubat.edu/career/"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "https://iubat.edu/jobs/",
+    "https://iubat.edu/career/"
+   ],
+   "browser_urls": [],
+   "note": ""
+  },
+  {
+   "name": "Manarat International University",
+   "type": "private",
+   "urls": [
+    "https://manarat.ac.bd/career-at-miu/"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "https://manarat.ac.bd/career-at-miu/"
+   ],
+   "browser_urls": [],
+   "note": ""
+  },
+  {
+   "name": "Microland University of Science and Technology",
+   "type": "private",
+   "urls": [
+    "https://www.microlanduniversity.org/"
+   ],
+   "status": "Suspicious site",
+   "monitor_urls": [],
+   "browser_urls": [],
+   "note": "Listed website contains casino spam. Do not trust links from it."
+  },
+  {
+   "name": "Millennium University",
+   "type": "private",
+   "urls": [
+    "https://www.themillenniumuniversity.edu.bd/"
+   ],
+   "status": "Site down",
+   "monitor_urls": [],
+   "browser_urls": [],
+   "note": "Domain does not resolve."
+  },
+  {
+   "name": "North South University",
+   "type": "private",
+   "urls": [
+    "https://jobs.northsouth.edu/",
+    "https://www.northsouth.edu/career-at-nsu/",
+    "https://repository.northsouth.edu/collections/67236197-767c-4f9e-8e00-28456dd146d0"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "https://jobs.northsouth.edu/",
+    "https://repository.northsouth.edu/collections/67236197-767c-4f9e-8e00-28456dd146d0"
+   ],
+   "browser_urls": [],
+   "note": ""
+  },
+  {
+   "name": "Northern University Bangladesh",
+   "type": "private",
+   "urls": [
+    "https://nub.ac.bd/nub/job"
+   ],
+   "status": "Blocked",
+   "monitor_urls": [],
+   "browser_urls": [],
+   "note": "Site shows a bot-verification screen. Check manually or use an alternate source."
+  },
+  {
+   "name": "Notre Dame University Bangladesh",
+   "type": "private",
+   "urls": [
+    "https://ndub.edu.bd/career/"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "https://ndub.edu.bd/career/"
+   ],
+   "browser_urls": [],
+   "note": ""
+  },
+  {
+   "name": "People's University of Bangladesh",
+   "type": "private",
+   "urls": [
+    "https://www.pub.ac.bd/careers/",
+    "https://www.pub.ac.bd/notice-board/"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "https://www.pub.ac.bd/careers/",
+    "https://www.pub.ac.bd/notice-board/"
+   ],
+   "browser_urls": [],
+   "note": ""
+  },
+  {
+   "name": "Presidency University",
+   "type": "private",
+   "urls": [
+    "https://pu.edu.bd/careers"
+   ],
+   "status": "Blocked",
+   "monitor_urls": [],
+   "browser_urls": [],
+   "note": "Site shows a bot-verification screen. Check manually or use an alternate source."
+  },
+  {
+   "name": "Prime University",
+   "type": "private",
+   "urls": [
+    "https://primeuniversity.ac.bd/jobs"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "https://primeuniversity.ac.bd/jobs"
+   ],
+   "browser_urls": [],
+   "note": ""
+  },
+  {
+   "name": "Primeasia University",
+   "type": "private",
+   "urls": [
+    "https://primeasia.edu.bd/career/",
+    "https://primeasia.edu.bd/career/faculty/"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "https://primeasia.edu.bd/career/",
+    "https://primeasia.edu.bd/career/faculty/"
+   ],
+   "browser_urls": [],
+   "note": ""
+  },
+  {
+   "name": "Queens University",
+   "type": "private",
+   "urls": [
+    "https://www.queensuniversity.edu.bd/notice"
+   ],
+   "status": "Page not confirmed",
+   "monitor_urls": [],
+   "browser_urls": [],
+   "note": "Notice page has no job content; visible notices were old."
+  },
+  {
+   "name": "Royal University of Dhaka",
+   "type": "private",
+   "urls": [
+    "https://www.royal.edu.bd/career/",
+    "https://www.royal.edu.bd/notice/"
+   ],
+   "status": "Blocked",
+   "monitor_urls": [
+    "https://www.royal.edu.bd/career/",
+    "https://www.royal.edu.bd/notice/"
+   ],
+   "browser_urls": [],
+   "note": "Site showed a bot-verification screen in the bot test. Stays monitored; moves to the weekly manual list if it keeps failing."
+  },
+  {
+   "name": "Shanto-Mariam University of Creative Technology",
+   "type": "private",
+   "urls": [
+    "https://smuct.ac.bd/career/"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "https://smuct.ac.bd/career/"
+   ],
+   "browser_urls": [],
+   "note": ""
+  },
+  {
+   "name": "Sonargaon University",
+   "type": "private",
+   "urls": [
+    "https://su.edu.bd/career"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "https://su.edu.bd/career"
+   ],
+   "browser_urls": [],
+   "note": ""
+  },
+  {
+   "name": "Southeast University",
+   "type": "private",
+   "urls": [
+    "https://seu.edu.bd/career",
+    "https://www.seu.edu.bd/news_and_events.php",
+    "https://seu.edu.bd/notice"
+   ],
+   "status": "Blocked",
+   "monitor_urls": [],
+   "browser_urls": [],
+   "note": "Site returns HTTP 403 to automated requests. Check manually or use an alternate source."
+  },
+  {
+   "name": "Stamford University Bangladesh",
+   "type": "private",
+   "urls": [
+    "https://stamforduniversity.edu.bd/index.php/stamford/career"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "https://stamforduniversity.edu.bd/index.php/stamford/career"
+   ],
+   "browser_urls": [],
+   "note": ""
+  },
+  {
+   "name": "State University of Bangladesh",
+   "type": "private",
+   "urls": [
+    "https://sub.ac.bd/career",
+    "https://sub.ac.bd/notice"
+   ],
+   "status": "Page not confirmed",
+   "monitor_urls": [],
+   "browser_urls": [],
+   "note": "No career page confirmed. Lead to check: https://www.sub.edu.bd/?job_listing=faculty-search"
+  },
+  {
+   "name": "Tagore University of Creative Arts",
+   "type": "private",
+   "urls": [
+    "https://tuca.edu.bd/career/",
+    "https://tuca.edu.bd/notice-announcements/"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "https://tuca.edu.bd/career/",
+    "https://tuca.edu.bd/notice-announcements/"
+   ],
+   "browser_urls": [],
+   "note": ""
+  },
+  {
+   "name": "United International University",
+   "type": "private",
+   "urls": [
+    "https://www.uiu.ac.bd/career/"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "https://www.uiu.ac.bd/career/"
+   ],
+   "browser_urls": [],
+   "note": ""
+  },
+  {
+   "name": "University of Asia Pacific",
+   "type": "private",
+   "urls": [
+    "https://www.uap-bd.edu/no_vacancy.php",
+    "https://www.uap-bd.edu/news-events.php"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "https://www.uap-bd.edu/no_vacancy.php",
+    "https://www.uap-bd.edu/news-events.php"
+   ],
+   "browser_urls": [],
+   "note": ""
+  },
+  {
+   "name": "University of Development Alternative",
+   "type": "private",
+   "urls": [
+    "https://uoda.edu.bd/notice-board/recruitment-notice",
+    "https://uoda.edu.bd/notice-board"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "https://uoda.edu.bd/notice-board/recruitment-notice",
+    "https://uoda.edu.bd/notice-board"
+   ],
+   "browser_urls": [],
+   "note": ""
+  },
+  {
+   "name": "UITS",
+   "type": "private",
+   "urls": [
+    "https://career.uits.ac.bd/",
+    "https://uits.ac.bd/notice"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "https://career.uits.ac.bd/",
+    "https://uits.ac.bd/notice"
+   ],
+   "browser_urls": [],
+   "note": ""
+  },
+  {
+   "name": "ULAB",
+   "type": "private",
+   "urls": [
+    "https://hr.ulab.edu.bd/jobs-ulab",
+    "https://hr.ulab.edu.bd/"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "https://hr.ulab.edu.bd/jobs-ulab",
+    "https://hr.ulab.edu.bd/"
+   ],
+   "browser_urls": [],
+   "note": ""
+  },
+  {
+   "name": "University of Scholars",
+   "type": "private",
+   "urls": [
+    "https://www.ius.edu.bd/career-opportunities-at-scholars",
+    "https://www.ius.edu.bd/notice-list"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "https://www.ius.edu.bd/career-opportunities-at-scholars",
+    "https://www.ius.edu.bd/notice-list"
+   ],
+   "browser_urls": [],
+   "note": ""
+  },
+  {
+   "name": "University of South Asia",
+   "type": "private",
+   "urls": [
+    "https://southasiauni.ac.bd/notices",
+    "https://southasiauni.ac.bd/"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "https://southasiauni.ac.bd/notices",
+    "https://southasiauni.ac.bd/"
+   ],
+   "browser_urls": [],
+   "note": ""
+  },
+  {
+   "name": "Uttara University",
+   "type": "private",
+   "urls": [
+    "https://www.uttara.ac.bd/career/"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "https://www.uttara.ac.bd/career/"
+   ],
+   "browser_urls": [],
+   "note": ""
+  },
+  {
+   "name": "Victoria University of Bangladesh",
+   "type": "private",
+   "urls": [
+    "https://vub.edu.bd/career/",
+    "https://vub.edu.bd/all-notice/"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "https://vub.edu.bd/career/",
+    "https://vub.edu.bd/all-notice/"
+   ],
+   "browser_urls": [],
+   "note": ""
+  },
+  {
+   "name": "World University of Bangladesh",
+   "type": "private",
+   "urls": [
+    "https://jobs.wub.edu.bd/",
+    "https://www.wub.edu.bd/main/all_notice"
+   ],
+   "status": "Ready",
+   "monitor_urls": [
+    "https://jobs.wub.edu.bd/",
+    "https://www.wub.edu.bd/main/all_notice"
+   ],
+   "browser_urls": [],
+   "note": ""
+  },
+  {
+   "name": "ZNRF University of Management Sciences",
+   "type": "private",
+   "urls": [
+    "https://zums.edu.bd/career.php",
+    "https://zums.edu.bd/notice.php",
+    "https://zums.edu.bd/"
+   ],
+   "status": "Page not confirmed",
+   "monitor_urls": [],
+   "browser_urls": [],
+   "note": "Career page rendered blank."
+  }
+ ],
+ "backup_sources": [
+  {
+   "name": "Bdjobs Hot Jobs",
+   "urls": [
+    "https://hotjobs.bdjobs.com/"
+   ]
+  },
+  {
+   "name": "Teletalk All Jobs",
+   "urls": [
+    "https://alljobs.teletalk.com.bd/"
+   ]
+  },
+  {
+   "name": "Skill Jobs",
+   "urls": [
+    "https://skill.jobs/"
+   ]
+  },
+  {
+   "name": "UGC Bangladesh",
+   "urls": [
+    "https://ugc.gov.bd/"
+   ]
+  }
+ ]
+}

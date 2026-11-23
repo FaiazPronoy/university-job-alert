@@ -1,0 +1,72 @@
+﻿University,Type,Status,Primary link,Backup links,Note
+AIUB,private,Ready,https://www.aiub.edu/about/career,,
+ASA University Bangladesh,private,Certificate issue,https://www.asaub.edu.bd/career.php,https://www.asaub.edu.bd/seeall.php,Site uses a self-signed certificate. Not monitored automatically.
+Ahsanullah University of Science and Technology,private,Ready,https://www.aust.edu/vacancy,,
+Anwer Khan Modern University,private,Blocked,https://akmu.edu.bd/category/job-notice/,,Site shows a bot-verification screen. Check manually or use an alternate source.
+Asian University of Bangladesh,private,Ready,https://aub.ac.bd/career,,
+Atish Dipankar UST,private,Page not confirmed,https://www.adust.edu.bd/?action=noticeLists,,"Notice URL rendered the homepage, correct notice page not confirmed."
+BGMEA University of Fashion & Technology,private,Ready,https://buft.edu.bd/career,https://buft.edu.bd/notice,
+BRAC University,private,Blocked,https://www.bracu.ac.bd/about/career-at-bracu,https://www.bracu.ac.bd/faculty-search,Site returns HTTP 403 to automated requests. Check manually or use an alternate source.
+BUBT,private,Ready,https://www.bubt.edu.bd/page/career,https://www.bubt.edu.bd/notice,
+Bangladesh Islami University,private,Blocked,https://biu.ac.bd/,,Site shows a bot-verification screen. Check manually or use an alternate source.
+Bangladesh University,private,Ready,https://www.bu.edu.bd/career/,,
+Bangladesh University of Health Sciences,private,Page not confirmed,https://buhs.ac.bd/notice-board/,,Notice board rendered without notices.
+Canadian University of Bangladesh,private,Ready,https://www.cub.edu.bd/career.php,,
+Central University of Science and Technology,private,Ready,https://cust.ac.bd/notice,https://cust.ac.bd/,
+Central Women's University,private,Ready,https://www.cwu.edu.bd/career/,https://www.cwu.edu.bd/announcements,
+City University,private,Ready,https://www.cityuniversity.ac.bd/,,
+Daffodil International University,private,Ready,https://www.daffodilvarsity.edu.bd/career,,
+Dhaka International University,private,Ready,https://jobs.diu.ac/,https://diu.ac/notice-event/notice,
+East West University,private,Ready,https://www.ewubd.edu/career,,
+Eastern University,private,Ready,https://www.easternuni.edu.bd/career,https://www.easternuni.edu.bd/notices,
+European University of Bangladesh,private,Ready,https://www.eub.edu.bd/career,https://www.eub.edu.bd/notices,
+Fareast International University,private,Ready,https://fiu.edu.bd/career/,,
+Gono Bishwabidyalay,private,Blocked,https://gonouniversity.edu.bd/category/job-notice/,https://www.gonouniversity.edu.bd/circular/,Site shows a bot-verification screen. Check manually or use an alternate source.
+Grameen University,private,Ready,https://career.grameenu.ac/,https://grameenu.ac/career/ | https://grameenu.ac/notices/,
+Green University of Bangladesh,private,Ready,https://archive-career.green.edu.bd/current-circular/,https://career.green.edu.bd/ | https://www.green.edu.bd/notice,
+IBAIS University,private,Page not confirmed,http://www.ibaisuniv.edu.bd/,,"No job section found, and search results showed gambling spam on the site."
+IUBAT,private,Ready,https://iubat.edu/jobs/,https://iubat.edu/career/,
+"Independent University, Bangladesh",private,Ready (browser),https://iub.ac.bd/news-and-events/jobs-at-iub,,Needs a headless browser.
+International Islami UST,private,Ready,https://www.iiustb.ac.bd/page/career-opportunity,https://www.iiustb.ac.bd/all/notice/view,
+International Standard University,private,Ready,https://www.isu.ac.bd/jobs,,
+Manarat International University,private,Ready,https://manarat.ac.bd/career-at-miu/,,
+Microland University of Science and Technology,private,Suspicious site,https://www.microlanduniversity.org/,,Listed website contains casino spam. Do not trust links from it.
+Millennium University,private,Site down,https://www.themillenniumuniversity.edu.bd/,,Domain does not resolve.
+North South University,private,Ready,https://jobs.northsouth.edu/,https://repository.northsouth.edu/collections/67236197-767c-4f9e-8e00-28456dd146d0,
+Northern University Bangladesh,private,Blocked,https://nub.ac.bd/nub/job,,Site shows a bot-verification screen. Check manually or use an alternate source.
+Notre Dame University Bangladesh,private,Ready,https://ndub.edu.bd/career/,,
+People's University of Bangladesh,private,Ready,https://www.pub.ac.bd/careers/,https://www.pub.ac.bd/notice-board/,
+Presidency University,private,Blocked,https://pu.edu.bd/careers,,Site shows a bot-verification screen. Check manually or use an alternate source.
+Prime University,private,Ready,https://primeuniversity.ac.bd/jobs,,
+Primeasia University,private,Ready,https://primeasia.edu.bd/career/,https://primeasia.edu.bd/career/faculty/,
+Queens University,private,Page not confirmed,https://www.queensuniversity.edu.bd/notice,,Notice page has no job content; visible notices were old.
+Royal University of Dhaka,private,Blocked,https://www.royal.edu.bd/career/,https://www.royal.edu.bd/notice/,Site showed a bot-verification screen in the bot test. Stays monitored; moves to the weekly manual list if it keeps failing.
+Shanto-Mariam University of Creative Technology,private,Ready,https://smuct.ac.bd/career/,,
+Sonargaon University,private,Ready,https://su.edu.bd/career,,
+Southeast University,private,Blocked,https://seu.edu.bd/career,https://www.seu.edu.bd/news_and_events.php | https://seu.edu.bd/notice,Site returns HTTP 403 to automated requests. Check manually or use an alternate source.
+Stamford University Bangladesh,private,Ready,https://stamforduniversity.edu.bd/index.php/stamford/career,,
+State University of Bangladesh,private,Page not confirmed,https://sub.ac.bd/career,https://sub.ac.bd/notice,No career page confirmed. Lead to check: https://www.sub.edu.bd/?job_listing=faculty-search
+Tagore University of Creative Arts,private,Ready,https://tuca.edu.bd/career/,https://tuca.edu.bd/notice-announcements/,
+UITS,private,Ready,https://career.uits.ac.bd/,https://uits.ac.bd/notice,
+ULAB,private,Ready,https://hr.ulab.edu.bd/jobs-ulab,https://hr.ulab.edu.bd/,
+United International University,private,Ready,https://www.uiu.ac.bd/career/,,
+University of Asia Pacific,private,Ready,https://www.uap-bd.edu/no_vacancy.php,https://www.uap-bd.edu/news-events.php,
+University of Development Alternative,private,Ready,https://uoda.edu.bd/notice-board/recruitment-notice,https://uoda.edu.bd/notice-board,
+University of Scholars,private,Ready,https://www.ius.edu.bd/career-opportunities-at-scholars,https://www.ius.edu.bd/notice-list,
+University of South Asia,private,Ready,https://southasiauni.ac.bd/notices,https://southasiauni.ac.bd/,
+Uttara University,private,Ready,https://www.uttara.ac.bd/career/,,
+Victoria University of Bangladesh,private,Ready,https://vub.edu.bd/career/,https://vub.edu.bd/all-notice/,
+World University of Bangladesh,private,Ready,https://jobs.wub.edu.bd/,https://www.wub.edu.bd/main/all_notice,
+ZNRF University of Management Sciences,private,Page not confirmed,https://zums.edu.bd/career.php,https://zums.edu.bd/notice.php | https://zums.edu.bd/,Career page rendered blank.
+BUET,public,Ready,https://recruitment.buet.ac.bd/,https://regoffice.buet.ac.bd/?page_id=12 | https://regoffice.buet.ac.bd/?post_type=news,Main portal needs a headless browser.
+Bangladesh Maritime University,public,Ready,https://bmu.edu.bd/about-us/career,,
+Bangladesh Medical University,public,Ready,https://www.bmu.ac.bd/,,
+Bangladesh University of Professionals,public,Ready,https://career.bup.edu.bd/,https://www.bup.edu.bd/career | https://www.bup.edu.bd/notice/all,
+Bangladesh University of Textiles,public,Ready,https://www.butex.edu.bd/career-opportunity/,,
+Dhaka Central University,public,Ready,https://dcu.ac.bd/,,
+Islamic Arabic University,public,Ready,http://iau.edu.bd/recruitment-circular/,http://iau.edu.bd/recruitment-2/ | http://iau.edu.bd/allnotice/,
+Jagannath University,public,Ready,https://career.jnu.ac.bd/,https://jnu.ac.bd/newsite/noticeview/1,
+Jahangirnagar University,public,Ready,https://jobs.juniv.edu/,https://www.juniv.edu/,Main portal needs a headless browser.
+MIST,public,Certificate issue,https://mist.ac.bd/career,https://mist.ac.bd/notice,Certificate chain is incomplete. May be fixable by adding the correct intermediate certificate.
+Sher-e-Bangla Agricultural University,public,Ready,https://www.sau.edu.bd/home/jobs/1,https://www.sau.edu.bd/home/notices,
+University of Dhaka,public,Ready,https://jobs.du.ac.bd/,,
