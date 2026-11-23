@@ -119,6 +119,31 @@ class Extraction(unittest.TestCase):
     def test_form_dropdown_is_not_a_job_line(self):
         self.assertEqual(w.job_lines(w.page_lines("<main><select><option>Section Officer</option></select></main>")), [])
 
+    def test_table_deadline_column_and_shared_form(self):
+        html = ("<table><tr><th>Discipline</th><th>Apply for</th><th>Deadline</th></tr>"
+                "<tr><td>Admin</td><td><a href='/form'>Senior Officer, Admin</a></td><td>31 October 2026</td></tr>"
+                "<tr><td>IT</td><td><a href='/form'>IT Officer</a></td><td>05 November 2026</td></tr></table>")
+        items = w.extract_items("Green", html, PAGE)
+        self.assertEqual({i.title: i.deadline for i in items},
+                         {"Senior Officer, Admin": date(2026, 10, 31), "IT Officer": date(2026, 11, 5)})
+
+    def test_two_digit_year(self):
+        self.assertEqual(w.find_dates("Date: 27-Oct-26")[0][1], date(2026, 10, 27))
+
+    def test_subject_name_is_not_admin_post(self):
+        for title in ["Department of Business Administration", "Master of Business Administration", "Faculty & Staff"]:
+            self.assertIsNone(w.classify(title, title, PAGE), title)
+        self.assertIsNotNone(w.classify("Lecturer (Business Administration)", "Lecturer (Business Administration)", PAGE))
+
+    def test_gambling_spam_is_rejected(self):
+        title = "Pemodelan Matematis Putaran Gratis Buatan Developer PG Soft"
+        self.assertIsNone(w.classify(title, title, PAGE))
+
+    def test_real_circular_with_application_form_is_kept(self):
+        title = "সহকারী অধ্যাপক পদে নিয়োগ বিজ্ঞপ্তি ও আবেদন ফরম"
+        self.assertIsNotNone(w.classify(title, title, PAGE))
+        self.assertIsNone(w.classify("Application Form for Teacher", "Application Form for Teacher", PAGE))
+
     def test_menu_word_without_deadline_is_ignored(self):
         self.assertIsNone(w.classify("Lecturer", "Lecturer", PAGE))
 
@@ -187,6 +212,30 @@ class Flow(unittest.TestCase):
         html = ("<main><p>Welcome to the university portal</p><p>Explore exciting faculty and administrative positions</p>"
                 "<p><a href='/contact'>recruitment@example.edu - Sat-Thu</a></p></main>")
         self.assertEqual(self.go(self.state, html), [])
+
+    def test_deadline_from_detail_page_is_used(self):
+        class Detail(FakeFetcher):
+            def detail_deadlines(self, urls):
+                return {u: date(2026, 12, 10) for u in urls}
+        self.state["catchup_version"] = w.CATCHUP_VERSION
+        html = "<main><table><tr><td><a href='/job/9'>Lecturer in Economics</a></td></tr></table></main>"
+        notifier = w.DryRunSilent()
+        w.run(CONFIG, self.state, Detail(html), notifier, NOW)
+        self.assertIn("10 Dec 2026", "".join(notifier.messages))
+
+    def test_catchup_is_sent_once_for_existing_memory(self):
+        self.go(self.state, page(("Lecturer, CSE", "30/11/2026")))
+        self.state.pop("catchup_version")
+        self.assertIn("Updated list", "".join(self.go(self.state, page(("Lecturer, CSE", "30/11/2026")))))
+        self.assertEqual(self.go(self.state, page(("Lecturer, CSE", "30/11/2026"))), [])
+
+    def test_rule_upgrade_does_not_announce_old_content(self):
+        html = page(("Lecturer, CSE", "30/11/2026"))
+        self.go(self.state, html)
+        self.state["rules_version"] = 0
+        self.state["catchup_version"] = w.CATCHUP_VERSION
+        wider = page(("Lecturer, CSE", "30/11/2026"), ("Old Accountant Post Notice", "01/01/2025"))
+        self.assertEqual(self.go(self.state, wider), [])
 
     def test_broken_source_alerts_once_and_recovers(self):
         html = page(("Lecturer, CSE", "30/11/2026"))

@@ -49,6 +49,9 @@ PRUNE_DAYS = 180
 MAX_PAGE_BYTES = 5_000_000
 MAX_PDF_BYTES = 8_000_000
 HOST_DELAY = 1.0
+MAX_DETAIL_CHECKS = 150
+CATCHUP_VERSION = 2
+RULES_VERSION = 2  # raise whenever detection rules change
 NO_LINK_STATUSES = {"Suspicious site", "Site down"}
 NO_LINK_NAMES = {"IBAIS University"}
 
@@ -83,7 +86,7 @@ MONTH = ("jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|june?|july?|aug(?
 DATE_PATTERNS = [
     ("ymd", rx(r"(?<!\d)(20\d{2})[-/.](\d{1,2})[-/.](\d{1,2})(?!\d)")),
     ("dmy", rx(r"(?<!\d)(\d{1,2})[-/.](\d{1,2})[-/.](20\d{2}|\d{2})(?!\d)")),
-    ("dMy", rx(rf"(?<!\d)(\d{{1,2}})(?:st|nd|rd|th|ই|শে|লা|রা)?[\s\-]*(?:of\s+)?({MONTH})[\s,.\-]*(20\d{{2}})(?!\d)")),
+    ("dMy", rx(rf"(?<!\d)(\d{{1,2}})(?:st|nd|rd|th|ই|শে|লা|রা)?[\s\-]*(?:of\s+)?({MONTH})[\s,.\-]*(20\d{{2}}|\d{{2}})(?!\d)")),
     ("Mdy", rx(rf"(?<![a-z])({MONTH})[\s.]*(\d{{1,2}})(?:st|nd|rd|th)?[\s,]+(20\d{{2}})(?!\d)")),
 ]
 DEADLINE_WORDS = rx(
@@ -153,6 +156,7 @@ RESEARCH = rx(r"research\s*(assistant|associate|officer|fellow)|গবেষণ�
 TEACHING = rx(r"lecturer|faculty|professor|teacher|teaching\s*assistant|adjunct|demonstrator|"
               r"প্রভাষক|শিক্ষক|অধ্যাপক|ডেমোনস্ট্রেটর")
 ADMIN = rx(r"officer|registrar|administrat|\badmin\b|coordinator|manager|director|controller|librarian|executive|"
+           r"accountant|engineer\b|programmer|developer|analyst|specialist|হিসাবরক্ষক|"
            r"কর্মকর্তা|রেজিস্ট্রার|পরিচালক|গ্রন্থাগারিক|প্রশাসন|নিয়ন্ত্রক")
 HIRE = rx(r"recruit|vacanc|job\s*(circular|opportunit|opening|notice|advert)|career\s*opportunit|"
           r"faculty\s*(search|position|recruit)|open\s*(rank|position)|positions?\s*(available|open)|"
@@ -170,18 +174,30 @@ LOW_RANK = rx(r"electrician|driver|peon|guard|cleaner|\bmlss\b|helper|gardener|\
               r"upper\s*division|lower\s*division|office\s*assistant|computer\s*operator|data\s*entry|"
               r"ইলেকট্রিশিয়ান|ইলেক্ট্রিশিয়ান|ড্রাইভার|গাড়ি\s*চালক|গাড়িচালক|প্রহরী|পিয়ন|ঝাড়ুদার|মালী|"
               r"উচ্চমান\s*সহকারী|নিম্নমান\s*সহকারী|অফিস\s*সহায়ক|অফিস\s*সহকারী|কম্পিউটার\s*অপারেটর")
+NOT_JOB = rx(r"office\s*order|evaluation|research\s*proposal|chartered\s*accountant|"
+             r"casino|gamstop|\bslot\b|gacor|\bjudi\b|togel|putaran\s*gratis|pg\s*soft|"
+             r"গবেষণা\s*প্রস্তাব|বহিঃনিরীক্ষক|নিয়োগ\s*কার্যক্রম\s*বন্ধ")
+FORM_WORD = rx(r"application\s*form|আবেদন\s*ফরম")
+ANNOUNCEMENT = rx(r"circular|recruitment|বিজ্ঞপ্তি")
+DEGREE_NAME = rx(r"(?:(?:master|bachelor)\s+of\s+)?(?:business|public)\s+administration|"
+                 r"(?:master|bachelor)\s+of\s+\w+")
 OFFICE_NAME = rx(r"office\s+of(\s+the)?\s+[^,\-–(]+")
 NO_VACANCY = rx(r"no\s+(job\s+)?vacanc|no\s+open\s+positions?|no\s+current\s+(openings?|vacanc)|"
                 r"building\s+this\s+page|কোন\s+নিয়োগ\s+নেই")
 SCHOOL = rx(r"school\s*(and|&)\s*college|স্কুল\s*ও\s*কলেজ")
-NAV_ONLY = rx(r"^(faculty|faculties|officers?|registrar|administration|lecturers?|teachers?|career|careers|jobs?|"
+NAV_ONLY = rx(r"^(faculty\s*(&|and)\s*staff|faculty|faculties|officers?|registrar|administration|lecturers?|teachers?|career|careers|jobs?|"
               r"notice|notices|directors?|executive|management|শিক্ষক|কর্মকর্তা|নিয়োগ)(\s+(list|page))?$")
 CAREER_URL = rx(r"career|job|vacanc|recruit|circular|employment")
 TABLE_HEADER = rx(r"^(available\s+)?job\s+listings?\b")
 PAGE_COPY = rx(r"^(explore|browse|discover|find|join|we\s|our\s|please|learn|build|submit|select|apply\s+now)\b")
 
 
+def not_job(title: str) -> bool:
+    return bool(NOT_JOB.search(title) or (FORM_WORD.search(title) and not ANNOUNCEMENT.search(title)))
+
+
 def role_of(text: str) -> str | None:
+    text = DEGREE_NAME.sub(" ", text)  # "Business Administration" is a subject, not an admin post
     if RESEARCH.search(text):
         return "Research"
     if TEACHING.search(text):
@@ -202,7 +218,7 @@ def classify(title: str, context: str, page_url: str) -> tuple[str, str] | None:
     has_deadline = bool(find_deadline(context))
     # A bare "Lecturer" is a menu item unless it carries a deadline.
     if len(title) < 6 or "@" in title or (NAV_ONLY.match(title) and not has_deadline) \
-            or AFTER_CIRCULAR.search(title) or TABLE_HEADER.search(title):
+            or AFTER_CIRCULAR.search(title) or TABLE_HEADER.search(title) or not_job(title):
         return None
     title_role = role_of(OFFICE_NAME.sub(" ", title))  # "Office of the Registrar" is a place, not the post
     title_hire = bool(HIRE.search(title))
@@ -263,7 +279,8 @@ def canonical_url(url: str) -> str:
 
 
 def tidy_title(title: str) -> str:
-    title = re.sub(r"\[[^\]]*\d{4}[^\]]*\]", " ", clean(title))
+    title = re.sub("[\U0001F000-\U0001FAFF☀-➿️]", " ", clean(title))
+    title = re.sub(r"\[[^\]]*\d{4}[^\]]*\]", " ", title)
     title = re.split(r"\s+(?:published on|posted on|application deadline|dead\s*line\s*:|deadline\s*:)", title,
                      maxsplit=1, flags=re.I)[0]
     return clean(title).strip(" -|:")[:180]
@@ -327,8 +344,32 @@ def make_item(university: str, node, page_url: str, anchors: list[tuple[str, str
         slug = re.sub(r"[-_]+", " ", slug).strip()
         if re.search(r"[A-Za-z]{3}", slug) and slug.lower() != title.lower():
             title = f"{title} ({slug[:60]})"
-    return Item(university, title, url, page_url, context, find_deadline(context),
+    return Item(university, title, url, page_url, context, find_deadline(context) or table_deadline(node),
                 [value for _, value in find_dates(context)], bool(named))
+
+
+def table_deadline(node) -> date | None:
+    """Read a date from a row when the deadline word exists only in the table header."""
+    row = node if node.name == "tr" else node.find_parent("tr")
+    table = row.find_parent("table") if row else None
+    header = table.find("tr") if table else None
+    if not header or header is row or not DEADLINE_WORDS.search(clean(header.get_text(" "))):
+        return None
+    dates = find_dates(row.get_text(" "))
+    if len(dates) == 1:
+        return dates[0][1]
+    titles = [clean(cell.get_text(" ")) for cell in header.find_all(["th", "td"])]
+    cells = row.find_all(["td", "th"], recursive=False)
+    for index, label in enumerate(titles):
+        if DEADLINE_WORDS.search(label) and index < len(cells):
+            found = find_dates(cells[index].get_text(" "))
+            if found:
+                return found[0][1]
+    return None
+
+
+def tidy_key(title: str) -> str:
+    return re.sub(r"\W+", " ", clean(title).lower()).strip()
 
 
 def merge_same_link(items: list[Item], page_url: str) -> list[Item]:
@@ -345,6 +386,9 @@ def merge_same_link(items: list[Item], page_url: str) -> list[Item]:
         if current is None:
             merged[key] = item
             output.append(item)
+            continue
+        if item.named and current.named and tidy_key(item.title) != tidy_key(current.title):
+            output.append(item)  # different posts can share one application form
             continue
         if item.named and not current.named:
             current.title, current.named = item.title, True
@@ -428,7 +472,7 @@ def job_lines(lines: list[str]) -> list[str]:
             continue
         if len(line.split()) > 12 or PAGE_COPY.match(line):  # page copy, not a post title
             continue
-        if NOISE.search(line) or AFTER_CIRCULAR.search(line) or NO_VACANCY.search(line):
+        if NOISE.search(line) or AFTER_CIRCULAR.search(line) or NO_VACANCY.search(line) or not_job(line):
             continue
         if (role_of(OFFICE_NAME.sub(" ", line)) or HIRE.search(line)) and line not in found:
             found.append(line)
@@ -614,6 +658,37 @@ class Fetcher:
                 results[rendered.url] = rendered
         return results
 
+    def detail_deadlines(self, urls: list[str]) -> dict[str, date]:
+        """Many list pages hide the deadline, so read the circular's own page or PDF."""
+        documents = [u for u in urls if DOCUMENT_URL.search(urlparse(u).path)]
+        by_host: dict[str, list[str]] = defaultdict(list)
+        for url in urls:
+            if url not in documents:
+                by_host[urlparse(url).netloc].append(url)
+        found: dict[str, date] = {}
+        thin: list[str] = []
+        with ThreadPoolExecutor(8) as pool:
+            for group in pool.map(self.fetch_host, by_host.values()):
+                for result in group:
+                    if not result.ok:
+                        continue
+                    lines = page_lines(result.html)
+                    # Site-wide banners such as "admission deadline" must not become the job deadline.
+                    deadline = find_deadline(" ".join(x for x in lines if not NOISE.search(x)))
+                    if deadline:
+                        found[result.url] = deadline
+                    elif len(" ".join(lines)) < 300:
+                        thin.append(result.url)
+        for result in self.browser(thin):
+            if result.ok:
+                text = " ".join(x for x in page_lines(result.html) if not NOISE.search(x))
+                if deadline := find_deadline(text):
+                    found[result.url] = deadline
+        for url in documents:
+            if url.lower().split("?")[0].endswith(".pdf") and (deadline := self.pdf_deadline(url)):
+                found[url] = deadline
+        return found
+
     def pdf_deadline(self, url: str) -> date | None:
         """Best effort: text PDFs only. Scanned PDFs return None."""
         try:
@@ -794,7 +869,7 @@ def record_of(item: Item, level: str, category: str, today: date, notified: bool
     return {"university": item.university, "title": item.title, "url": item.url, "page": item.page_url,
             "level": level, "category": category, "deadline": valid_deadline(item, today),
             "first_seen": today.isoformat(), "notified": notified, "digested": level != "possible" or notified,
-            "reminded": []}
+            "reminded": [], "latest_date": max(item.dates).isoformat() if item.dates else None}
 
 
 def backup_match(item: Item, names: list[str]) -> str | None:
@@ -847,6 +922,8 @@ def process_source(source: dict, result: FetchResult, state: dict, today: date, 
     new = {k: v for k, v in accepted.items() if k not in state["items"]}
     for key, (item, _, _) in accepted.items():
         record = state["items"].get(key)
+        if record and item.dates:
+            record["latest_date"] = max(item.dates).isoformat()
         fresh = valid_deadline(item, today)
         if record and fresh and record.get("deadline") and fresh > record["deadline"] and record["level"] == "strong":
             moved = (date.fromisoformat(fresh) - date.fromisoformat(record["deadline"])).days
@@ -898,6 +975,9 @@ def send_pending(state: dict, notifier, fetcher, today: date) -> int:
     sent = 0
     pending = [(k, r) for k, r in state["items"].items() if not r["notified"] and r["level"] == "strong"]
     for key, record in sorted(pending, key=lambda x: (x[1].get("deadline") or "9999", x[1]["university"])):
+        if record.get("deadline") and date.fromisoformat(record["deadline"]) < today:
+            record["notified"] = True  # the circular page showed it has already closed
+            continue
         if not record.get("deadline") and ".pdf" in record["url"].lower() and hasattr(fetcher, "pdf_deadline"):
             found = fetcher.pdf_deadline(record["url"])
             if found and today <= found <= today + timedelta(days=365):
@@ -918,6 +998,69 @@ def send_pending(state: dict, notifier, fetcher, today: date) -> int:
         if not record["notified"] and record["level"] == "possible":
             record["notified"] = True
     return sent
+
+
+def enrich_deadlines(state: dict, fetcher, today: date) -> list[str]:
+    """Return already-seen items that turned out to be open, so they can still be announced."""
+    if not hasattr(fetcher, "detail_deadlines"):
+        return []
+    failing = {urlparse(u).netloc for u, info in state["sources"].items() if info.get("state") != "ok"}
+    source_pages = {canonical_url(u) for u in state["sources"]}
+
+    def is_circular_link(url: str) -> bool:
+        parts = urlparse(url)
+        return bool(DOCUMENT_URL.search(parts.path) or CAREER_URL.search(f"{parts.path}?{parts.query}"))
+
+    todo = [r for r in state["items"].values()
+            if r["level"] == "strong" and not r.get("deadline") and not r.get("detail_checked")
+            and r["category"] != "Career page update" and not not_job(r["title"])
+            and canonical_url(r["url"]) not in source_pages and is_circular_link(r["url"])
+            and urlparse(r["url"]).netloc not in failing]
+    todo.sort(key=lambda r: r.get("latest_date") or "", reverse=True)
+    todo.sort(key=lambda r: r["notified"])
+    todo = todo[:MAX_DETAIL_CHECKS]
+    if not todo:
+        return []
+    found = fetcher.detail_deadlines(list(dict.fromkeys(r["url"] for r in todo)))
+    now_open = set()
+    for record in todo:
+        record["detail_checked"] = True
+        value = found.get(record["url"])
+        if value and value <= today + timedelta(days=365):
+            record["deadline"] = value.isoformat()
+            if value >= today and record["notified"]:
+                now_open.add(id(record))
+    return [key for key, record in state["items"].items() if id(record) in now_open]
+
+
+def send_catchup(state: dict, notifier, today: date, skip: set[str]) -> None:
+    """One full list after a coverage upgrade, because old baselines stayed silent."""
+    if state.get("catchup_version") == CATCHUP_VERSION:
+        return
+    if not state["items"]:
+        state["catchup_version"] = CATCHUP_VERSION
+        return
+    open_items, recent, seen = [], [], set()
+    cutoff = (today - timedelta(days=STALE_DAYS)).isoformat()
+    for key, record in state["items"].items():
+        if key in skip or not record["notified"] or record["level"] != "strong" or not_job(record["title"]) \
+                or record["category"] == "Career page update":
+            continue
+        if record.get("deadline"):
+            mark = fingerprint(record)
+            if record["deadline"] >= today.isoformat() and (not mark or mark not in seen):
+                open_items.append(record)
+                if mark:
+                    seen.add(mark)
+        elif (record.get("latest_date") or "") >= cutoff:
+            recent.append(record)
+    lines = [f"<b>Updated list: ekhon open circular ({len(open_items)})</b>"]
+    lines += [short_line(r, today) for r in sorted(open_items, key=lambda r: r["deadline"])]
+    if recent:
+        lines += ["", f"<b>Recent circular, deadline PDF/page-e dekhun ({len(recent)})</b>"]
+        lines += [short_line(r, today) for r in sorted(recent, key=lambda r: r["latest_date"], reverse=True)]
+    notifier.send("\n".join(lines))
+    state["catchup_version"] = CATCHUP_VERSION
 
 
 def send_open_now(keys: list[str], state: dict, notifier, today: date) -> None:
@@ -1025,6 +1168,13 @@ def run(config: dict, state: dict, fetcher, notifier, now: datetime | None = Non
     sources = list_sources(config)
     results = fetcher(sources)
     names = [u["name"] for u in config["universities"]]
+    if not state["items"]:
+        state["catchup_version"] = CATCHUP_VERSION
+    if state.get("rules_version") != RULES_VERSION:
+        # New detection rules must not announce old page content as new circulars.
+        for info in state["sources"].values():
+            info["baselined"] = False
+        state["rules_version"] = RULES_VERSION
     open_now: list[str] = []
     floods: list[str] = []
     for source in sources:
@@ -1038,7 +1188,9 @@ def run(config: dict, state: dict, fetcher, notifier, now: datetime | None = Non
             state["sources"][source["url"]]["fails"] += 1
             state["sources"][source["url"]]["state"] = "parse_error"
     state["last_run"] = now.isoformat()
+    open_now += enrich_deadlines(state, fetcher, today)
     send_open_now(open_now, state, notifier, today)
+    send_catchup(state, notifier, today, set(open_now))
     sent = send_pending(state, notifier, fetcher, today)
     if floods:
         notifier.send("\n".join(["<b>Onek notun link peyechi</b>", *floods, "Egulo daily update-e thakbe."]))

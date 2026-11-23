@@ -43,7 +43,9 @@
    "status": "Ready",
    "monitor_urls": [
     "https://jobs.juniv.edu/",
-    "https://www.juniv.edu/"
+    "https://www.juniv.edu/",
+    "https://jobs.juniv.edu/jobs",
+    "https://jobs.juniv.edu/circulars"
    ],
    "browser_urls": [
     "https://jobs.juniv.edu/"
@@ -60,7 +62,8 @@
    "status": "Ready",
    "monitor_urls": [
     "https://career.jnu.ac.bd/",
-    "https://jnu.ac.bd/newsite/noticeview/1"
+    "https://jnu.ac.bd/newsite/noticeview/1",
+    "https://www.hrm.erp.jnu.ac.bd/online_application"
    ],
    "browser_urls": [],
    "note": ""
@@ -77,7 +80,8 @@
    "monitor_urls": [
     "https://career.bup.edu.bd/",
     "https://www.bup.edu.bd/career",
-    "https://www.bup.edu.bd/notice/all"
+    "https://www.bup.edu.bd/notice/all",
+    "https://career.bup.edu.bd/recruitment-notice"
    ],
    "browser_urls": [],
    "note": ""
@@ -118,7 +122,8 @@
    "status": "Ready",
    "monitor_urls": [
     "https://www.sau.edu.bd/home/jobs/1",
-    "https://www.sau.edu.bd/home/notices"
+    "https://www.sau.edu.bd/home/notices",
+    "https://www.sau.edu.bd/home/jobs/2"
    ],
    "browser_urls": [],
    "note": ""
@@ -163,7 +168,8 @@
    "monitor_urls": [
     "http://iau.edu.bd/recruitment-circular/",
     "http://iau.edu.bd/recruitment-2/",
-    "http://iau.edu.bd/allnotice/"
+    "http://iau.edu.bd/allnotice/",
+    "http://iau.edu.bd/recruitment"
    ],
    "browser_urls": [],
    "note": ""
@@ -274,7 +280,8 @@
    ],
    "status": "Ready",
    "monitor_urls": [
-    "https://www.bu.edu.bd/career/"
+    "https://www.bu.edu.bd/career/",
+    "https://www.bu.edu.bd/projectnami/career/"
    ],
    "browser_urls": [],
    "note": ""
@@ -499,7 +506,9 @@
    "monitor_urls": [
     "https://career.grameenu.ac/",
     "https://grameenu.ac/career/",
-    "https://grameenu.ac/notices/"
+    "https://grameenu.ac/notices/",
+    "https://career.grameenu.ac/career-portal/jobs",
+    "https://career.grameenu.ac/career-portal"
    ],
    "browser_urls": [],
    "note": ""
@@ -516,7 +525,9 @@
    "monitor_urls": [
     "https://archive-career.green.edu.bd/current-circular/",
     "https://career.green.edu.bd/",
-    "https://www.green.edu.bd/notice"
+    "https://www.green.edu.bd/notice",
+    "https://career.green.edu.bd/available-jobs/",
+    "https://archive-career.green.edu.bd/current-circular-2/"
    ],
    "browser_urls": [],
    "note": ""
@@ -636,7 +647,8 @@
    "status": "Ready",
    "monitor_urls": [
     "https://jobs.northsouth.edu/",
-    "https://repository.northsouth.edu/collections/67236197-767c-4f9e-8e00-28456dd146d0"
+    "https://repository.northsouth.edu/collections/67236197-767c-4f9e-8e00-28456dd146d0",
+    "https://jobs.northsouth.edu/index"
    ],
    "browser_urls": [],
    "note": ""
@@ -660,7 +672,9 @@
    ],
    "status": "Ready",
    "monitor_urls": [
-    "https://ndub.edu.bd/career/"
+    "https://ndub.edu.bd/career/",
+    "https://ndub.edu.bd/category/career/",
+    "https://ndub.edu.bd/category/career/career-opportunities-at-ndub/"
    ],
    "browser_urls": [],
    "note": ""
@@ -699,7 +713,8 @@
    ],
    "status": "Ready",
    "monitor_urls": [
-    "https://primeuniversity.ac.bd/jobs"
+    "https://primeuniversity.ac.bd/jobs",
+    "https://primeuniversity.ac.bd/jobs.php"
    ],
    "browser_urls": [],
    "note": ""
@@ -714,7 +729,9 @@
    "status": "Ready",
    "monitor_urls": [
     "https://primeasia.edu.bd/career/",
-    "https://primeasia.edu.bd/career/faculty/"
+    "https://primeasia.edu.bd/career/faculty/",
+    "https://primeasia.edu.bd/career/admin/",
+    "https://primeasia.edu.bd/category/job-notice/"
    ],
    "browser_urls": [],
    "note": ""
@@ -847,7 +864,8 @@
    "status": "Ready",
    "monitor_urls": [
     "https://www.uap-bd.edu/no_vacancy.php",
-    "https://www.uap-bd.edu/news-events.php"
+    "https://www.uap-bd.edu/news-events.php",
+    "https://www.uap-bd.edu/vacancy.php"
    ],
    "browser_urls": [],
    "note": ""
@@ -892,7 +910,8 @@
    "status": "Ready",
    "monitor_urls": [
     "https://hr.ulab.edu.bd/jobs-ulab",
-    "https://hr.ulab.edu.bd/"
+    "https://hr.ulab.edu.bd/",
+    "https://hr.ulab.edu.bd/jobs-at-ulab"
    ],
    "browser_urls": [],
    "note": ""
