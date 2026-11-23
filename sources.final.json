@@ -305,12 +305,17 @@
    "name": "Bangladesh University of Health Sciences",
    "type": "private",
    "urls": [
+    "https://buhs.ac.bd/jobs-at-buhs",
     "https://buhs.ac.bd/notice-board/"
    ],
-   "status": "Page not confirmed",
-   "monitor_urls": [],
-   "browser_urls": [],
-   "note": "Notice board rendered without notices."
+   "status": "Ready (browser)",
+   "monitor_urls": [
+    "https://buhs.ac.bd/jobs-at-buhs"
+   ],
+   "browser_urls": [
+    "https://buhs.ac.bd/jobs-at-buhs"
+   ],
+   "note": "Added after a live browser check. Falls back to the weekly list if GitHub cannot open it."
   },
   {
    "name": "BGMEA University of Fashion & Technology",
@@ -331,13 +336,18 @@
    "name": "BRAC University",
    "type": "private",
    "urls": [
+    "https://career.bracu.ac.bd/#/available-jobs",
     "https://www.bracu.ac.bd/about/career-at-bracu",
     "https://www.bracu.ac.bd/faculty-search"
    ],
-   "status": "Blocked",
-   "monitor_urls": [],
-   "browser_urls": [],
-   "note": "Site returns HTTP 403 to automated requests. Check manually or use an alternate source."
+   "status": "Ready (browser)",
+   "monitor_urls": [
+    "https://career.bracu.ac.bd/#/available-jobs"
+   ],
+   "browser_urls": [
+    "https://career.bracu.ac.bd/#/available-jobs"
+   ],
+   "note": "Added after a live browser check. Falls back to the weekly list if GitHub cannot open it."
   },
   {
    "name": "Canadian University of Bangladesh",
@@ -424,7 +434,8 @@
     "https://diu.ac/notice-event/notice"
    ],
    "browser_urls": [],
-   "note": ""
+   "note": "Job posters are images, and GitHub gets HTTP 403. Check weekly.",
+   "manual_check": true
   },
   {
    "name": "East West University",
@@ -659,10 +670,14 @@
    "urls": [
     "https://nub.ac.bd/nub/job"
    ],
-   "status": "Blocked",
-   "monitor_urls": [],
-   "browser_urls": [],
-   "note": "Site shows a bot-verification screen. Check manually or use an alternate source."
+   "status": "Ready (browser)",
+   "monitor_urls": [
+    "https://nub.ac.bd/nub/job"
+   ],
+   "browser_urls": [
+    "https://nub.ac.bd/nub/job"
+   ],
+   "note": "Added after a live browser check. Falls back to the weekly list if GitHub cannot open it."
   },
   {
    "name": "Notre Dame University Bangladesh",
@@ -742,10 +757,14 @@
    "urls": [
     "https://www.queensuniversity.edu.bd/notice"
    ],
-   "status": "Page not confirmed",
-   "monitor_urls": [],
-   "browser_urls": [],
-   "note": "Notice page has no job content; visible notices were old."
+   "status": "Ready (browser)",
+   "monitor_urls": [
+    "https://www.queensuniversity.edu.bd/notice"
+   ],
+   "browser_urls": [
+    "https://www.queensuniversity.edu.bd/notice"
+   ],
+   "note": "Added after a live browser check. Falls back to the weekly list if GitHub cannot open it."
   },
   {
    "name": "Royal University of Dhaka",
@@ -773,7 +792,8 @@
     "https://smuct.ac.bd/career/"
    ],
    "browser_urls": [],
-   "note": ""
+   "note": "Career page has no readable job list. Check weekly.",
+   "manual_check": true
   },
   {
    "name": "Sonargaon University",
@@ -839,7 +859,8 @@
     "https://tuca.edu.bd/notice-announcements/"
    ],
    "browser_urls": [],
-   "note": ""
+   "note": "GitHub gets HTTP 403. Check weekly.",
+   "manual_check": true
   },
   {
    "name": "United International University",
@@ -987,7 +1008,8 @@
     "https://www.wub.edu.bd/main/all_notice"
    ],
    "browser_urls": [],
-   "note": ""
+   "note": "Job portal shows a bot check. Check weekly.",
+   "manual_check": true
   },
   {
    "name": "ZNRF University of Management Sciences",

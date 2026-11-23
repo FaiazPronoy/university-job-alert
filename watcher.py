@@ -50,8 +50,8 @@ MAX_PAGE_BYTES = 5_000_000
 MAX_PDF_BYTES = 8_000_000
 HOST_DELAY = 1.0
 MAX_DETAIL_CHECKS = 150
-CATCHUP_VERSION = 3
-RULES_VERSION = 3  # raise whenever detection rules change
+CATCHUP_VERSION = 4
+RULES_VERSION = 4  # raise whenever detection rules change
 NO_LINK_STATUSES = {"Suspicious site", "Site down"}
 NO_LINK_NAMES = {"IBAIS University"}
 
@@ -92,7 +92,7 @@ DATE_PATTERNS = [
 DEADLINE_WORDS = rx(
     r"dead\s*-?\s*line|last\s+date|closing\s+date|apply\s+by|on\s+or\s+before|submission\s+date|"
     r"application\s+(?:end|close)s?|expires?\s+on|শেষ\s*তারিখ|আবেদনের\s*শেষ|সর্বশেষ\s*তারিখ|আবেদন\s*গ্রহণের\s*শেষ")
-BN_DEADLINE_AFTER = rx(r"^\D{0,6}(তারিখের\s*মধ্যে|তারিখ\s*পর্যন্ত|এর\s*মধ্যে)")
+BN_DEADLINE_AFTER = rx(r"^\D{0,6}(তারিখের\s*মধ্যে|তারিখ\s*পর্যন্ত|এর\s*মধ্যে|\d+\s*days?\s*remaining)")
 
 
 def month_number(token: str) -> int:
@@ -174,7 +174,7 @@ LOW_RANK = rx(r"electrician|driver|peon|guard|cleaner|\bmlss\b|helper|gardener|\
               r"upper\s*division|lower\s*division|office\s*assistant|computer\s*operator|data\s*entry|"
               r"ইলেকট্রিশিয়ান|ইলেক্ট্রিশিয়ান|ড্রাইভার|গাড়ি\s*চালক|গাড়িচালক|প্রহরী|পিয়ন|ঝাড়ুদার|মালী|"
               r"উচ্চমান\s*সহকারী|নিম্নমান\s*সহকারী|অফিস\s*সহায়ক|অফিস\s*সহকারী|কম্পিউটার\s*অপারেটর")
-NOT_JOB = rx(r"office\s*order|evaluation|research\s*proposal|chartered\s*accountant|"
+NOT_JOB = rx(r"office\s*order|evaluation|research\s*proposal|chartered\s*accountant|duly\s+completed|"
              r"casino|gamstop|\bslot\b|gacor|\bjudi\b|togel|putaran\s*gratis|pg\s*soft|"
              r"গবেষণা\s*প্রস্তাব|বহিঃনিরীক্ষক|নিয়োগ\s*কার্যক্রম\s*বন্ধ")
 FORM_WORD = rx(r"application\s*form|আবেদন\s*ফরম")
@@ -282,7 +282,7 @@ def classify(title: str, context: str, page_url: str) -> tuple[str, str] | None:
 
 # ---------------------------------------------------------------- HTML extraction
 
-GENERIC_LINK = rx(r"^(view job advertisement|job advertisement|view circular|view|read|see|click|more|details?|"
+GENERIC_LINK = rx(r"^(view job advertisement|job advertisement|view circular|view|read|see|click|more|details?|browse|"
                   r"detail information|view details?|read more|learn more|"
                   r"download|apply|apply now|apply link|open|pdf|here|click here|see openings?|বিস্তারিত|ডাউনলোড|আবেদন করুন)"
                   r"(\s+(more|details?|here|now|pdf|file|notice))*\W*$")
@@ -290,6 +290,7 @@ META_LINE = rx(r"^(posting time|posted|published|publish date|application deadli
                r"apply|position|permanent|contractual|প্রকাশের তারিখ|শেষ তারিখ)\b")
 CIRCULAR_LINK = rx(r"job\s*circular|recruitment\s*(circular|notice)|vacancy\s*(circular|notice)|job\s*advert|"
                    r"নিয়োগ\s*বিজ্ঞপ্তি")
+POSITION_LABEL = rx(r"^position\s*:\s*(.{4,})$")
 DOCUMENT_URL = re.compile(r"\.(pdf|docx?)$", re.I)
 TRACKING = re.compile(r"^(utm_.*|fbclid|gclid|gsessionid|phpsessid|sessionid|sid|from)$", re.I)
 
@@ -312,7 +313,19 @@ def canonical_url(url: str) -> str:
     query = urlencode([(k, v) for k, v in parse_qsl(parts.query, keep_blank_values=True) if not TRACKING.match(k)])
     path = parts.path.rstrip("/") or "/"
     host = parts.netloc.lower().removeprefix("www.")
-    return urlunparse(("https", host, path, "", query, ""))
+    route = parts.fragment if parts.fragment.startswith("/") else ""  # "#/jobs/12" is a real page in a web app
+    return urlunparse(("https", host, path, "", query, route))
+
+
+def absolute_url(page_url: str, href: str) -> str | None:
+    """Resolve a link. One malformed href on a page must not lose the rest of that page."""
+    try:
+        url = urljoin(page_url, href.strip())
+        base, _, fragment = url.partition("#")
+        urlparse(base)
+    except ValueError:
+        return None
+    return f"{base}#{fragment}" if fragment.startswith("/") else base
 
 
 def tidy_title(title: str) -> str:
@@ -424,10 +437,12 @@ def merge_same_link(items: list[Item], page_url: str) -> list[Item]:
             merged[key] = item
             output.append(item)
             continue
-        if item.named and current.named and tidy_key(item.title) != tidy_key(current.title):
+        new_title, old_title = tidy_key(item.title), tidy_key(current.title)
+        same_post = new_title.startswith(old_title) or old_title.startswith(new_title)  # card and carousel copy
+        if item.named and current.named and not same_post:
             output.append(item)  # different posts can share one application form
             continue
-        if item.named and not current.named:
+        if item.named and (not current.named or len(new_title) < len(old_title)):
             current.title, current.named = item.title, True
         if item.context not in current.context:
             current.context = clean(f"{current.context} {item.context}")[:1000]
@@ -447,10 +462,11 @@ def extract_items(university: str, page_html: str, page_url: str) -> list[Item]:
     page_key = canonical_url(page_url)
     for anchor in soup.find_all("a", href=True):
         href = anchor["href"].strip()
-        if not href or href.startswith(("#", "mailto:", "tel:", "javascript:")):
+        if not href or (href.startswith("#") and not href.startswith("#/")) \
+                or href.startswith(("mailto:", "tel:", "javascript:")):
             continue
-        url = urljoin(page_url, href).split("#")[0]
-        if urlparse(url).scheme not in ("http", "https") or canonical_url(url) == page_key:
+        url = absolute_url(page_url, href)
+        if not url or urlparse(url).scheme not in ("http", "https") or canonical_url(url) == page_key:
             continue
         node = item_container(anchor)
         groups.setdefault(id(node), (node, []))[1].append((clean(anchor.get_text(" ")), url))
@@ -472,7 +488,42 @@ def extract_items(university: str, page_html: str, page_url: str) -> list[Item]:
             walk(child)
 
     walk(soup.body or soup)
+    items += position_items(university, soup, page_url) + image_circular_items(university, soup, page_url)
     return merge_same_link(items + menu_circulars, page_url)
+
+
+def position_items(university: str, soup, page_url: str) -> list[Item]:
+    """Accordion career pages: 'Position: Lecturer (CSE...)' with a 'Deadline:' line after it."""
+    found = []
+    for label in soup.find_all(["strong", "b", "h2", "h3", "h4", "h5", "h6"]):
+        match = POSITION_LABEL.match(clean(label.get_text(" ")))
+        if not match or not role_of(match.group(1)):
+            continue
+        title = tidy_title(match.group(1))
+        mark = label.find_next(string=DEADLINE_WORDS)
+        note = clean(mark.parent.get_text(" "))[:160] if mark else ""
+        context = f"{title} {note}"
+        found.append(Item(university, title, page_url, page_url, context, find_deadline(note),
+                          [value for _, value in find_dates(note)], True))
+    return found
+
+
+def image_circular_items(university: str, soup, page_url: str) -> list[Item]:
+    """A circular published only as a picture, with its deadline printed beside the image."""
+    found = []
+    for image in soup.find_all("img", alt=CIRCULAR_LINK):
+        for parent in image.parents:
+            if parent.name in ("body", "html", "[document]"):
+                break
+            text = clean(parent.get_text(" "))
+            if len(text) > 800:
+                break
+            deadline = find_deadline(text)
+            if deadline:
+                title = f"Job Circular (deadline {deadline.strftime('%d %b %Y')})"
+                found.append(Item(university, title, page_url, page_url, f"{title} {text}", deadline, [deadline], True))
+                break
+    return found
 
 
 def menu_circular_items(university: str, soup, page_url: str) -> list[Item]:
@@ -481,8 +532,8 @@ def menu_circular_items(university: str, soup, page_url: str) -> list[Item]:
     for zone in soup(["nav", "header", "footer", "aside"]):
         for anchor in zone.find_all("a", href=True):
             text = clean(anchor.get_text(" "))
-            url = urljoin(page_url, anchor["href"].strip()).split("#")[0]
-            if not CIRCULAR_LINK.search(text) or not DOCUMENT_URL.search(urlparse(url).path):
+            url = absolute_url(page_url, anchor["href"])
+            if not url or not CIRCULAR_LINK.search(text) or not DOCUMENT_URL.search(urlparse(url).path):
                 continue
             filename = unquote(urlparse(url).path.rsplit("/", 1)[-1])
             filename = re.sub(r"(\d{1,2})[_ ](\d{1,2})[_ ](20\d{2})", r"\1-\2-\3", filename)
@@ -755,14 +806,17 @@ class TelegramError(RuntimeError):
 
 
 def split_message(text: str, limit: int = 3900) -> list[str]:
+    """Split at blank lines first, so one circular's lines never land in two messages."""
     parts, current = [], ""
-    for line in text.split("\n"):
-        line = line[:limit]
-        if current and len(current) + len(line) + 1 > limit:
-            parts.append(current)
-            current = line
-        else:
-            current = f"{current}\n{line}" if current else line
+    for block in text.split("\n\n"):
+        whole = len(block) <= limit
+        for piece in [block] if whole else [line[:limit] for line in block.split("\n")]:
+            joined = f"{current}{chr(10) * 2 if whole else chr(10)}{piece}" if current else piece
+            if len(joined) > limit:
+                parts.append(current)
+                current = piece
+            else:
+                current = joined
     if current:
         parts.append(current)
     return parts
@@ -820,36 +874,96 @@ def esc(value: str) -> str:
     return html_lib.escape(value or "", quote=True)
 
 
+POST_LABELS = {"Teaching": "Lecturer/Faculty", "Research": "Research", "Officer/Admin": "Officer",
+               "General circular": "Job circular", "Career page update": "Career page update",
+               "School/College": "School/College"}
+HEALTH_REASONS = {"blocked": "site block korche", "bot_check": "bot check dekhacche", "timeout": "site response dicchhe na",
+                  "conn_error": "site-e connect hocchhe na", "cert_error": "site-er certificate somossa",
+                  "server_error": "site-e error", "not_found": "page ar nei", "parse_error": "page porte somossa",
+                  "robots_disallowed": "site auto-check allow kore na"}
+
+
 def nice_date(value: str | None) -> str:
-    return date.fromisoformat(value).strftime("%d %b %Y") if value else "Not found, circular dekhun"
+    return date.fromisoformat(value).strftime("%d %b %Y") if value else "Circular-e dekhun"
 
 
 def days_text(days: int) -> str:
-    return "aj shesh din" if days == 0 else f"{days} din baki"
+    if days == 0:
+        return "aj shesh din"
+    return "kal shesh din" if days == 1 else f"{days} din baki"
+
+
+def days_left(record: dict, today: date) -> int | None:
+    return (date.fromisoformat(record["deadline"]) - today).days if record.get("deadline") else None
+
+
+def is_new(record: dict, today: date) -> bool:
+    return record.get("first_seen") == today.isoformat()
+
+
+def title_of(record: dict, limit: int = 180) -> str:
+    title = clean(record["title"]).rstrip(" .-|:")
+    return title if len(title) <= limit else title[:limit - 1].rstrip() + "…"
+
+
+def post_label(record: dict) -> str:
+    return POST_LABELS.get(record.get("category"), record.get("category") or "Job circular")
 
 
 def deadline_line(record: dict, today: date) -> str:
-    if not record.get("deadline"):
-        return "Deadline: Not found, circular dekhun"
-    days = (date.fromisoformat(record["deadline"]) - today).days
+    days = days_left(record, today)
+    if days is None:
+        return "⏰ Deadline: circular-e dekhun"
     suffix = f" ({days_text(days)})" if days >= 0 else ""
-    return f"Deadline: <b>{nice_date(record['deadline'])}</b>{suffix}"
+    return f"⏰ Deadline: <b>{nice_date(record['deadline'])}</b>{suffix}"
 
 
-def alert_message(record: dict, today: date, heading: str = "New circular") -> str:
-    return (f"<b>{heading}: {esc(record['university'])}</b>\n"
-            f"{esc(record['title'])}\n"
-            f"Type: {esc(record['category'])}\n"
-            f"{deadline_line(record, today)}\n"
+def alert_message(record: dict, today: date, heading: str = "🆕 NEW circular") -> str:
+    return (f"<b>{heading}</b>\n\n"
+            f"<b>{esc(title_of(record))}</b>\n"
+            f"🏛 {esc(record['university'])}\n"
+            f"💼 {esc(post_label(record))}\n"
+            f"{deadline_line(record, today)}\n\n"
             f'<a href="{esc(record["url"])}">Circular khulun</a>')
 
 
 def short_line(record: dict, today: date) -> str:
-    deadline = ""
-    if record.get("deadline"):
-        days = (date.fromisoformat(record["deadline"]) - today).days
-        deadline = f" | {nice_date(record['deadline'])} ({days_text(days)})" if days >= 0 else ""
-    return f'- <b>{esc(record["university"])}</b>: <a href="{esc(record["url"])}">{esc(record["title"][:110])}</a>{deadline}'
+    """Two lines per circular: what it is, then where and until when."""
+    tag = "🆕 " if is_new(record, today) else ""
+    details = [esc(record["university"]), esc(post_label(record))]
+    days = days_left(record, today)
+    if days is not None and days >= 0:
+        details.append(f"<b>{nice_date(record['deadline'])}</b> ({days_text(days)})")
+    return f'{tag}<a href="{esc(record["url"])}">{esc(title_of(record, 90))}</a>\n' + " · ".join(details)
+
+
+def unique_records(records: list[dict]) -> list[dict]:
+    seen, output = set(), []
+    for record in records:
+        mark = fingerprint(record) or (record["university"], tidy_key(record["title"]), record.get("deadline"))
+        if mark not in seen:
+            seen.add(mark)
+            output.append(record)
+    return output
+
+
+def deadline_sections(records: list[dict], today: date) -> list[str]:
+    """Most urgent first, so the circular that closes soonest is always on top."""
+    buckets = [("🔴 <b>Urgent: 3 diner moddhe</b>", lambda d: d <= 3), ("🟡 <b>Ei shoptahe</b>", lambda d: 3 < d <= 7),
+               ("🟢 <b>Hate shomoy ache</b>", lambda d: d > 7)]
+    dated = sorted((r for r in records if r.get("deadline")), key=lambda r: (r["deadline"], r["university"]))
+    blocks = []
+    for heading, matches in buckets:
+        group = [r for r in dated if matches(days_left(r, today))]
+        if group:
+            first, *rest = [short_line(r, today) for r in group]
+            blocks += [f"{heading} ({len(group)})\n{first}", *rest]
+    return blocks
+
+
+def count_line(records: list[dict], today: date) -> str:
+    fresh = sum(is_new(r, today) for r in records)
+    return f"Mot {len(records)} ta" + (f" · 🆕 NEW {fresh} ta" if fresh else "")
 
 
 # ---------------------------------------------------------------- core run
@@ -991,7 +1105,7 @@ def process_source(source: dict, result: FetchResult, state: dict, today: date, 
         if key not in active:
             state["items"][key] = record_of(item, level, category, today, True)
     if len(active) > FLOOD_LIMIT:
-        floods.append(f'- <b>{esc(source["university"])}</b>: {len(active)} ta notun link, site hoyto bodleche. '
+        floods.append(f'• <b>{esc(source["university"])}</b>: {len(active)} ta notun link, site hoyto bodleche. '
                       f'<a href="{esc(page_url)}">Page dekhun</a>')
         for key, (item, _, category) in active.items():
             record = record_of(item, "possible", category, today, True)
@@ -1030,7 +1144,7 @@ def send_pending(state: dict, notifier, fetcher, today: date) -> int:
     for record in state["items"].values():
         if record.get("extended"):
             if record.get("deadline") and date.fromisoformat(record["deadline"]) >= today:
-                notifier.send(alert_message(record, today, "Deadline bereche"))
+                notifier.send(alert_message(record, today, "⏳ Deadline bereche"))
                 sent += 1
             del record["extended"]
     for key, record in state["items"].items():
@@ -1072,33 +1186,31 @@ def enrich_deadlines(state: dict, fetcher, today: date) -> list[str]:
     return [key for key, record in state["items"].items() if id(record) in now_open]
 
 
-def send_catchup(state: dict, notifier, today: date, skip: set[str]) -> None:
-    """One full list after a coverage upgrade, because old baselines stayed silent."""
+def send_catchup(state: dict, notifier, today: date) -> None:
+    """One full list after an upgrade. It also carries this run's newly opened circulars."""
     if state.get("catchup_version") == CATCHUP_VERSION:
         return
     if not state["items"]:
         state["catchup_version"] = CATCHUP_VERSION
         return
-    open_items, recent, seen = [], [], set()
+    open_items, recent = [], []
     cutoff = (today - timedelta(days=STALE_DAYS)).isoformat()
-    for key, record in state["items"].items():
-        if key in skip or not record["notified"] or record["level"] != "strong" or not_job(record["title"]) \
-                or record["category"] == "Career page update":
+    for record in state["items"].values():
+        if not record["notified"] or record["level"] != "strong" or not_job(record["title"]):
             continue
         if record.get("deadline"):
-            mark = fingerprint(record)
-            if record["deadline"] >= today.isoformat() and (not mark or mark not in seen):
+            if record["deadline"] >= today.isoformat():
                 open_items.append(record)
-                if mark:
-                    seen.add(mark)
-        elif (record.get("latest_date") or "") >= cutoff:
+        elif record["category"] != "Career page update" and (record.get("latest_date") or "") >= cutoff:
             recent.append(record)
-    lines = [f"<b>Updated list: ekhon open circular ({len(open_items)})</b>"]
-    lines += [short_line(r, today) for r in sorted(open_items, key=lambda r: r["deadline"])]
+    open_items, recent = unique_records(open_items), unique_records(recent)
+    blocks = [f"📋 <b>Updated list: ekhon open circular</b>\n{count_line(open_items, today)}"]
+    blocks += deadline_sections(open_items, today)
     if recent:
-        lines += ["", f"<b>Recent circular, deadline PDF/page-e dekhun ({len(recent)})</b>"]
-        lines += [short_line(r, today) for r in sorted(recent, key=lambda r: r["latest_date"], reverse=True)]
-    notifier.send("\n".join(lines))
+        ordered = sorted(recent, key=lambda r: r["latest_date"], reverse=True)
+        first, *rest = [short_line(r, today) for r in ordered]
+        blocks += [f"📄 <b>Recent, deadline circular-e dekhun</b> ({len(ordered)})\n{first}", *rest]
+    notifier.send("\n\n".join(blocks))
     state["catchup_version"] = CATCHUP_VERSION
 
 
@@ -1109,9 +1221,9 @@ def send_open_now(keys: list[str], state: dict, notifier, today: date) -> None:
     records = [state["items"][k] for k in pending if k in state["items"] and state["items"][k].get("deadline")
                and date.fromisoformat(state["items"][k]["deadline"]) >= today]
     if records:
-        records.sort(key=lambda r: r["deadline"])
-        lines = [f"<b>Ekhon open circular ({len(records)})</b>"] + [short_line(r, today) for r in records]
-        notifier.send("\n".join(lines))
+        records = unique_records(records)
+        blocks = [f"📌 <b>Ekhon open circular</b>\n{count_line(records, today)}"] + deadline_sections(records, today)
+        notifier.send("\n\n".join(blocks))
     state["pending_open"] = []
 
 
@@ -1126,13 +1238,17 @@ def send_health(state: dict, notifier) -> None:
         elif not failed and not empty and info.get("alerted"):
             recovered.append((info["university"], url, info))
     if broken:
-        lines = ["<b>Ei page gulo check kora jachhe na</b>"]
-        lines += [f'- {esc(n)}: {esc(r)}. <a href="{esc(u)}">Page</a>' for n, u, r, _ in broken]
+        lines = ["⚠️ <b>Ei site gulo check kora jachhe na</b>", "Egulo nije ekbar khule dekhun:", ""]
+        shown = {}
+        for name, url, reason, _ in broken:
+            shown.setdefault(name, (url, HEALTH_REASONS.get(reason, reason)))
+        lines += [f'• <a href="{esc(u)}">{esc(n)}</a>: {esc(r)}' for n, (u, r) in shown.items()]
         notifier.send("\n".join(lines))
         for *_, info in broken:
             info["alerted"] = True
     if recovered:
-        notifier.send("\n".join(["<b>Ei page gulo abar kaj korche</b>"] + [f"- {esc(n)}" for n, _, _ in recovered]))
+        names = list(dict.fromkeys(n for n, _, _ in recovered))
+        notifier.send("\n".join(["✅ <b>Ei site gulo abar kaj korche</b>", ""] + [f"• {esc(n)}" for n in names]))
         for *_, info in recovered:
             info["alerted"] = False
 
@@ -1160,17 +1276,19 @@ def send_digest(state: dict, config: dict, notifier, now: datetime, checked: int
                 shown.add(mark)
             reminders.append((record, due))
     possible = [r for r in state["items"].values() if r["level"] == "possible" and not r.get("digested")]
-    lines = [f"<b>Daily update, {today.strftime('%d %b %Y')}</b>",
-             f"Bot cholche. Ei run-e {ok_count}/{checked} page check hoyeche."]
+    blocks = [f"☀️ <b>Daily update · {today.strftime('%d %b %Y')}</b>\n✅ Bot cholche · {ok_count}/{checked} page check hoyeche"]
     if reminders:
-        lines += ["", "<b>Deadline reminder</b>"]
-        lines += [short_line(r, today) for r, _ in sorted(reminders, key=lambda x: x[0]["deadline"])]
+        records = [r for r, _ in reminders]
+        blocks.append(f"⏰ <b>Deadline reminder</b>\n{count_line(records, today)}")
+        blocks += deadline_sections(records, today)
     if possible:
-        lines += ["", "<b>Dekhe nin (possible circular)</b>"]
-        lines += [short_line(r, today) for r in possible[:40]]
+        first, *rest = [short_line(r, today) for r in possible[:40]]
+        blocks += [f"🔎 <b>Dekhe nin, job hote pare</b> ({len(possible)})\n{first}", *rest]
         if len(possible) > 40:
-            lines.append(f"Aro {len(possible) - 40} ta.")
-    notifier.send("\n".join(lines))
+            blocks.append(f"Aro {len(possible) - 40} ta.")
+    if not reminders and not possible:
+        blocks.append("Aj kono reminder nei.")
+    notifier.send("\n\n".join(blocks))
     for record, due in reminders + hidden:
         record["reminded"] = sorted(set(record.get("reminded", []) + due))
     for record in possible:
@@ -1182,16 +1300,17 @@ def send_digest(state: dict, config: dict, notifier, now: datetime, checked: int
 
 
 def send_manual(config: dict, notifier, state: dict | None = None) -> None:
-    lines = ["<b>Weekly manual check</b>", "Ei university gulo bot automatically porte pare na:"]
+    lines = ["🗂 <b>Weekly manual check</b>", "Bot egulo porte pare na, ekbar khule dekhun:", ""]
     sources = (state or {}).get("sources", {})
     for university in config["universities"]:
         monitored = university.get("monitor_urls", [])
-        if monitored and not all(sources.get(u, {}).get("fails", 0) >= FAILS_BEFORE_ALERT for u in monitored):
+        all_failing = all(sources.get(u, {}).get("fails", 0) >= FAILS_BEFORE_ALERT for u in monitored)
+        if monitored and not all_failing and not university.get("manual_check"):
             continue
         if university.get("status") in NO_LINK_STATUSES or university["name"] in NO_LINK_NAMES:
-            lines.append(f"- {esc(university['name'])}: official site confirm kore check korun")
+            lines.append(f"• {esc(university['name'])}: official site confirm kore dekhun")
         elif university.get("urls"):
-            lines.append(f'- <a href="{esc(university["urls"][0])}">{esc(university["name"])}</a>')
+            lines.append(f'• <a href="{esc(university["urls"][0])}">{esc(university["name"])}</a>')
     notifier.send("\n".join(lines))
 
 
@@ -1229,11 +1348,15 @@ def run(config: dict, state: dict, fetcher, notifier, now: datetime | None = Non
             state["sources"][source["url"]]["state"] = "parse_error"
     state["last_run"] = now.isoformat()
     open_now += enrich_deadlines(state, fetcher, today)
-    send_open_now(open_now, state, notifier, today)
-    send_catchup(state, notifier, today, set(open_now))
+    if state.get("catchup_version") != CATCHUP_VERSION and state["items"]:
+        send_catchup(state, notifier, today)  # the full list already includes this run's open circulars
+        state["pending_open"] = []
+    else:
+        state["catchup_version"] = CATCHUP_VERSION
+        send_open_now(open_now, state, notifier, today)
     sent = send_pending(state, notifier, fetcher, today)
     if floods:
-        notifier.send("\n".join(["<b>Onek notun link peyechi</b>", *floods, "Egulo daily update-e thakbe."]))
+        notifier.send("\n".join(["⚠️ <b>Onek notun link peyechi</b>", "", *floods, "", "Egulo daily update-e thakbe."]))
     send_health(state, notifier)
     ok_count = sum(1 for s in sources if results.get(s["url"]) and results[s["url"]].ok)
     send_digest(state, config, notifier, now, len(sources), ok_count)

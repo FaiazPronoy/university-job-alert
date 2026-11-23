@@ -166,6 +166,43 @@ class Extraction(unittest.TestCase):
     def test_clerical_post_in_registrar_office_is_skipped(self):
         self.assertIsNone(w.classify("উচ্চমান সহকারী, Office of the Registrar (01 post)", "Deadline: 15/12/2026", PAGE))
 
+    def test_malformed_link_does_not_lose_the_page(self):
+        html = '<a href="http://[broken">x</a><div><a href="/c.pdf">Lecturer (CSE) Recruitment</a></div>'
+        self.assertEqual([i.title for i in w.extract_items("U", html, PAGE)], ["Lecturer (CSE) Recruitment"])
+
+    def test_web_app_job_routes_stay_separate(self):
+        html = ('<div><a href="#/jobs-details/1">Senior Manager, Procurement</a><p>30 November 2026 8 Days Remaining</p></div>'
+                '<div><a href="#/jobs-details/2">Assistant Director, Energy</a><p>24 November 2026 2 Days Remaining</p></div>'
+                '<div><a href="#/jobs-details/1">Senior Manager, Procurement Dept: Procurement</a></div>')
+        items = w.extract_items("U", html, "https://career.example.edu/#/available-jobs")
+        self.assertEqual(sorted(i.title for i in items), ["Assistant Director, Energy", "Senior Manager, Procurement"])
+        self.assertEqual({i.deadline for i in items}, {date(2026, 11, 30), date(2026, 11, 24)})
+
+    def test_position_accordion(self):
+        html = ('<div><strong>Position: Lecturer (CSE, Business Administration)</strong><p>Requirements</p>'
+                '<p>Deadline: September 12, 2026</p></div>')
+        item = next(i for i in w.extract_items("U", html, PAGE) if i.title.startswith("Lecturer"))
+        self.assertEqual(item.deadline, date(2026, 9, 12))
+
+    def test_circular_published_as_image(self):
+        html = '<div><img alt="AUB Job Circular" src="/c.jpg"><p>Application Deadline</p><p>30 OCT 2026</p></div>'
+        item = w.extract_items("U", html, PAGE)[0]
+        self.assertEqual(item.deadline, date(2026, 10, 30))
+        self.assertEqual(w.classify(item.title, item.context, PAGE)[0], "strong")
+
+    def test_browse_button_is_not_a_title(self):
+        html = '<table><tr><td>2</td><td>Lecturer (Department of CSE)</td><td><a href="https://x.test/j/1">Browse</a></td></tr></table>'
+        self.assertEqual(w.extract_items("U", html, PAGE)[0].title, "Lecturer (Department of CSE)")
+
+    def test_manual_check_site_is_in_weekly_list(self):
+        config = {"universities": [{"name": "Poster Uni", "urls": ["https://p.test/"], "monitor_urls": ["https://p.test/"],
+                                    "manual_check": True},
+                                   {"name": "Normal Uni", "urls": ["https://n.test/"], "monitor_urls": ["https://n.test/"]}]}
+        notifier = w.DryRun()
+        w.send_manual(config, notifier, {"sources": {}})
+        self.assertIn("Poster Uni", notifier.messages[0])
+        self.assertNotIn("Normal Uni", notifier.messages[0])
+
 
 class Flow(unittest.TestCase):
     def go(self, state, html, notifier=None, now=NOW):
@@ -314,6 +351,34 @@ class TelegramFormat(unittest.TestCase):
         self.assertIn("A&amp;B", message)
         self.assertIn("&lt;Lecturer&gt;", message)
         self.assertIn("a=1&amp;b=2", message)
+
+    def record(self, title, deadline, first_seen="2026-11-01"):
+        return {"university": "Example University", "title": title, "category": "Officer/Admin", "deadline": deadline,
+                "url": "https://a.edu/j", "first_seen": first_seen}
+
+    def test_new_tag_only_on_items_first_seen_today(self):
+        today = date(2026, 11, 24)
+        self.assertIn("🆕", w.short_line(self.record("Officer", "2026-11-30", "2026-11-24"), today))
+        self.assertNotIn("🆕", w.short_line(self.record("Officer", "2026-11-30"), today))
+
+    def test_sections_are_sorted_by_urgency(self):
+        today = date(2026, 11, 24)
+        text = "\n\n".join(w.deadline_sections([self.record("Later Post", "2026-12-20"), self.record("Soon Post", "2026-11-25"),
+                                                self.record("Week Post", "2026-11-30")], today))
+        self.assertLess(text.index("Soon Post"), text.index("Week Post"))
+        self.assertLess(text.index("Week Post"), text.index("Later Post"))
+        self.assertIn("kal shesh din", text)
+
+    def test_same_circular_is_listed_once(self):
+        same = self.record("Job Opportunity for Officers", "2026-11-30")
+        self.assertEqual(len(w.unique_records([same, dict(same, url="https://a.edu/other")])), 1)
+
+    def test_split_keeps_a_circular_together(self):
+        blocks = [f"title {i}\nplace {i}" + "x" * 300 for i in range(40)]
+        parts = w.split_message("\n\n".join(blocks))
+        self.assertGreater(len(parts), 1)
+        for i in range(40):
+            self.assertEqual(sum(f"title {i}\nplace {i}" in p for p in parts), 1)
 
     def test_split(self):
         parts = w.split_message("\n".join(["x" * 100] * 100))
