@@ -5614,7 +5614,7 @@
 },
 "last_digest": "2026-11-23",
 "last_manual": null,
-"last_run": "2026-11-23T22:00:48.025072+00:00",
+"last_run": "2026-11-23T23:03:34.068861+00:00",
 "pending_open": [],
 "rules_version": 3,
 "sources": {
@@ -5849,17 +5849,17 @@
 "alerted": false,
 "baselined": true,
 "count": 0,
-"fails": 0,
+"fails": 1,
 "last_ok": "2026-11-24",
-"state": "ok",
+"state": "blocked",
 "university": "Dhaka Central University",
 "zero_runs": 0
 },
 "https://diu.ac/notice-event/notice": {
-"alerted": false,
+"alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 5,
+"fails": 6,
 "state": "blocked",
 "university": "Dhaka International University",
 "zero_runs": 0
@@ -5972,10 +5972,10 @@
 "zero_runs": 0
 },
 "https://jobs.diu.ac/": {
-"alerted": false,
+"alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 5,
+"fails": 6,
 "state": "blocked",
 "university": "Dhaka International University",
 "zero_runs": 0
@@ -5984,10 +5984,10 @@
 "alerted": false,
 "baselined": true,
 "count": 148,
-"fails": 0,
+"fails": 1,
 "last_ok": "2026-11-24",
 "no_vacancy": false,
-"state": "ok",
+"state": "timeout",
 "university": "University of Dhaka",
 "zero_runs": 0
 },
@@ -6047,10 +6047,10 @@
 "zero_runs": 0
 },
 "https://jobs.wub.edu.bd/": {
-"alerted": false,
+"alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 5,
+"fails": 6,
 "state": "bot_check",
 "university": "World University of Bangladesh",
 "zero_runs": 0
@@ -6260,19 +6260,19 @@
 "zero_runs": 0
 },
 "https://tuca.edu.bd/career/": {
-"alerted": false,
+"alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 5,
+"fails": 6,
 "state": "blocked",
 "university": "Tagore University of Creative Arts",
 "zero_runs": 0
 },
 "https://tuca.edu.bd/notice-announcements/": {
-"alerted": false,
+"alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 5,
+"fails": 6,
 "state": "blocked",
 "university": "Tagore University of Creative Arts",
 "zero_runs": 0
@@ -6285,7 +6285,7 @@
 "last_ok": "2026-11-24",
 "state": "ok",
 "university": "UITS",
-"zero_runs": 3
+"zero_runs": 4
 },
 "https://uoda.edu.bd/notice-board": {
 "alerted": false,
@@ -6647,19 +6647,19 @@
 "zero_runs": 0
 },
 "https://www.royal.edu.bd/career/": {
-"alerted": false,
+"alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 5,
+"fails": 6,
 "state": "bot_check",
 "university": "Royal University of Dhaka",
 "zero_runs": 0
 },
 "https://www.royal.edu.bd/notice/": {
-"alerted": false,
+"alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 5,
+"fails": 6,
 "state": "bot_check",
 "university": "Royal University of Dhaka",
 "zero_runs": 0
