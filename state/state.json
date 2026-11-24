@@ -2925,6 +2925,20 @@
 "university": "Jagannath University",
 "url": "https://jnu.ac.bd/assets/notice/04f0a03046a89d1d375078ac97c6b069.pdf"
 },
+"7d2c0b430d899ebc3d51": {
+"category": "Career page update",
+"deadline": null,
+"digested": true,
+"first_seen": "2026-11-24",
+"latest_date": null,
+"level": "strong",
+"notified": true,
+"page": "https://nub.ac.bd/nub/job",
+"reminded": [],
+"title": "Northern University > Job Openings",
+"university": "Northern University Bangladesh",
+"url": "https://nub.ac.bd/nub/job"
+},
 "7da4ca2ab0f9fb50bf75": {
 "category": "Teaching",
 "deadline": null,
@@ -5025,6 +5039,20 @@
 "university": "IUBAT",
 "url": "https://iubat.edu/career/"
 },
+"e0fd76f0990be6004074": {
+"category": "Teaching",
+"deadline": "2026-09-12",
+"digested": true,
+"first_seen": "2026-11-24",
+"latest_date": "2026-09-12",
+"level": "strong",
+"notified": true,
+"page": "https://nub.ac.bd/nub/job",
+"reminded": [],
+"title": "Lecturer (CSE, EEE, Civil Engineering, Mechanical Engineering, English (Literature), Business Administration (Accounting, MIS, HRM), Pharmacy, and Bangla)",
+"university": "Northern University Bangladesh",
+"url": "https://nub.ac.bd/nub/job"
+},
 "e18ee9e7dab359e9a91b": {
 "category": "Officer/Admin",
 "deadline": null,
@@ -5717,7 +5745,7 @@
 },
 "last_digest": "2026-11-24",
 "last_manual": null,
-"last_run": "2026-11-24T03:07:41.782404+00:00",
+"last_run": "2026-11-24T04:00:45.450529+00:00",
 "pending_open": [],
 "rules_version": 4,
 "sources": {
@@ -5971,12 +5999,12 @@
 "zero_runs": 0
 },
 "https://dcu.ac.bd/": {
-"alerted": true,
-"baselined": false,
+"alerted": false,
+"baselined": true,
 "count": 0,
-"fails": 6,
+"fails": 0,
 "last_ok": "2026-11-24",
-"state": "blocked",
+"state": "ok",
 "university": "Dhaka Central University",
 "zero_runs": 0
 },
@@ -5984,7 +6012,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 11,
+"fails": 12,
 "state": "blocked",
 "university": "Dhaka International University",
 "zero_runs": 0
@@ -6100,19 +6128,19 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 11,
+"fails": 12,
 "state": "blocked",
 "university": "Dhaka International University",
 "zero_runs": 0
 },
 "https://jobs.du.ac.bd/": {
-"alerted": true,
-"baselined": false,
+"alerted": false,
+"baselined": true,
 "count": 148,
-"fails": 6,
+"fails": 0,
 "last_ok": "2026-11-24",
 "no_vacancy": false,
-"state": "timeout",
+"state": "ok",
 "university": "University of Dhaka",
 "zero_runs": 0
 },
@@ -6175,7 +6203,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 11,
+"fails": 12,
 "state": "bot_check",
 "university": "World University of Bangladesh",
 "zero_runs": 0
@@ -6226,10 +6254,12 @@
 },
 "https://nub.ac.bd/nub/job": {
 "alerted": false,
-"baselined": false,
-"count": 0,
-"fails": 5,
-"state": "blocked",
+"baselined": true,
+"count": 2,
+"fails": 0,
+"last_ok": "2026-11-24",
+"no_vacancy": false,
+"state": "ok",
 "university": "Northern University Bangladesh",
 "zero_runs": 0
 },
@@ -6397,7 +6427,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 11,
+"fails": 12,
 "state": "blocked",
 "university": "Tagore University of Creative Arts",
 "zero_runs": 0
@@ -6406,7 +6436,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 11,
+"fails": 12,
 "state": "blocked",
 "university": "Tagore University of Creative Arts",
 "zero_runs": 0
@@ -6794,7 +6824,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 11,
+"fails": 12,
 "state": "bot_check",
 "university": "Royal University of Dhaka",
 "zero_runs": 0
@@ -6803,7 +6833,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 11,
+"fails": 12,
 "state": "bot_check",
 "university": "Royal University of Dhaka",
 "zero_runs": 0
