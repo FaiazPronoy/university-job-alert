@@ -1,7 +1,7 @@
 {
 "board_messages": [
-27,
-28
+29,
+30
 ],
 "catchup_version": 4,
 "items": {
@@ -6319,7 +6319,7 @@
 },
 "last_digest": "2026-11-24",
 "last_manual": null,
-"last_run": "2026-11-24T20:50:15.352263+00:00",
+"last_run": "2026-11-24T21:01:56.399674+00:00",
 "pending_open": [],
 "rules_version": 4,
 "sources": {
@@ -6576,7 +6576,7 @@
 "alerted": false,
 "baselined": true,
 "count": 0,
-"fails": 3,
+"fails": 4,
 "last_ok": "2026-11-25",
 "state": "blocked",
 "university": "Dhaka Central University",
@@ -6586,7 +6586,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 29,
+"fails": 30,
 "state": "blocked",
 "university": "Dhaka International University",
 "zero_runs": 0
@@ -6702,7 +6702,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 29,
+"fails": 30,
 "state": "blocked",
 "university": "Dhaka International University",
 "zero_runs": 0
@@ -6711,7 +6711,7 @@
 "alerted": false,
 "baselined": true,
 "count": 148,
-"fails": 3,
+"fails": 4,
 "last_ok": "2026-11-25",
 "no_vacancy": false,
 "state": "timeout",
@@ -6777,7 +6777,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 29,
+"fails": 30,
 "state": "bot_check",
 "university": "World University of Bangladesh",
 "zero_runs": 0
@@ -6830,7 +6830,7 @@
 "alerted": false,
 "baselined": true,
 "count": 2,
-"fails": 3,
+"fails": 4,
 "last_ok": "2026-11-25",
 "no_vacancy": false,
 "state": "blocked",
@@ -7001,7 +7001,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 29,
+"fails": 30,
 "state": "blocked",
 "university": "Tagore University of Creative Arts",
 "zero_runs": 0
@@ -7010,7 +7010,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 29,
+"fails": 30,
 "state": "blocked",
 "university": "Tagore University of Creative Arts",
 "zero_runs": 0
@@ -7029,9 +7029,9 @@
 "alerted": false,
 "baselined": true,
 "count": 1,
-"fails": 0,
+"fails": 1,
 "last_ok": "2026-11-25",
-"state": "ok",
+"state": "bot_check",
 "university": "University of Development Alternative",
 "zero_runs": 0
 },
@@ -7039,10 +7039,10 @@
 "alerted": false,
 "baselined": true,
 "count": 2,
-"fails": 0,
+"fails": 1,
 "last_ok": "2026-11-25",
 "no_vacancy": false,
-"state": "ok",
+"state": "bot_check",
 "university": "University of Development Alternative",
 "zero_runs": 0
 },
@@ -7050,9 +7050,9 @@
 "alerted": false,
 "baselined": true,
 "count": 2,
-"fails": 0,
+"fails": 1,
 "last_ok": "2026-11-25",
-"state": "ok",
+"state": "conn_error",
 "university": "Victoria University of Bangladesh",
 "zero_runs": 0
 },
@@ -7060,10 +7060,10 @@
 "alerted": false,
 "baselined": true,
 "count": 2,
-"fails": 0,
+"fails": 1,
 "last_ok": "2026-11-25",
 "no_vacancy": false,
-"state": "ok",
+"state": "conn_error",
 "university": "Victoria University of Bangladesh",
 "zero_runs": 0
 },
@@ -7398,7 +7398,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 29,
+"fails": 30,
 "state": "bot_check",
 "university": "Royal University of Dhaka",
 "zero_runs": 0
@@ -7407,7 +7407,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 29,
+"fails": 30,
 "state": "bot_check",
 "university": "Royal University of Dhaka",
 "zero_runs": 0
