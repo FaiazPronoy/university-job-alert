@@ -1,5 +1,5 @@
 import unittest
-from datetime import date, datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 
 import watcher as w
 
@@ -24,11 +24,12 @@ class FakeFetcher:
 
 
 class FailingNotifier:
-    def send(self, text):
+    def send(self, text, silent=False):
         raise w.TelegramError("down")
 
 
-CONFIG = {"universities": [{"name": "Example University", "monitor_urls": [PAGE], "urls": [PAGE], "status": "Ready"},
+CONFIG = {"universities": [{"name": "Example University", "monitor_urls": [PAGE], "urls": [PAGE], "status": "Ready",
+                            "type": "private"},
                            {"name": "Blocked University", "monitor_urls": [], "urls": ["https://blocked.edu.bd/jobs"],
                             "status": "Blocked"},
                            {"name": "Bad Site", "monitor_urls": [], "urls": ["https://bad.example/"],
@@ -198,124 +199,152 @@ class Extraction(unittest.TestCase):
         config = {"universities": [{"name": "Poster Uni", "urls": ["https://p.test/"], "monitor_urls": ["https://p.test/"],
                                     "manual_check": True},
                                    {"name": "Normal Uni", "urls": ["https://n.test/"], "monitor_urls": ["https://n.test/"]}]}
-        notifier = w.DryRun()
-        w.send_manual(config, notifier, {"sources": {}})
-        self.assertIn("Poster Uni", notifier.messages[0])
-        self.assertNotIn("Normal Uni", notifier.messages[0])
+        text = "\n".join(w.manual_lines(config, {"sources": {}}))
+        self.assertIn("Poster Uni", text)
+        self.assertNotIn("Normal Uni", text)
+
+
+DAY = timedelta(days=1)
 
 
 class Flow(unittest.TestCase):
-    def go(self, state, html, notifier=None, now=NOW):
-        notifier = notifier or w.DryRunSilent()
-        w.run(CONFIG, state, FakeFetcher(html), notifier, now)
-        return notifier.messages
+    def go(self, html, now=NOW, config=CONFIG, fetcher=None):
+        self.notifier = Silent()
+        w.run(config, self.state, fetcher or FakeFetcher(html), self.notifier, now)
+        return self.notifier.messages
 
     def setUp(self):
         self.state = w.new_state()
-        self.state["last_digest"] = "2026-11-23"
 
-    def test_first_run_lists_open_only_once(self):
-        html = page(("Lecturer, CSE", "30/11/2026"), ("Lecturer, EEE", "01/01/2025"))
-        first = self.go(self.state, html)
-        self.assertEqual(len(first), 1)
-        self.assertIn("CSE", first[0])
-        self.assertNotIn("EEE", first[0])
-        self.assertEqual(self.go(self.state, html), [])
+    def test_two_boards_every_hour(self):
+        html = page(("Lecturer, CSE", "30/11/2026"), ("Lecturer, BBA", "01/01/2025"), ("Assistant Registrar", "05/12/2026"))
+        for _ in range(2):
+            lecturer, officer = self.go(html)
+            self.assertIn("LECTURER", lecturer)
+            self.assertIn("Lecturer, CSE", lecturer)
+            self.assertNotIn("Lecturer, BBA", lecturer)  # deadline already over
+            self.assertNotIn("NEW</b>", lecturer)  # already up when the bot started watching
+            self.assertIn("Assistant Registrar", officer)
+            self.assertNotIn("Assistant Registrar", lecturer)
 
-    def test_new_circular_alerts_once(self):
-        self.go(self.state, page(("Lecturer, CSE", "30/11/2026")))
+    def test_new_tag_only_on_publish_day(self):
+        self.go(page(("Lecturer, CSE", "30/11/2026")))
         html = page(("Lecturer, CSE", "30/11/2026"), ("Research Assistant, Computer Science", "05/12/2026"))
-        messages = self.go(self.state, html)
-        self.assertEqual(len(messages), 1)
-        self.assertIn("Research Assistant", messages[0])
-        self.assertEqual(self.go(self.state, html), [])
+        lecturer = self.go(html, NOW + timedelta(hours=1))[0]
+        self.assertIn("NEW</b> · <b>Example University</b> — <a href=\"https://example.edu.bd/job/1\">Research", lecturer)
+        self.assertNotIn("NEW</b> · <b>Example University</b> — <a href=\"https://example.edu.bd/job/0\"", lecturer)
+        self.assertIn("NEW</b> · <b>Example", self.go(html, NOW + timedelta(hours=5))[0])  # still the same day
+        self.assertNotIn("NEW</b>", self.go(html, NOW + DAY)[0])
 
-    def test_expired_new_item_is_silent(self):
-        self.go(self.state, page(("Lecturer, CSE", "30/11/2026")))
-        self.assertEqual(self.go(self.state, page(("Lecturer, CSE", "30/11/2026"), ("Lecturer, Old", "01/10/2026"))), [])
+    def test_expired_circular_disappears(self):
+        html = page(("Lecturer, CSE", "23/11/2026"))
+        self.assertIn("aj shesh din", self.go(html)[0])
+        self.assertNotIn("Lecturer, CSE", self.go(html, NOW + DAY)[0])
 
-    def test_failed_telegram_retries_next_run(self):
-        self.go(self.state, page(("Lecturer, CSE", "30/11/2026")))
+    def test_sorted_by_deadline(self):
+        lecturer = self.go(page(("Lecturer, Marketing", "20/12/2026"), ("Lecturer, CSE", "25/11/2026"),
+                                ("Lecturer, Finance", "01/12/2026")))[0]
+        self.assertLess(lecturer.index("CSE"), lecturer.index("Finance"))
+        self.assertLess(lecturer.index("Finance"), lecturer.index("Marketing"))
+        self.assertIn("🔴", lecturer)
+
+    def test_private_and_public_sections(self):
+        config = {"universities": [dict(CONFIG["universities"][0], type="private"),
+                                   {"name": "State University", "type": "public", "urls": [],
+                                    "monitor_urls": ["https://state.edu.bd/career"]}], "backup_sources": []}
+        lecturer, officer = self.go(page(("Lecturer, CSE", "30/11/2026"), ("Section Officer", "30/11/2026")), config=config)
+        private, public = lecturer.split("PUBLIC UNIVERSITY")
+        self.assertIn("Example University", private)
+        self.assertIn("State University", public)
+        self.assertIn("[Public]", officer)
+        self.assertIn("[Private]", officer)
+
+    def test_silent_unless_something_new(self):
+        html = page(("Lecturer, CSE", "30/11/2026"))
+        self.go(html)
+        self.go(html)
+        self.assertEqual(self.notifier.silent, [True, True])
+        self.go(page(("Lecturer, CSE", "30/11/2026"), ("Assistant Registrar", "05/12/2026")))
+        self.assertEqual(self.notifier.silent, [False, False])
+
+    def test_previous_boards_are_deleted(self):
+        html = page(("Lecturer, CSE", "30/11/2026"))
+        self.go(html)
+        first = list(self.state["board_messages"])
+        self.go(html)
+        self.assertEqual(self.notifier.deleted, first)
+        self.assertNotEqual(self.state["board_messages"], first)
+
+    def test_failed_telegram_is_loud_next_run(self):
+        self.go(page(("Lecturer, CSE", "30/11/2026")))
         html = page(("Lecturer, CSE", "30/11/2026"), ("Assistant Registrar", "05/12/2026"))
         with self.assertRaises(w.TelegramError):
             w.run(CONFIG, self.state, FakeFetcher(html), FailingNotifier(), NOW)
-        self.assertIn("Assistant Registrar", "".join(self.go(self.state, html)))
+        self.assertIn("Assistant Registrar", self.go(html)[1])
+        self.assertEqual(self.notifier.silent, [False, False])
 
-    def test_redesign_flood_is_grouped(self):
-        self.go(self.state, page(("Lecturer, CSE", "30/11/2026")))
-        rows = [(f"Lecturer Post {i}", "30/12/2026") for i in range(30)]
-        messages = self.go(self.state, page(*rows))
-        self.assertEqual(len(messages), 1)
-        self.assertIn("30 ta", messages[0])
+    def test_redesign_flood_stays_off_the_board(self):
+        self.go(page(("Lecturer, CSE", "30/11/2026")))
+        lecturer = self.go(page(*[(f"Lecturer Post {i}", "30/12/2026") for i in range(30)]))[0]
+        self.assertNotIn("Lecturer Post 5", lecturer)
 
-    def test_extended_deadline_alerts(self):
-        self.go(self.state, page(("Lecturer, CSE", "30/11/2026")))
-        self.assertIn("Deadline bereche", "".join(self.go(self.state, page(("Lecturer, CSE", "10/12/2026")))))
+    def test_extended_deadline_is_marked(self):
+        self.go(page(("Lecturer, CSE", "30/11/2026")))
+        self.assertIn("deadline bereche", self.go(page(("Lecturer, CSE", "10/12/2026")))[0])
 
     def test_one_day_timezone_shift_is_not_an_extension(self):
-        self.go(self.state, page(("Lecturer, CSE", "30/11/2026")))
-        self.assertEqual(self.go(self.state, page(("Lecturer, CSE", "01/12/2026"))), [])
+        self.go(page(("Lecturer, CSE", "30/11/2026")))
+        self.assertNotIn("bereche", self.go(page(("Lecturer, CSE", "01/12/2026")))[0])
         self.assertIn("2026-12-01", [r["deadline"] for r in self.state["items"].values()])
 
-    def test_marketing_copy_and_email_do_not_alert(self):
-        self.go(self.state, "<main><p>Welcome to the university portal</p></main>")
+    def test_marketing_copy_and_email_are_not_listed(self):
+        self.go("<main><p>Welcome to the university portal</p></main>")
         html = ("<main><p>Welcome to the university portal</p><p>Explore exciting faculty and administrative positions</p>"
                 "<p><a href='/contact'>recruitment@example.edu - Sat-Thu</a></p></main>")
-        self.assertEqual(self.go(self.state, html), [])
+        lecturer, officer = self.go(html)
+        self.assertIn("Ekhon kono open circular nei", lecturer)
+        self.assertNotIn("Explore", lecturer + officer)
+        self.assertNotIn("recruitment@", lecturer + officer)
 
     def test_deadline_from_detail_page_is_used(self):
         class Detail(FakeFetcher):
             def detail_deadlines(self, urls):
                 return {u: date(2026, 12, 10) for u in urls}
-        self.state["catchup_version"] = w.CATCHUP_VERSION
         html = "<main><table><tr><td><a href='/job/9'>Lecturer in Marketing</a></td></tr></table></main>"
-        notifier = w.DryRunSilent()
-        w.run(CONFIG, self.state, Detail(html), notifier, NOW)
-        self.assertIn("10 Dec 2026", "".join(notifier.messages))
+        self.assertIn("10 Dec", self.go(html, fetcher=Detail(html))[0])
 
-    def test_catchup_is_sent_once_for_existing_memory(self):
-        self.go(self.state, page(("Lecturer, CSE", "30/11/2026")))
-        self.state.pop("catchup_version")
-        self.assertIn("Updated list", "".join(self.go(self.state, page(("Lecturer, CSE", "30/11/2026")))))
-        self.assertEqual(self.go(self.state, page(("Lecturer, CSE", "30/11/2026"))), [])
-
-    def test_rule_upgrade_does_not_announce_old_content(self):
+    def test_rule_upgrade_does_not_mark_old_content_new(self):
         html = page(("Lecturer, CSE", "30/11/2026"))
-        self.go(self.state, html)
+        self.go(html)
         self.state["rules_version"] = 0
-        self.state["catchup_version"] = w.CATCHUP_VERSION
-        wider = page(("Lecturer, CSE", "30/11/2026"), ("Old Accountant Post Notice", "01/01/2025"))
-        self.assertEqual(self.go(self.state, wider), [])
+        self.go(page(("Lecturer, CSE", "30/11/2026"), ("Assistant Accountant Post", "30/12/2026")))
+        self.assertEqual(self.notifier.silent, [True, True])
 
-    def test_broken_source_alerts_once_and_recovers(self):
+    def test_broken_source_is_listed_until_it_recovers(self):
         html = page(("Lecturer, CSE", "30/11/2026"))
-        self.go(self.state, html)
-        messages = []
-        for _ in range(w.FAILS_BEFORE_ALERT + 2):
-            messages += self.go(self.state, None)
-        self.assertEqual(len(messages), 1)
-        self.assertIn("Abar", "Abar " if "abar kaj" in "".join(self.go(self.state, html)) else "")
+        self.go(html)
+        for _ in range(w.FAILS_BEFORE_ALERT):
+            officer = self.go(None)[1]
+        self.assertIn("check kora jachhe na", officer)
+        self.assertNotIn("check kora jachhe na", self.go(html)[1])
 
-    def test_digest_reminder_once_per_threshold(self):
-        self.state["last_digest"] = None
-        html = page(("Lecturer, CSE", "26/11/2026"))
-        first = self.go(self.state, html)
-        self.assertTrue(any("Deadline reminder" in m for m in first))
-        self.assertFalse(any("Deadline reminder" in m for m in self.go(self.state, html)))
+    def test_new_career_line_without_deadline(self):
+        self.go("<main><p>Join our team at this university today</p></main>")
+        lecturer = self.go("<main><p>Join our team at this university today</p><p>Lecturer in Marketing</p></main>")[0]
+        self.assertIn("Deadline lekha nai", lecturer)
+        self.assertIn("NEW</b> · <b>Example University</b> — <a href=\"https://example.edu.bd/career\">Lecturer in Marketing", lecturer)
+        later = "<main><p>Join our team at this university today</p><p>Lecturer in Marketing</p></main>"
+        self.assertNotIn("Marketing", self.go(later, NOW + timedelta(days=w.UNDATED_DAYS + 1))[0])
 
-    def test_unparsed_career_line_still_alerts(self):
-        self.go(self.state, "<main><p>Join our team at this university today</p></main>")
-        messages = self.go(self.state, "<main><p>Join our team at this university today</p><p>Lecturer in Marketing</p></main>")
-        self.assertEqual(len(messages), 1)
-        self.assertIn("Lecturer in Marketing", messages[0])
+    def test_undated_post_that_was_already_there_is_hidden(self):
+        lecturer = self.go("<main><p>Join our team at this university today</p><p>Lecturer in Marketing</p></main>")[0]
+        self.assertNotIn("Marketing", lecturer)
 
-    def test_no_vacancy_message_removed_alerts(self):
-        self.go(self.state, "<main><p>No Job Vacancy</p></main>")
-        messages = self.go(self.state, "<main><p>Please see the attached document</p></main>")
-        self.assertEqual(len(messages), 1)
-        self.assertIn("no vacancy", messages[0])
+    def test_no_vacancy_message_removed_is_listed(self):
+        self.go("<main><p>No Job Vacancy</p></main>")
+        self.assertIn("no vacancy", self.go("<main><p>Please see the attached document</p></main>")[1])
 
-    def test_same_circular_on_two_pages_alerts_once(self):
+    def test_same_circular_on_two_pages_is_listed_once(self):
         config = {"universities": [{"name": "Example University", "urls": [],
                                     "monitor_urls": ["https://example.edu.bd/career", "https://example.edu.bd/jobs"]}]}
         class TwoPages:
@@ -323,55 +352,58 @@ class Flow(unittest.TestCase):
             def __call__(self, sources):
                 return {s["url"]: w.FetchResult(s["url"], True, "ok", self.html.replace("/job/", s["url"][-4:] + "/"), s["url"])
                         for s in sources}
-        fetcher, notifier = TwoPages(), w.DryRunSilent()
-        w.run(config, self.state, fetcher, notifier, NOW)
-        notifier.messages.clear()
+        fetcher = TwoPages()
+        self.go(None, config=config, fetcher=fetcher)
         fetcher.html = page(("Lecturer, CSE", "30/11/2026"), ("Assistant Registrar for Academic Affairs", "05/12/2026"))
-        w.run(config, self.state, fetcher, notifier, NOW)
-        self.assertEqual(sum("Assistant Registrar" in m for m in notifier.messages), 1)
+        self.assertEqual(self.go(None, config=config, fetcher=fetcher)[1].count("Assistant Registrar"), 1)
+
+    def test_sunday_board_carries_the_weekly_list_once(self):
+        sunday = NOW - DAY
+        html = page(("Lecturer, CSE", "30/11/2026"))
+        officer = self.go(html, sunday)[1]
+        self.assertIn("blocked.edu.bd", officer)
+        self.assertNotIn("bad.example", officer)
+        self.assertNotIn("Weekly manual", self.go(html, sunday + timedelta(hours=1))[1])
 
     def test_weekly_list_includes_source_that_keeps_failing(self):
-        state = w.new_state()
-        state["sources"][PAGE] = {"fails": w.FAILS_BEFORE_ALERT}
-        notifier = w.DryRunSilent()
-        w.send_manual(CONFIG, notifier, state)
-        self.assertIn("Example University", notifier.messages[0])
-
-    def test_weekly_list_hides_suspicious_link(self):
-        notifier = w.DryRunSilent()
-        w.send_manual(CONFIG, notifier)
-        self.assertIn("blocked.edu.bd", notifier.messages[0])
-        self.assertNotIn("bad.example", notifier.messages[0])
+        state = {"sources": {PAGE: {"fails": w.FAILS_BEFORE_ALERT}}}
+        self.assertIn("Example University", "\n".join(w.manual_lines(CONFIG, state)))
 
 
 class TelegramFormat(unittest.TestCase):
-    def test_title_is_escaped(self):
-        record = {"university": "A&B", "title": "<Lecturer>", "category": "Teaching", "deadline": None, "url": "https://a.edu/?a=1&b=2"}
-        message = w.alert_message(record, date(2026, 11, 23))
-        self.assertIn("A&amp;B", message)
-        self.assertIn("&lt;Lecturer&gt;", message)
-        self.assertIn("a=1&amp;b=2", message)
+    def record(self, title, deadline, first_seen="2026-11-01", university="Example University"):
+        return {"university": university, "title": title, "category": "Officer/Admin", "deadline": deadline,
+                "url": "https://a.edu/j", "first_seen": first_seen, "level": "strong", "baseline": False}
 
-    def record(self, title, deadline, first_seen="2026-11-01"):
-        return {"university": "Example University", "title": title, "category": "Officer/Admin", "deadline": deadline,
-                "url": "https://a.edu/j", "first_seen": first_seen}
+    def test_title_is_escaped(self):
+        record = dict(self.record("<Lecturer>", "2026-11-30", university="A&B"), url="https://a.edu/?a=1&b=2")
+        line = w.board_line(record, date(2026, 11, 23), {}, False)
+        self.assertIn("A&amp;B", line)
+        self.assertIn("&lt;Lecturer&gt;", line)
+        self.assertIn("a=1&amp;b=2", line)
 
     def test_new_tag_only_on_items_first_seen_today(self):
         today = date(2026, 11, 24)
-        self.assertIn("🆕", w.short_line(self.record("Officer", "2026-11-30", "2026-11-24"), today))
-        self.assertNotIn("🆕", w.short_line(self.record("Officer", "2026-11-30"), today))
-
-    def test_sections_are_sorted_by_urgency(self):
-        today = date(2026, 11, 24)
-        text = "\n\n".join(w.deadline_sections([self.record("Later Post", "2026-12-20"), self.record("Soon Post", "2026-11-25"),
-                                                self.record("Week Post", "2026-11-30")], today))
-        self.assertLess(text.index("Soon Post"), text.index("Week Post"))
-        self.assertLess(text.index("Week Post"), text.index("Later Post"))
-        self.assertIn("kal shesh din", text)
+        self.assertIn("NEW", w.board_line(self.record("Officer", "2026-11-30", "2026-11-24"), today, {}, False))
+        self.assertNotIn("NEW", w.board_line(self.record("Officer", "2026-11-30"), today, {}, False))
 
     def test_same_circular_is_listed_once(self):
         same = self.record("Job Opportunity for Officers", "2026-11-30")
         self.assertEqual(len(w.unique_records([same, dict(same, url="https://a.edu/other")])), 1)
+
+    def test_changed_deadline_keeps_only_the_newest(self):
+        old = self.record("Lecturer (CSE)", "2026-11-30", "2026-11-23")
+        new = self.record("Lecturer (CSE)", "2026-12-03", "2026-11-24")
+        self.assertEqual(w.latest_versions([old, new]), [new])
+
+    def test_long_quote_is_split_with_closed_tags(self):
+        blocks = w.quote_blocks("Heading", [f"• line {i} " + "x" * 200 for i in range(40)])
+        self.assertGreater(len(blocks), 1)
+        for block in blocks:
+            self.assertLessEqual(len(block), 3900)
+            self.assertEqual(block.count("<blockquote expandable>"), block.count("</blockquote>"))
+        parts = w.split_message("\n\n".join(blocks))
+        self.assertTrue(all(p.count("<blockquote") == p.count("</blockquote>") for p in parts))
 
     def test_split_keeps_a_circular_together(self):
         blocks = [f"title {i}\nplace {i}" + "x" * 300 for i in range(40)]
@@ -388,13 +420,16 @@ class TelegramFormat(unittest.TestCase):
 
 class Silent:
     def __init__(self):
-        self.messages = []
+        self.messages, self.silent, self.deleted = [], [], []
 
-    def send(self, text):
+    def send(self, text, silent=False):
         self.messages.append(text)
+        self.silent.append(silent)
+        return [id(text)]
 
+    def delete(self, ids):
+        self.deleted += ids
 
-w.DryRunSilent = Silent
 
 if __name__ == "__main__":
     unittest.main()

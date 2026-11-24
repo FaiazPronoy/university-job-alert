@@ -4,11 +4,19 @@ Dhakar university gulor lecturer, research, officer ar administrative circular p
 
 ## Ki pathabe
 
-- Notun circular paile sathe sathe alert.
-- Deadline-er 7, 3, 1 din age ar shesh dine reminder, sokal 9 tar daily update-e.
-- Daily update, jate bojha jay bot cholche. **Kono din ei message na ele bot bondho ache dhore niben.**
-- Kono site 6 ghonta kaj na korle alert.
-- Protiti Robibar je university gulo bot porte pare na, tader manual checklist.
+Protiti ghontay shudhu **2 ta message** ashe. Agher ghontar 2 ta message nije theke muche jay, tai chat-e shob shomoy latest list thake.
+
+1. **🎓 Lecturer & Research (CSE/BBA)**: Private University ar Public University alada bhag-e.
+2. **🏢 Officer · Admin · HR**: private ar public eksathe, protita post-er pashe `[Private]` / `[Public]` lekha.
+
+- Protita bhag-e je circular-er deadline age shesh, shetai upore. 🔴 = 3 diner moddhe, 🟠 = ei shoptahe.
+- Je circular aj publish hoyeche, tar pashe saradin **🟢 NEW** thake. Porer din ar thake na.
+- Deadline par hole circular list theke chole jay.
+- Deadline lekha nai emon notun post ekta collapsed list-e 7 din thake (tap korle khule).
+- Notun kichu ashle message sound kore ashe, na ashle silent.
+- Kono site 6 ghonta kaj na korle Officer message-er niche dekhabe.
+- Robibar sokal 9 tar por Officer message-er niche manual checklist thake.
+- **Kono ghontay message na ele bot bondho ache dhore niben.**
 
 ## Setup
 
