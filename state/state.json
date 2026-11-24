@@ -5997,7 +5997,7 @@
 },
 "last_digest": "2026-11-24",
 "last_manual": null,
-"last_run": "2026-11-24T19:01:20.513210+00:00",
+"last_run": "2026-11-24T20:01:23.351247+00:00",
 "pending_open": [],
 "rules_version": 4,
 "sources": {
@@ -6254,7 +6254,7 @@
 "alerted": false,
 "baselined": true,
 "count": 0,
-"fails": 1,
+"fails": 2,
 "last_ok": "2026-11-25",
 "state": "blocked",
 "university": "Dhaka Central University",
@@ -6264,7 +6264,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 27,
+"fails": 28,
 "state": "blocked",
 "university": "Dhaka International University",
 "zero_runs": 0
@@ -6380,7 +6380,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 27,
+"fails": 28,
 "state": "blocked",
 "university": "Dhaka International University",
 "zero_runs": 0
@@ -6389,7 +6389,7 @@
 "alerted": false,
 "baselined": true,
 "count": 148,
-"fails": 1,
+"fails": 2,
 "last_ok": "2026-11-25",
 "no_vacancy": false,
 "state": "timeout",
@@ -6455,7 +6455,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 27,
+"fails": 28,
 "state": "bot_check",
 "university": "World University of Bangladesh",
 "zero_runs": 0
@@ -6508,7 +6508,7 @@
 "alerted": false,
 "baselined": true,
 "count": 2,
-"fails": 1,
+"fails": 2,
 "last_ok": "2026-11-25",
 "no_vacancy": false,
 "state": "blocked",
@@ -6679,7 +6679,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 27,
+"fails": 28,
 "state": "blocked",
 "university": "Tagore University of Creative Arts",
 "zero_runs": 0
@@ -6688,7 +6688,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 27,
+"fails": 28,
 "state": "blocked",
 "university": "Tagore University of Creative Arts",
 "zero_runs": 0
@@ -7076,7 +7076,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 27,
+"fails": 28,
 "state": "bot_check",
 "university": "Royal University of Dhaka",
 "zero_runs": 0
@@ -7085,7 +7085,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 27,
+"fails": 28,
 "state": "bot_check",
 "university": "Royal University of Dhaka",
 "zero_runs": 0
