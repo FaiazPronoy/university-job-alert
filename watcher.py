@@ -49,6 +49,8 @@ MAX_PAGE_BYTES = 5_000_000
 MAX_PDF_BYTES = 8_000_000
 HOST_DELAY = 1.0
 MAX_DETAIL_CHECKS = 150
+PDF_PAGES = 10
+DETAIL_VERSION = 2  # raise when circular reading improves, so already-read circulars are read again
 REPLACE_OLD_BOARD = True  # keep only the latest two boards in the chat
 RULES_VERSION = 4  # raise whenever detection rules change
 NO_LINK_STATUSES = {"Suspicious site", "Site down"}
@@ -90,6 +92,7 @@ DATE_PATTERNS = [
 ]
 DEADLINE_WORDS = rx(
     r"dead\s*-?\s*line|last\s+date|closing\s+date|apply\s+by|on\s+or\s+before|submission\s+date|"
+    r"\b(?:apply|submit(?:ted)?|reach|send)\b.{0,60}?\b(?:by|within|before)(?:\s+the)?\b|"
     r"application\s+(?:end|close)s?|expires?\s+on|শেষ\s*তারিখ|আবেদনের\s*শেষ|সর্বশেষ\s*তারিখ|আবেদন\s*গ্রহণের\s*শেষ")
 BN_DEADLINE_AFTER = rx(r"^\D{0,6}(তারিখের\s*মধ্যে|তারিখ\s*পর্যন্ত|এর\s*মধ্যে|\d+\s*days?\s*remaining)")
 
@@ -226,6 +229,24 @@ def wanted_post(title: str, context: str) -> bool:
                 return False
         return True  # a general faculty circular may include CSE or BBA
     return bool(WANTED_SUBJECT.search(title)) or not OTHER_SUBJECT.search(title)
+
+
+LECTURER_IN_TEXT = rx(r"lecturer|research\s*(assistant|associate)|teaching\s*assistant|প্রভাষক|গবেষণা\s*সহকারী")
+# A bare "Registrar" is usually the circular's signature, so only named posts count.
+OFFICER_IN_TEXT = rx(r"officer|(?:assistant|deputy|additional)\s+registrar|administrat\w*\s+(?:post|position)|coordinator|"
+                     r"কর্মকর্তা|(?:সহকারী|উপ|অতিরিক্ত)\s*রেজিস্ট্রার")
+
+
+def circular_facts(text: str) -> dict:
+    """What a circular's own page or PDF says: its deadline and which board(s) it belongs on."""
+    text = clean(text)
+    groups = []
+    if LECTURER_IN_TEXT.search(text) and WANTED_SUBJECT.search(text):
+        groups.append("lecturer")
+    if OFFICER_IN_TEXT.search(OFFICE_NAME.sub(" ", text)) and not OFFICER_EXCLUDED.fullmatch(text):
+        groups.append("officer")
+    deadline = find_deadline(text)
+    return {"deadline": deadline.isoformat() if deadline else None, "groups": groups}
 
 
 def not_job(title: str) -> bool:
@@ -745,38 +766,42 @@ class Fetcher:
                 results[rendered.url] = rendered
         return results
 
-    def detail_deadlines(self, urls: list[str]) -> dict[str, date]:
-        """Many list pages hide the deadline, so read the circular's own page or PDF."""
+    def detail_info(self, urls: list[str]) -> dict[str, dict]:
+        """Many list pages hide the deadline, so read the circular's own page or PDF.
+
+        Returns {url: {"deadline": date | None, "groups": [...]}} for every circular that could be read.
+        """
         documents = [u for u in urls if DOCUMENT_URL.search(urlparse(u).path)]
         by_host: dict[str, list[str]] = defaultdict(list)
         for url in urls:
             if url not in documents:
                 by_host[urlparse(url).netloc].append(url)
-        found: dict[str, date] = {}
+        found: dict[str, dict] = {}
         thin: list[str] = []
         with ThreadPoolExecutor(8) as pool:
             for group in pool.map(self.fetch_host, by_host.values()):
                 for result in group:
                     if not result.ok:
                         continue
-                    lines = page_lines(result.html)
                     # Site-wide banners such as "admission deadline" must not become the job deadline.
-                    deadline = find_deadline(" ".join(x for x in lines if not NOISE.search(x)))
-                    if deadline:
-                        found[result.url] = deadline
-                    elif len(" ".join(lines)) < 300:
+                    text = " ".join(x for x in page_lines(result.html) if not NOISE.search(x))
+                    if len(text) < 300:
                         thin.append(result.url)
+                    else:
+                        found[result.url] = circular_facts(text)
         for result in self.browser(thin):
             if result.ok:
-                text = " ".join(x for x in page_lines(result.html) if not NOISE.search(x))
-                if deadline := find_deadline(text):
-                    found[result.url] = deadline
+                found[result.url] = circular_facts(" ".join(x for x in page_lines(result.html) if not NOISE.search(x)))
         for url in documents:
-            if url.lower().split("?")[0].endswith(".pdf") and (deadline := self.pdf_deadline(url)):
-                found[url] = deadline
+            if url.lower().split("?")[0].endswith(".pdf") and (text := self.pdf_text(url)):
+                found[url] = circular_facts(text)
         return found
 
     def pdf_deadline(self, url: str) -> date | None:
+        text = self.pdf_text(url)
+        return find_deadline(text) if text else None
+
+    def pdf_text(self, url: str) -> str | None:
         """Best effort: text PDFs only. Scanned PDFs return None."""
         try:
             from pypdf import PdfReader
@@ -791,8 +816,9 @@ class Fetcher:
             if len(raw) > MAX_PDF_BYTES:
                 return None
             reader = PdfReader(io.BytesIO(raw))
-            text = " ".join((page.extract_text() or "") for page in reader.pages[:3])
-            return find_deadline(text)
+            # The "apply by" line is usually at the very end, after the list of posts.
+            text = " ".join((page.extract_text() or "") for page in reader.pages[:PDF_PAGES])
+            return text if text.strip() else None
         except Exception as error:  # malformed PDFs must never stop the run
             log.info("PDF skipped: %s (%s)", url, type(error).__name__)
             return None
@@ -937,6 +963,11 @@ TYPE_TAGS = {"private": "Private", "public": "Public"}
 NEW_TAG = "🟢 <b>NEW</b> · "
 
 
+def board_groups(record: dict) -> list[str]:
+    """Where a record is listed. A circular whose text names both kinds of post goes on both boards."""
+    return record.get("groups") or [board_group(record)]
+
+
 def board_group(record: dict) -> str:
     """lecturer, officer, or general (a circular whose post the title does not name)."""
     role = record.get("category")
@@ -955,11 +986,13 @@ def on_board(record: dict, today: date) -> bool:
         return False
     if record.get("deadline"):
         return record["deadline"] >= today.isoformat()
-    # Without a deadline only fresh posts are listed: page content that existed when the bot
-    # started watching (baseline) is mostly menus and old notices.
-    if record.get("baseline", True) or record["first_seen"] < (today - timedelta(days=UNDATED_DAYS)).isoformat():
-        return False
-    return (record.get("last_seen") or record["first_seen"]) >= (today - timedelta(days=SEEN_GRACE_DAYS)).isoformat()
+    if (record.get("last_seen") or record["first_seen"]) < (today - timedelta(days=SEEN_GRACE_DAYS)).isoformat():
+        return False  # no longer on its page
+    # Without a deadline: a fresh post for a week, or a linked circular dated in the last 45 days.
+    # Bare page lines that were there when the bot started watching are mostly menus.
+    fresh = not record.get("baseline", True) and record["first_seen"] >= (today - timedelta(days=UNDATED_DAYS)).isoformat()
+    recent = (record.get("latest_date") or "") >= (today - timedelta(days=STALE_DAYS)).isoformat()
+    return fresh or (recent and canonical_url(record["url"]) != canonical_url(record.get("page") or ""))
 
 
 def short_date(value: str, today: date) -> str:
@@ -1217,10 +1250,10 @@ def check_pdf_deadlines(state: dict, fetcher, today: date) -> None:
             record["deadline"] = found.isoformat()  # a past date simply keeps it off the board
 
 
-def enrich_deadlines(state: dict, fetcher, today: date) -> list[str]:
-    """Return already-seen items that turned out to be open, so they can still be announced."""
-    if not hasattr(fetcher, "detail_deadlines"):
-        return []
+def enrich_deadlines(state: dict, fetcher, today: date) -> None:
+    """Open each circular that is missing its deadline or its post type, and read them from it."""
+    if not hasattr(fetcher, "detail_info"):
+        return
     failing = {urlparse(u).netloc for u, info in state["sources"].items() if info.get("state") != "ok"}
     source_pages = {canonical_url(u) for u in state["sources"]}
 
@@ -1228,26 +1261,31 @@ def enrich_deadlines(state: dict, fetcher, today: date) -> list[str]:
         parts = urlparse(url)
         return bool(DOCUMENT_URL.search(parts.path) or CAREER_URL.search(f"{parts.path}?{parts.query}"))
 
+    def needs_reading(r: dict) -> bool:
+        missing = not r.get("deadline") or (r["category"] == "General circular" and "groups" not in r)
+        return missing and (r.get("deadline") or "9999") >= today.isoformat()
+
     todo = [r for r in state["items"].values()
-            if r["level"] == "strong" and not r.get("deadline") and not r.get("detail_checked")
+            if r["level"] == "strong" and needs_reading(r) and r.get("detail_checked") != DETAIL_VERSION
             and r["category"] != "Career page update" and not not_job(r["title"])
             and canonical_url(r["url"]) not in source_pages and is_circular_link(r["url"])
             and urlparse(r["url"]).netloc not in failing]
-    todo.sort(key=lambda r: r.get("latest_date") or "", reverse=True)
+    todo.sort(key=lambda r: r.get("latest_date") or r["first_seen"], reverse=True)
     todo.sort(key=lambda r: r["notified"])
     todo = todo[:MAX_DETAIL_CHECKS]
     if not todo:
-        return []
-    found = fetcher.detail_deadlines(list(dict.fromkeys(r["url"] for r in todo)))
-    now_open = set()
+        return
+    found = fetcher.detail_info(list(dict.fromkeys(r["url"] for r in todo)))
+    limit = (today + timedelta(days=365)).isoformat()
     for record in todo:
-        record["detail_checked"] = True
-        value = found.get(record["url"])
-        if value and value <= today + timedelta(days=365):
-            record["deadline"] = value.isoformat()
-            if value >= today and record["notified"]:
-                now_open.add(id(record))
-    return [key for key, record in state["items"].items() if id(record) in now_open]
+        record["detail_checked"] = DETAIL_VERSION
+        facts = found.get(record["url"])
+        if not facts:
+            continue
+        if facts["deadline"] and not record.get("deadline") and facts["deadline"] <= limit:
+            record["deadline"] = facts["deadline"]
+        if facts["groups"]:
+            record["groups"] = facts["groups"]
 
 
 def failing_sources(state: dict) -> list[tuple[str, str, str]]:
@@ -1283,7 +1321,7 @@ def build_boards(state: dict, config: dict, now: datetime, weekly: bool = False)
     today = now.astimezone(DHAKA).date()
     types = {u["name"]: u.get("type", "") for u in config["universities"]}
     records = latest_versions(unique_records([r for r in state["items"].values() if on_board(r, today)]))
-    group = {g: [r for r in records if board_group(r) == g] for g in ("lecturer", "officer", "general")}
+    group = {g: [r for r in records if g in board_groups(r)] for g in ("lecturer", "officer", "general")}
     lecturers = group["lecturer"]
     public = [r for r in lecturers if types.get(r["university"]) == "public"]
     private = [r for r in lecturers if types.get(r["university"]) != "public"]

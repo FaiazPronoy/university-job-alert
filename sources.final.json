@@ -1036,6 +1036,9 @@
    "name": "Teletalk All Jobs",
    "urls": [
     "https://alljobs.teletalk.com.bd/"
+   ],
+   "monitor_urls": [
+    "https://alljobs.teletalk.com.bd/"
    ]
   },
   {

@@ -43,6 +43,15 @@ class Dates(unittest.TestCase):
                      "আবেদনের শেষ তারিখ ২৫ নভেম্বর ২০২৬", "২৫/১১/২০২৬ তারিখের মধ্যে আবেদন", "on or before 25th November, 2026"]:
             self.assertEqual(w.find_deadline(text), date(2026, 11, 25), text)
 
+    def test_apply_to_website_by_date(self):
+        self.assertEqual(w.find_deadline("Applicants must apply to www.career.uits.ac.bd by the 25 November, 2026."),
+                         date(2026, 11, 25))
+
+    def test_circular_text_says_which_board(self):
+        self.assertEqual(w.circular_facts("Lecturer (CSE) ... Registrar")["groups"], ["lecturer"])
+        self.assertEqual(w.circular_facts("Section Officer, Assistant Registrar")["groups"], ["officer"])
+        self.assertEqual(w.circular_facts("Lecturer in Law. Registrar")["groups"], [])
+
     def test_posted_date_is_not_deadline(self):
         self.assertEqual(w.find_deadline("Posting Time : 19/11/2026 Application Deadline : 28/11/2026"), date(2026, 11, 28))
         self.assertIsNone(w.find_deadline("Published 19/11/2026"))
@@ -308,10 +317,23 @@ class Flow(unittest.TestCase):
 
     def test_deadline_from_detail_page_is_used(self):
         class Detail(FakeFetcher):
-            def detail_deadlines(self, urls):
-                return {u: date(2026, 12, 10) for u in urls}
+            def detail_info(self, urls):
+                return {u: {"deadline": "2026-12-10", "groups": []} for u in urls}
         html = "<main><table><tr><td><a href='/job/9'>Lecturer in Marketing</a></td></tr></table></main>"
         self.assertIn("10 Dec", self.go(html, fetcher=Detail(html))[0])
+
+    def test_general_pdf_with_lecturer_and_officer_posts_is_on_both_boards(self):
+        text = ("Recruitment Notice Lecturer Computer Science and Engineering Business Studies Section Officer "
+                "Applicants must apply to www.career.uits.ac.bd by the 25 November, 2026. Registrar")
+        class Pdf(FakeFetcher):
+            def detail_info(self, urls):
+                return {u: w.circular_facts(text) for u in urls}
+        html = "<nav><a href='/front/images/circular_11_11_2026.pdf'>Download Job Circular</a></nav><main><p>Apply</p></main>"
+        for _ in range(2):  # already-known circulars are read again too
+            lecturer, officer = self.go(html, fetcher=Pdf(html))
+            self.assertIn("Job Circular (11 Nov 2026)", lecturer)
+            self.assertIn("Job Circular (11 Nov 2026)", officer)
+            self.assertIn("25 Nov (2 din baki)", lecturer)
 
     def test_rule_upgrade_does_not_mark_old_content_new(self):
         html = page(("Lecturer, CSE", "30/11/2026"))
