@@ -1,7 +1,7 @@
 {
 "board_messages": [
-51,
-52
+53,
+54
 ],
 "catchup_version": 4,
 "items": {
@@ -5511,6 +5511,22 @@
 "university": "University of Dhaka",
 "url": "https://jobs.du.ac.bd/job_details/337"
 },
+"daef4f1aeb2deb93bc09": {
+"baseline": false,
+"category": "Officer/Admin",
+"deadline": null,
+"digested": true,
+"first_seen": "2026-11-25",
+"last_seen": "2026-11-25",
+"latest_date": null,
+"level": "strong",
+"notified": true,
+"page": "https://archive-career.green.edu.bd/current-circular-2/",
+"reminded": [],
+"title": "Officer, Admin",
+"university": "Green University of Bangladesh",
+"url": "https://archive-career.green.edu.bd/app-form-engg/"
+},
 "dbb78892ff4a57ff3a02": {
 "category": "General circular",
 "deadline": null,
@@ -6406,7 +6422,7 @@
 },
 "last_digest": "2026-11-24",
 "last_manual": null,
-"last_run": "2026-11-25T05:43:03.206506+00:00",
+"last_run": "2026-11-25T06:00:59.077568+00:00",
 "pending_open": [],
 "rules_version": 4,
 "sources": {
@@ -6466,7 +6482,7 @@
 "https://archive-career.green.edu.bd/current-circular-2/": {
 "alerted": false,
 "baselined": true,
-"count": 4,
+"count": 5,
 "fails": 0,
 "last_ok": "2026-11-25",
 "no_vacancy": false,
@@ -6673,9 +6689,9 @@
 "alerted": false,
 "baselined": true,
 "count": 0,
-"fails": 0,
+"fails": 1,
 "last_ok": "2026-11-25",
-"state": "ok",
+"state": "blocked",
 "university": "Dhaka Central University",
 "zero_runs": 0
 },
@@ -6683,7 +6699,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 41,
+"fails": 42,
 "state": "blocked",
 "university": "Dhaka International University",
 "zero_runs": 0
@@ -6799,7 +6815,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 41,
+"fails": 42,
 "state": "blocked",
 "university": "Dhaka International University",
 "zero_runs": 0
@@ -6808,10 +6824,10 @@
 "alerted": false,
 "baselined": true,
 "count": 148,
-"fails": 0,
+"fails": 1,
 "last_ok": "2026-11-25",
 "no_vacancy": false,
-"state": "ok",
+"state": "timeout",
 "university": "University of Dhaka",
 "zero_runs": 0
 },
@@ -6874,7 +6890,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 41,
+"fails": 42,
 "state": "bot_check",
 "university": "World University of Bangladesh",
 "zero_runs": 0
@@ -6927,10 +6943,10 @@
 "alerted": false,
 "baselined": true,
 "count": 2,
-"fails": 0,
+"fails": 1,
 "last_ok": "2026-11-25",
 "no_vacancy": false,
-"state": "ok",
+"state": "blocked",
 "university": "Northern University Bangladesh",
 "zero_runs": 0
 },
@@ -7098,7 +7114,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 41,
+"fails": 42,
 "state": "blocked",
 "university": "Tagore University of Creative Arts",
 "zero_runs": 0
@@ -7107,7 +7123,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 41,
+"fails": 42,
 "state": "blocked",
 "university": "Tagore University of Creative Arts",
 "zero_runs": 0
@@ -7495,7 +7511,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 41,
+"fails": 42,
 "state": "bot_check",
 "university": "Royal University of Dhaka",
 "zero_runs": 0
@@ -7504,7 +7520,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 41,
+"fails": 42,
 "state": "bot_check",
 "university": "Royal University of Dhaka",
 "zero_runs": 0
