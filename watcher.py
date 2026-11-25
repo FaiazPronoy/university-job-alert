@@ -965,7 +965,9 @@ NEW_TAG = "🟢 <b>NEW</b> · "
 
 def board_groups(record: dict) -> list[str]:
     """Where a record is listed. A circular whose text names both kinds of post goes on both boards."""
-    return record.get("groups") or [board_group(record)]
+    if record.get("category") == "General circular" and record.get("groups"):
+        return record["groups"]
+    return [board_group(record)]
 
 
 def board_group(record: dict) -> str:
@@ -1284,8 +1286,8 @@ def enrich_deadlines(state: dict, fetcher, today: date) -> None:
             continue
         if facts["deadline"] and not record.get("deadline") and facts["deadline"] <= limit:
             record["deadline"] = facts["deadline"]
-        if facts["groups"]:
-            record["groups"] = facts["groups"]
+        if facts["groups"] and record["category"] == "General circular":
+            record["groups"] = facts["groups"]  # a named post keeps the board its title gives it
 
 
 def failing_sources(state: dict) -> list[tuple[str, str, str]]:
