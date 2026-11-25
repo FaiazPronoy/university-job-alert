@@ -1,7 +1,7 @@
 {
 "board_messages": [
-53,
-54
+55,
+56
 ],
 "catchup_version": 4,
 "items": {
@@ -6422,7 +6422,7 @@
 },
 "last_digest": "2026-11-24",
 "last_manual": null,
-"last_run": "2026-11-25T06:00:59.077568+00:00",
+"last_run": "2026-11-25T07:00:51.999488+00:00",
 "pending_open": [],
 "rules_version": 4,
 "sources": {
@@ -6689,9 +6689,9 @@
 "alerted": false,
 "baselined": true,
 "count": 0,
-"fails": 1,
+"fails": 0,
 "last_ok": "2026-11-25",
-"state": "blocked",
+"state": "ok",
 "university": "Dhaka Central University",
 "zero_runs": 0
 },
@@ -6699,7 +6699,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 42,
+"fails": 43,
 "state": "blocked",
 "university": "Dhaka International University",
 "zero_runs": 0
@@ -6815,7 +6815,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 42,
+"fails": 43,
 "state": "blocked",
 "university": "Dhaka International University",
 "zero_runs": 0
@@ -6824,10 +6824,10 @@
 "alerted": false,
 "baselined": true,
 "count": 148,
-"fails": 1,
+"fails": 0,
 "last_ok": "2026-11-25",
 "no_vacancy": false,
-"state": "timeout",
+"state": "ok",
 "university": "University of Dhaka",
 "zero_runs": 0
 },
@@ -6890,7 +6890,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 42,
+"fails": 43,
 "state": "bot_check",
 "university": "World University of Bangladesh",
 "zero_runs": 0
@@ -6943,10 +6943,10 @@
 "alerted": false,
 "baselined": true,
 "count": 2,
-"fails": 1,
+"fails": 0,
 "last_ok": "2026-11-25",
 "no_vacancy": false,
-"state": "blocked",
+"state": "ok",
 "university": "Northern University Bangladesh",
 "zero_runs": 0
 },
@@ -7114,7 +7114,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 42,
+"fails": 43,
 "state": "blocked",
 "university": "Tagore University of Creative Arts",
 "zero_runs": 0
@@ -7123,7 +7123,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 42,
+"fails": 43,
 "state": "blocked",
 "university": "Tagore University of Creative Arts",
 "zero_runs": 0
@@ -7511,7 +7511,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 42,
+"fails": 43,
 "state": "bot_check",
 "university": "Royal University of Dhaka",
 "zero_runs": 0
@@ -7520,7 +7520,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 42,
+"fails": 43,
 "state": "bot_check",
 "university": "Royal University of Dhaka",
 "zero_runs": 0
