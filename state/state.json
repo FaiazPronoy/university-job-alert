@@ -1,7 +1,7 @@
 {
 "board_messages": [
-105,
-106
+107,
+108
 ],
 "catchup_version": 4,
 "items": {
@@ -2308,6 +2308,22 @@
 "title": "01 (এক) দিন ব্যাপী স্কাউটিং বিষয়ক ওরিয়েন্টেশন কোর্সে অংশ গ্রহণ করার জন্য শিক্ষকের নাম প্রেরণ প্রসংগে",
 "university": "Islamic Arabic University",
 "url": "http://iau.edu.bd/wp-content/uploads/2026/09/reg17.pdf"
+},
+"5a1d9efb65f11cef02d0": {
+"baseline": false,
+"category": "Teaching",
+"deadline": "2026-12-07",
+"digested": true,
+"first_seen": "2026-11-26",
+"last_seen": "2026-11-26",
+"latest_date": "2026-12-07",
+"level": "strong",
+"notified": true,
+"page": "https://www.uttara.ac.bd/career/",
+"reminded": [],
+"title": "Job Application From for Academic",
+"university": "Uttara University",
+"url": "https://www.uttara.ac.bd/job-application-form/"
 },
 "5b11483ee06a88bc5c42": {
 "category": "Officer/Admin",
@@ -6356,6 +6372,22 @@
 "university": "Victoria University of Bangladesh",
 "url": "https://vub.edu.bd/all-notice/?tax%5Bwpdmcategory%5D=department-of-business-administration"
 },
+"fbdd8f790253baf8e61f": {
+"baseline": false,
+"category": "Officer/Admin",
+"deadline": "2026-12-22",
+"digested": true,
+"first_seen": "2026-11-26",
+"last_seen": "2026-11-26",
+"latest_date": "2026-12-22",
+"level": "strong",
+"notified": true,
+"page": "https://jobs.du.ac.bd/",
+"reminded": [],
+"title": "উপ-পরিচালক, Office of the Students Counselling and Guidance (01 post)",
+"university": "University of Dhaka",
+"url": "https://jobs.du.ac.bd/job_details/385"
+},
 "fbddc951fd47992be134": {
 "category": "Officer/Admin",
 "deadline": null,
@@ -6488,7 +6520,7 @@
 },
 "last_digest": "2026-11-24",
 "last_manual": null,
-"last_run": "2026-11-26T07:01:13.718181+00:00",
+"last_run": "2026-11-26T08:00:50.780650+00:00",
 "pending_open": [],
 "rules_version": 4,
 "sources": {
@@ -6755,9 +6787,9 @@
 "alerted": false,
 "baselined": true,
 "count": 0,
-"fails": 1,
+"fails": 0,
 "last_ok": "2026-11-26",
-"state": "blocked",
+"state": "ok",
 "university": "Dhaka Central University",
 "zero_runs": 0
 },
@@ -6765,7 +6797,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 68,
+"fails": 69,
 "state": "blocked",
 "university": "Dhaka International University",
 "zero_runs": 0
@@ -6881,7 +6913,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 68,
+"fails": 69,
 "state": "blocked",
 "university": "Dhaka International University",
 "zero_runs": 0
@@ -6889,11 +6921,11 @@
 "https://jobs.du.ac.bd/": {
 "alerted": false,
 "baselined": true,
-"count": 150,
-"fails": 1,
+"count": 151,
+"fails": 0,
 "last_ok": "2026-11-26",
 "no_vacancy": false,
-"state": "timeout",
+"state": "ok",
 "university": "University of Dhaka",
 "zero_runs": 0
 },
@@ -6956,7 +6988,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 68,
+"fails": 69,
 "state": "bot_check",
 "university": "World University of Bangladesh",
 "zero_runs": 0
@@ -7009,10 +7041,10 @@
 "alerted": false,
 "baselined": true,
 "count": 2,
-"fails": 1,
+"fails": 0,
 "last_ok": "2026-11-26",
 "no_vacancy": false,
-"state": "blocked",
+"state": "ok",
 "university": "Northern University Bangladesh",
 "zero_runs": 0
 },
@@ -7180,7 +7212,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 68,
+"fails": 69,
 "state": "blocked",
 "university": "Tagore University of Creative Arts",
 "zero_runs": 0
@@ -7189,7 +7221,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 68,
+"fails": 69,
 "state": "blocked",
 "university": "Tagore University of Creative Arts",
 "zero_runs": 0
@@ -7208,9 +7240,9 @@
 "alerted": false,
 "baselined": true,
 "count": 1,
-"fails": 1,
+"fails": 0,
 "last_ok": "2026-11-26",
-"state": "bot_check",
+"state": "ok",
 "university": "University of Development Alternative",
 "zero_runs": 0
 },
@@ -7218,10 +7250,10 @@
 "alerted": false,
 "baselined": true,
 "count": 2,
-"fails": 1,
+"fails": 0,
 "last_ok": "2026-11-26",
 "no_vacancy": false,
-"state": "bot_check",
+"state": "ok",
 "university": "University of Development Alternative",
 "zero_runs": 0
 },
@@ -7229,9 +7261,9 @@
 "alerted": false,
 "baselined": true,
 "count": 2,
-"fails": 1,
+"fails": 0,
 "last_ok": "2026-11-26",
-"state": "conn_error",
+"state": "ok",
 "university": "Victoria University of Bangladesh",
 "zero_runs": 0
 },
@@ -7239,10 +7271,10 @@
 "alerted": false,
 "baselined": true,
 "count": 2,
-"fails": 1,
+"fails": 0,
 "last_ok": "2026-11-26",
 "no_vacancy": false,
-"state": "conn_error",
+"state": "ok",
 "university": "Victoria University of Bangladesh",
 "zero_runs": 0
 },
@@ -7577,7 +7609,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 68,
+"fails": 69,
 "state": "bot_check",
 "university": "Royal University of Dhaka",
 "zero_runs": 0
@@ -7586,7 +7618,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 68,
+"fails": 69,
 "state": "bot_check",
 "university": "Royal University of Dhaka",
 "zero_runs": 0
@@ -7669,7 +7701,7 @@
 "https://www.uttara.ac.bd/career/": {
 "alerted": false,
 "baselined": true,
-"count": 4,
+"count": 5,
 "fails": 0,
 "last_ok": "2026-11-26",
 "no_vacancy": false,
