@@ -1,7 +1,7 @@
 {
 "board_messages": [
-107,
-108
+109,
+110
 ],
 "catchup_version": 4,
 "items": {
@@ -3296,6 +3296,22 @@
 "university": "Green University of Bangladesh",
 "url": "https://archive-career.green.edu.bd/ads-lec/"
 },
+"7b7bc3550d17f588ce42": {
+"baseline": false,
+"category": "General circular",
+"deadline": null,
+"digested": true,
+"first_seen": "2026-11-26",
+"last_seen": "2026-11-26",
+"latest_date": "2026-11-26",
+"level": "strong",
+"notified": true,
+"page": "https://www.bmu.ac.bd/",
+"reminded": [],
+"title": "26 Nov 2026 Seat Plan for the Nurse Recruitment Examination-2026 at BMU Super Specialized Hospital Limited NEW",
+"university": "Bangladesh Medical University",
+"url": "https://www.bmu.ac.bd/notice/2016?from=all"
+},
 "7bf39ad444fe84a2f81e": {
 "category": "Teaching",
 "deadline": null,
@@ -6520,7 +6536,7 @@
 },
 "last_digest": "2026-11-24",
 "last_manual": null,
-"last_run": "2026-11-26T08:00:50.780650+00:00",
+"last_run": "2026-11-26T09:01:01.673342+00:00",
 "pending_open": [],
 "rules_version": 4,
 "sources": {
@@ -6797,7 +6813,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 69,
+"fails": 70,
 "state": "blocked",
 "university": "Dhaka International University",
 "zero_runs": 0
@@ -6913,7 +6929,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 69,
+"fails": 70,
 "state": "blocked",
 "university": "Dhaka International University",
 "zero_runs": 0
@@ -6988,7 +7004,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 69,
+"fails": 70,
 "state": "bot_check",
 "university": "World University of Bangladesh",
 "zero_runs": 0
@@ -7212,7 +7228,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 69,
+"fails": 70,
 "state": "blocked",
 "university": "Tagore University of Creative Arts",
 "zero_runs": 0
@@ -7221,7 +7237,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 69,
+"fails": 70,
 "state": "blocked",
 "university": "Tagore University of Creative Arts",
 "zero_runs": 0
@@ -7303,7 +7319,7 @@
 "https://www.bmu.ac.bd/": {
 "alerted": false,
 "baselined": true,
-"count": 5,
+"count": 6,
 "fails": 0,
 "last_ok": "2026-11-26",
 "state": "ok",
@@ -7609,7 +7625,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 69,
+"fails": 70,
 "state": "bot_check",
 "university": "Royal University of Dhaka",
 "zero_runs": 0
@@ -7618,7 +7634,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 69,
+"fails": 70,
 "state": "bot_check",
 "university": "Royal University of Dhaka",
 "zero_runs": 0
