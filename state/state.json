@@ -1,7 +1,7 @@
 {
 "board_messages": [
-109,
-110
+113,
+114
 ],
 "catchup_version": 4,
 "items": {
@@ -6536,7 +6536,7 @@
 },
 "last_digest": "2026-11-24",
 "last_manual": null,
-"last_run": "2026-11-26T09:01:01.673342+00:00",
+"last_run": "2026-11-26T10:00:44.515126+00:00",
 "pending_open": [],
 "rules_version": 4,
 "sources": {
@@ -6750,10 +6750,10 @@
 "alerted": false,
 "baselined": true,
 "count": 0,
-"fails": 0,
+"fails": 1,
 "last_ok": "2026-11-26",
 "no_vacancy": false,
-"state": "ok",
+"state": "timeout",
 "university": "Green University of Bangladesh",
 "zero_runs": 0
 },
@@ -6813,7 +6813,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 70,
+"fails": 71,
 "state": "blocked",
 "university": "Dhaka International University",
 "zero_runs": 0
@@ -6833,10 +6833,10 @@
 "alerted": false,
 "baselined": true,
 "count": 1,
-"fails": 0,
+"fails": 1,
 "last_ok": "2026-11-26",
 "no_vacancy": false,
-"state": "ok",
+"state": "timeout",
 "university": "Grameen University",
 "zero_runs": 0
 },
@@ -6844,9 +6844,9 @@
 "alerted": false,
 "baselined": true,
 "count": 0,
-"fails": 0,
+"fails": 1,
 "last_ok": "2026-11-26",
-"state": "ok",
+"state": "timeout",
 "university": "Grameen University",
 "zero_runs": 0
 },
@@ -6929,7 +6929,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 70,
+"fails": 71,
 "state": "blocked",
 "university": "Dhaka International University",
 "zero_runs": 0
@@ -7004,7 +7004,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 70,
+"fails": 71,
 "state": "bot_check",
 "university": "World University of Bangladesh",
 "zero_runs": 0
@@ -7228,7 +7228,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 70,
+"fails": 71,
 "state": "blocked",
 "university": "Tagore University of Creative Arts",
 "zero_runs": 0
@@ -7237,7 +7237,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 70,
+"fails": 71,
 "state": "blocked",
 "university": "Tagore University of Creative Arts",
 "zero_runs": 0
@@ -7563,10 +7563,10 @@
 "alerted": false,
 "baselined": true,
 "count": 3,
-"fails": 0,
+"fails": 1,
 "last_ok": "2026-11-26",
 "no_vacancy": false,
-"state": "ok",
+"state": "timeout",
 "university": "University of Scholars",
 "zero_runs": 0
 },
@@ -7574,9 +7574,9 @@
 "alerted": false,
 "baselined": true,
 "count": 0,
-"fails": 0,
+"fails": 1,
 "last_ok": "2026-11-26",
-"state": "ok",
+"state": "timeout",
 "university": "University of Scholars",
 "zero_runs": 0
 },
@@ -7625,7 +7625,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 70,
+"fails": 71,
 "state": "bot_check",
 "university": "Royal University of Dhaka",
 "zero_runs": 0
@@ -7634,7 +7634,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 70,
+"fails": 71,
 "state": "bot_check",
 "university": "Royal University of Dhaka",
 "zero_runs": 0
