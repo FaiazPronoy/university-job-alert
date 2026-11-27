@@ -1,7 +1,7 @@
 {
 "board_messages": [
-171,
-172
+173,
+174
 ],
 "catchup_version": 4,
 "items": {
@@ -6566,7 +6566,7 @@
 },
 "last_digest": "2026-11-24",
 "last_manual": null,
-"last_run": "2026-11-27T12:00:51.808859+00:00",
+"last_run": "2026-11-27T13:00:46.671730+00:00",
 "pending_open": [],
 "rules_version": 4,
 "sources": {
@@ -6741,7 +6741,7 @@
 "no_vacancy": false,
 "state": "ok",
 "university": "Grameen University",
-"zero_runs": 3
+"zero_runs": 4
 },
 "https://career.grameenu.ac/career-portal": {
 "alerted": false,
@@ -6752,7 +6752,7 @@
 "no_vacancy": false,
 "state": "ok",
 "university": "Grameen University",
-"zero_runs": 3
+"zero_runs": 4
 },
 "https://career.grameenu.ac/career-portal/jobs": {
 "alerted": false,
@@ -6833,7 +6833,7 @@
 "alerted": false,
 "baselined": true,
 "count": 0,
-"fails": 2,
+"fails": 3,
 "last_ok": "2026-11-27",
 "state": "blocked",
 "university": "Dhaka Central University",
@@ -6843,7 +6843,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 100,
+"fails": 101,
 "state": "blocked",
 "university": "Dhaka International University",
 "zero_runs": 0
@@ -6959,7 +6959,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 100,
+"fails": 101,
 "state": "blocked",
 "university": "Dhaka International University",
 "zero_runs": 0
@@ -7034,7 +7034,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 100,
+"fails": 101,
 "state": "bot_check",
 "university": "World University of Bangladesh",
 "zero_runs": 0
@@ -7258,7 +7258,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 100,
+"fails": 101,
 "state": "blocked",
 "university": "Tagore University of Creative Arts",
 "zero_runs": 0
@@ -7267,7 +7267,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 100,
+"fails": 101,
 "state": "blocked",
 "university": "Tagore University of Creative Arts",
 "zero_runs": 0
@@ -7307,7 +7307,7 @@
 "alerted": false,
 "baselined": true,
 "count": 2,
-"fails": 9,
+"fails": 10,
 "last_ok": "2026-11-27",
 "state": "server_error",
 "university": "Victoria University of Bangladesh",
@@ -7317,7 +7317,7 @@
 "alerted": false,
 "baselined": true,
 "count": 2,
-"fails": 9,
+"fails": 10,
 "last_ok": "2026-11-27",
 "no_vacancy": false,
 "state": "server_error",
@@ -7655,7 +7655,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 100,
+"fails": 101,
 "state": "bot_check",
 "university": "Royal University of Dhaka",
 "zero_runs": 0
@@ -7664,7 +7664,7 @@
 "alerted": true,
 "baselined": false,
 "count": 0,
-"fails": 100,
+"fails": 101,
 "state": "bot_check",
 "university": "Royal University of Dhaka",
 "zero_runs": 0
